@@ -25,9 +25,16 @@ end
 
 class Card
   def initialize(shape, color, pattern, number)
+    #Shapes: 1 = Oval, 2 = Square, 3 = Diamond
     @shape = shape
+
+    #Colors: 1 = Red, 2 = Green, 2 = Purple
     @color = color
+
+    #Pattern: 1 = Empty, 2= Striped, 3 = Filled
     @pattern = pattern
+
+    #Number: 1 = 1, 2 = 2, 3 = 3
     @number = number
   end
   def shape
