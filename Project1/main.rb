@@ -1,5 +1,5 @@
 #This will be the main code that runs the game of set. 
-
+require "./User.rb"
 
 #initial greeting
 def greeting()
@@ -20,4 +20,21 @@ end
 
 #greeting will greet players to the game and return the number of players. 
 numPlayers = greeting
+arrayOfPlayers = Array.new #create array of players
+i = 0
+while i < numPlayers
+	arrayOfPlayers[i] = Player.new()
+	puts "#{arrayOfPlayers[i].username}, please input your hotkey: "
+	arrayOfPlayers[i].addHotkey(gets.to_s)
+	i += 1
+end
 
+#game logic in loop
+
+while true
+
+
+
+	
+
+end 
