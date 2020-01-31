@@ -1,4 +1,5 @@
 class Deck
+  attr_accessor :cardCount
   def initialize
     @cardDeck = Array.new
     for i in 1..3
@@ -12,18 +13,15 @@ class Deck
     end
     @cardCount = 81
   end
-  def cardCount
-    @cardCount
-  end
-  def cardCount=(value)
-    @cardCount = value
-  end
+  #Draws random card and decrements cardCount
   def drawRandom
+    @cardCount = @cardCount - 1
     @cardDeck.delete_at(rand(@cardDeck.length))
   end
 end
 
 class Card
+  attr_reader :shape, :color, :pattern, :number
   def initialize(shape, color, pattern, number)
     #Shapes: 1 = Oval, 2 = Square, 3 = Diamond
     @shape = shape
@@ -37,19 +35,7 @@ class Card
     #Number: 1 = 1, 2 = 2, 3 = 3
     @number = number
   end
-  def shape
-    @shape
-  end
-  def color
-    @color
-  end
-  def pattern
-    @pattern
-  end
-  def number
-    @number
-  end
   def string
-    "#{@shape}#{@color}#{@pattern}#{number}"
+    "#{@shape}#{@color}#{@pattern}#{@number}"
   end
 end
