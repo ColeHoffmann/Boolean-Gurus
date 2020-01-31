@@ -17,4 +17,13 @@ class Table
 		puts "\n"
 	end
   end
+
+
+  
+
+  def changeChards(card1, card2, card3)
+    
+    
+
+  
 end
