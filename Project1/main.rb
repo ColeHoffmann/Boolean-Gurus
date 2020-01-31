@@ -3,11 +3,11 @@
 
 #initial greeting
 def greeting()
-  puts "Welcome to set! Will there be 1 or 2 players playing? (1/2)\n"
+  puts "Welcome to set! How many players will be  playing? (1-4)\n"
   playerCount = gets.to_i
 
-  until( (playerCount== 1) || (playerCount== 2) )
-    puts "Invalid Responce. Please choose (1/2)\n"
+  until( (playerCount== 1) || (playerCount== 2) || (playerCount ==3) || (playerCount ==4))
+    puts "Invalid Responce. Please choose (1/2/3/4)\n"
     playerCount = gets.to_i
   end
   playerCount
