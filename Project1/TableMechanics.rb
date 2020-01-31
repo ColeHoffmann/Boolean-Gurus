@@ -5,16 +5,17 @@ class Table
 		@table.push Card.drawRandom
 	end
   end
+end
 
-  def putTable
-	@table = Table.new
+def putTable
+	@currentTable = Table.new
 	@counter = 0
 	for i in 0..2
 		for j in 0..3
-			puts "#{@table[@counter].shape}, #{@table[@counter].color}, #{@table[@counter].number}, #{@table[@counter].pattern} "
-			@counter++	
+			puts "#{@currentTable[@counter].shape}, #{@currentTable[@counter].color}, #{@currentTable[@counter].number}, #{@currentTable[@counter].pattern} "
+			@counter = @counter + 1	
 		end
-		puts "\n"
+		puts "\n" 
 	end
   end
 
@@ -22,8 +23,8 @@ class Table
   
 
   def changeChards(card1, card2, card3)
-    
+  end
     
 
-  
+ 
 end
