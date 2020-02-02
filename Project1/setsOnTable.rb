@@ -16,33 +16,34 @@ end
 
 
 
-#this will return true if the three cards form a proper set and false if they do not. 
+#This method will take in 3 card objects and will return true if the cards make up a proper set, and false if not. Due to our implementation inside card, we can calulcate the sums of the card attributes and verify if it is proper or not. 
+# @ensures: true if hand is proper set, false if not
+# @requires: card1, card2, and card3 are all card objects
 def isProperSet(card1, card2, card3)
-  #the attributes follow the convention if the sum is 3,6, or 9, due to the way we implemented card. If not, it is false. 
   valid = Array[3,6,9]
   #we will assume it is proper set, we will then go through and check each attribute to make sure it follows the rule. 
-  isProperSet = true;
+  properSet = true;
 
 
   #unless the sum of color is contained in the valid array, make this attrubute is false.. 
   #all other attributes follow this convention
   unless (valid.include?(card1.color + card2.color + card3.color))
-    isProperSet = false
+    properSet = false
   end
   
   unless (valid.include?(card1.shape + card2.shape + card3.shape))
-    isProperSet = false
+    properSet = false
   end 
 
   unless (valid.include?(card1.pattern + card2.pattern + card3.pattern))
-    isProperSet = false
+    properSet = false
   end
 
   unless (valid.include?(card1.number + card2.number + card3.number))
-    isProperSet = false
+    properSet = false
   end
 
   #if any one of the sums is not 3, 6, or 9. Proper set will return false. 
   #return:
-  isProperSet
+  properSet
 end
