@@ -25,16 +25,18 @@ i = 0
 while i < numPlayers
 	arrayOfPlayers[i] = Player.new()
 	puts "#{arrayOfPlayers[i].username}, please input your hotkey: "
-	arrayOfPlayers[i].addHotkey(gets.to_s)
+        arrayOfPlayers[i].addHotkey(gets.chomp.to_s)
 	i += 1
 end
 
 #game logic in loop
 
-while true
+loop do
+  
 
 
-
-	
-
+  puts "Do you want to play another game (Y/N): "
+  if(gets.chomp.to_s != "Y")
+    break
+  end  
 end 
