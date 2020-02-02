@@ -6,6 +6,7 @@ def setsOnTable (table)
       for k in 0...j
         if (isProperSet(table[i], table[j], table[k]))
           numSets = numSets + 1
+        end
       end
     end
   end
