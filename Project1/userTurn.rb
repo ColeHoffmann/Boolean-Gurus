@@ -1,4 +1,3 @@
-# still requires input validation
 # divided into small parts in case we want to change behavior of some of them
 # designed so we call turn in a loop, puts current table, then updates score and table
 
@@ -13,10 +12,10 @@ end
 def turn(table, player)
   table.putTable(table.currentTable)
   puts "Please pick your first card or enter \"no sets\" /n"
-  s = gets
+  s = gets.chomp
   until s.equal?("no sets") || validIn?(s)
     puts "Please pick your first card or enter \"no sets\" /n"
-    s = gets
+    s = gets.chomp
   end
   if (s.equal?("no sets"))
     playerClickedNoSets(table, player)
@@ -30,17 +29,17 @@ end
 def pickCardsOption (table, player, firstCard)
   firstCardNum = firstCard
   puts "Please pick your second card /n"
-  inStr = gets
+  inStr = gets.chomp
   until (validIn?(inStr))
     puts "Please pick your second card /n"
-    inStr = gets
+    inStr = gets.chomp
   end
   secondCardNum = inStr
-  inStr = gets
+  inStr = gets.chomp
   puts "Please pick your third card /n"
   until (validIn?(inStr))
     puts "Please pick your third card /n"
-    inStr = gets
+    inStr = gets.chomp
   end
   thirdCardNum = inStr
   if (isProperSet(table.currentTable[firstCardNum], table.currentTable[secondCardNum], table.currentTable[thirdCardNum]))

@@ -11,12 +11,12 @@ def putTable(currentTable)
 	counter = 0
 	(0..2).each { |i|
 		(0..3).each { |j|
-			puts "#{currentTable[counter].shape}, #{currentTable[counter].color}, #{currentTable[counter].number}, #{currentTable[counter].pattern} "
+			putCard(currentTable[counter])
 			counter += 1
 		}
 		puts "\n"
 	}
-  end
+end
 
 
   
