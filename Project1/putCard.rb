@@ -44,6 +44,5 @@ def putCard (card)
     puts "ERROR accessing card shape!!"
   end
 
-  print "s" unless card.number == 1
-  print "/t"
+  puts ""
 end

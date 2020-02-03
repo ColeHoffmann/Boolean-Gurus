@@ -12,9 +12,7 @@ class Player
     end
 
     def decrease_score
-        if @score != 0
-            @score -= 1
-        end
+        @score -= 1
     end
 
 end

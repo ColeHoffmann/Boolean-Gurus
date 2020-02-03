@@ -18,11 +18,11 @@ def turn(table, player, deck)
   table.putTable
   puts "Please pick your first card or enter \"no sets\" "
   s = gets.chomp
-  until s.equal?("no sets") || validIn?(s)
+  until s == "no sets" || validIn?(s)
     puts "Please pick your first card or enter \"no sets\" "
     s = gets.chomp
   end
-  if (s.equal?("no sets"))
+  if (s == "no sets")
     playerClickedNoSets(table, player,deck)
   else
     pickCardsOption(table, player,s.to_i,deck)
@@ -30,21 +30,24 @@ def turn(table, player, deck)
 end
 
 def pickCardsOption (table, player, firstCard,deck)
-  firstCardNum = firstCard
-  puts "Please pick your second card /n"
+  firstCardNum = firstCard - 1
+
+  puts "Please pick your second card"
   inStr = gets.chomp
   until (validIn?(inStr))
-    puts "Please pick your second card /n"
+    puts "Please pick your second card"
     inStr = gets.chomp
   end
-  secondCardNum = inStr
+  secondCardNum = inStr.to_i - 1
+
+  puts "Please pick your third card"
   inStr = gets.chomp
-  puts "Please pick your third card /n"
   until (validIn?(inStr))
-    puts "Please pick your third card /n"
+    puts "Please pick your third card"
     inStr = gets.chomp
   end
-  thirdCardNum = inStr
+  thirdCardNum = inStr.to_i - 1
+
   if (isProperSet(table.currentTable[firstCardNum], table.currentTable[secondCardNum], table.currentTable[thirdCardNum]))
     pickedProper(table, player, firstCardNum, secondCardNum, thirdCardNum, deck)
   else 
@@ -53,6 +56,7 @@ def pickCardsOption (table, player, firstCard,deck)
 end
 
 def pickedProper(table, player, firstCardNum, secondCardNum, thirdCardNum,deck)
+  puts "You are right! Your score now is #{player.score}"
   player.increase_score
   if (deck.cardCount > 0 )
     table.changeCards(table.currentTable[firstCardNum], table.currentTable[secondCardNum], table.currentTable[thirdCardNum],deck)
@@ -61,5 +65,5 @@ end
 
 def pickedImproper(player)
   player.decrease_score
-  puts "Wrong! Please try again"
+  puts "Wrong! Please try again. Your score now is #{player.score}"
 end

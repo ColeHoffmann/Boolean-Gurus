@@ -14,6 +14,7 @@ class Table
 		counter = 0
 		(0..2).each { |i|
 			(0..3).each { |j|
+				print "#{counter+1} "
 				putCard(@currentTable[counter])
 				counter += 1
 			}
@@ -23,9 +24,9 @@ class Table
 	#These values should be THE SPOT IN THE ARRAY IN WHICH THE CARD RESIDES - "The i value"
 	#For example, if cards array[3] array[6] and array[0] gets picked, the parameters would be 3, 6, and 0
 	def changeCards( card1, card2, card3, deck)
-		@currentTable[card1] = deck.drawRandom
-		@currentTable[card2] = deck.drawRandom
-		@currentTable[card3] = deck.drawRandom
+		@currentTable[card1.to_i] = deck.drawRandom
+		@currentTable[card2.to_i] = deck.drawRandom
+		@currentTable[card3.to_i] = deck.drawRandom
 		@currentTable.availableSets = -1
 	end
 end
