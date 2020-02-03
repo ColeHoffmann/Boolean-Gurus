@@ -1,9 +1,13 @@
 class Table
+	# availableSets attribute is for caching the costly find available sets operation
+	# -1 means not calculated 0 or more indicates the available sets
+	attr_accessor :availableSets
   def initialize
 	@currentTable = Array.new
 	(0..11).each { |i|
 		@currentTable.push Deck.drawRandom
 	}
+	this.availableSets = -1
   end
 end
 
@@ -26,6 +30,7 @@ end
     currentTable[card1] = Deck.drawRandom
     currentTable[card2] = Deck.drawRandom
     currentTable[card3] = Deck.drawRandom
+		currentTable.availableSets = -1
 	end
 
 
