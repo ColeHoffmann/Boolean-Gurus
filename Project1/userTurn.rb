@@ -19,7 +19,7 @@ def turn(table, player)
     s = gets
   end
   if (s.equal?("no sets"))
-    noSetsOption(table, player)
+    playerClickedNoSets(table, player)
   else
     pickCardsOption(table, player,s.to_i)
   end
