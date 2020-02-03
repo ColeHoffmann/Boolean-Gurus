@@ -2,9 +2,9 @@
 # currently I access class variable currentTable directly, which is impossible since it is private. Need an accessor function
 def setsOnTable (table)
   numSets = 0
-  (0..10).each { |i|
-    (i+1..11).each { |j|
-      (j+1..12).each { |k|
+  (2...table.currentTable.length).each { |i|
+    (1...i).each { |j|
+      (0...j).each { |k|
         if (isProperSet(table.currentTable[i], table.currentTable[j], table.currentTable[k]))
           numSets = numSets + 1
         end

@@ -103,20 +103,20 @@ loop do
     arrayOfPlayers.each { |player| @currentPlayer = player if player.username == name}
     turn(table,@currentPlayer,deck)
     puts "Clearing in 2 seconds"
-    sleep 2
+    #sleep 2
   end
   #Game set
 
   highScore = 0
   bestPlayer = arrayOfPlayers[0]
   arrayOfPlayers.each { |player|
-    puts "#{player.username} have #{player.score} points."
+    puts "Player #{player.username} have #{player.score} points."
     if player.score > highScore
       bestPlayer = player
       highScore = player.score
     end
   }
-  puts "#{bestPlayer} wins with #{highScore} points!"
+  puts "Player #{bestPlayer.username} wins with #{highScore} points!"
 
   puts "Do you want to play another game (Y/N): "
   break if(gets.chomp.to_s.upcase != "Y")

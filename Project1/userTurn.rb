@@ -16,13 +16,13 @@ def turn(table, player, deck)
   system("cls") || system("clear") || puts("\e[H\e[2J")
 
   table.putTable
-  puts "Please pick your first card or enter \"no sets\" "
+  puts "Please pick your first card or enter \"no set\" "
   s = gets.chomp
-  until s == "no sets" || validIn?(s)
-    puts "Please pick your first card or enter \"no sets\" "
+  until s == "no set" || s == "no sets" || validIn?(s)
+    puts "Please pick your first card or enter \"no set\" "
     s = gets.chomp
   end
-  if (s == "no sets")
+  if (s == "no set" || s == "no sets")
     playerClickedNoSets(table, player,deck)
   else
     pickCardsOption(table, player,s.to_i,deck)
@@ -56,10 +56,12 @@ def pickCardsOption (table, player, firstCard,deck)
 end
 
 def pickedProper(table, player, firstCardNum, secondCardNum, thirdCardNum,deck)
-  puts "You are right! Your score now is #{player.score}"
   player.increase_score
+  puts "You are right! Your score now is #{player.score}"
   if (deck.cardCount > 0 )
-    table.changeCards(table.currentTable[firstCardNum], table.currentTable[secondCardNum], table.currentTable[thirdCardNum],deck)
+    table.changeCards(firstCardNum, secondCardNum, thirdCardNum,deck)
+  else
+    table.removeCards(firstCardNum, secondCardNum, thirdCardNum)
   end
 end
 
