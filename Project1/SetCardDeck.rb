@@ -2,21 +2,23 @@ class Deck
   attr_accessor :cardCount
   def initialize
     @cardDeck = Array.new
-    for i in 1..3
-      for j in 1..3
-        for k in 1..3
-          for l in 1..3
-            @cardDeck.push(Card.new(i, j, k, l))
-          end
-        end
-      end
-    end
+    (1..3).each { |i|
+      (1..3).each { |j|
+        (1..3).each { |k|
+          (1..3).each { |l|
+            @cardDeck.push(Card.initialize(i, j, k, l))
+          }
+        }
+      }
+    }
     @cardCount = 81
+    # shuffle the deck
+    @cardDeck.shuffle!
   end
   #Draws random card and decrements cardCount
   def drawRandom
     @cardCount = @cardCount - 1
-    @cardDeck.delete_at(rand(@cardDeck.length))
+    return @cardDeck.pop
   end
 end
 
