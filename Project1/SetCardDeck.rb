@@ -6,7 +6,7 @@ class Deck
       (1..3).each { |j|
         (1..3).each { |k|
           (1..3).each { |l|
-            @cardDeck.push(Card.initialize(i, j, k, l))
+            @cardDeck.push(Card.new(i, j, k, l))
           }
         }
       }

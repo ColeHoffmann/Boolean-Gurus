@@ -3,30 +3,33 @@
 
 def validIn? (inStr)
   if inStr.to_i == 0
-    puts "Invalid input!/n"
+    puts "Invalid input!"
     return false
   end
   return true
 end
 
-def turn(table, player)
+def turn(table, player, deck)
+  #clear console
+  system("cls") || system("clear") || puts("\e[H\e[2J")
+
   table.putTable(table.currentTable)
-  puts "Please pick your first card or enter \"no sets\" /n"
+  puts "Please pick your first card or enter \"no sets\" "
   s = gets.chomp
   until s.equal?("no sets") || validIn?(s)
-    puts "Please pick your first card or enter \"no sets\" /n"
+    puts "Please pick your first card or enter \"no sets\" "
     s = gets.chomp
   end
   if (s.equal?("no sets"))
-    playerClickedNoSets(table, player)
+    playerClickedNoSets(table, player,deck)
   else
-    pickCardsOption(table, player,s.to_i)
+    pickCardsOption(table, player,s.to_i,deck)
   end
 end
 
 
 
-def pickCardsOption (table, player, firstCard)
+def pickCardsOption (table, player, firstCard,deck)
   firstCardNum = firstCard
   puts "Please pick your second card /n"
   inStr = gets.chomp
@@ -43,18 +46,20 @@ def pickCardsOption (table, player, firstCard)
   end
   thirdCardNum = inStr
   if (isProperSet(table.currentTable[firstCardNum], table.currentTable[secondCardNum], table.currentTable[thirdCardNum]))
-    pickedProper(table, player, firstCardNum, secondCardNum, thirdCardNum)
+    pickedProper(table, player, firstCardNum, secondCardNum, thirdCardNum, deck)
   else 
     pickedImproper(player)
   end  
 end
 
-def pickedProper(table, player, firstCardNum, secondCardNum, thirdCardNum)
+def pickedProper(table, player, firstCardNum, secondCardNum, thirdCardNum,deck)
   player.increase_score
-  table.changeCards(table.currentTable[firstCardNum], table.currentTable[secondCardNum], table.currentTable[thirdCardNum])
+  if (deck.cardCount > 0 )
+    table.changeCards(table.currentTable[firstCardNum], table.currentTable[secondCardNum], table.currentTable[thirdCardNum])
+  end
 end
 
 def pickedImproper(player)
   player.decrease_score
-  puts "Please try again"
+  puts "Wrong! Please try again"
 end

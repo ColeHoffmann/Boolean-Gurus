@@ -2,48 +2,48 @@ def putCard (card)
 
   case card.number
   when 1
-    puts "   One   "
+    print "   One   "
   when 2
-    puts "   Two   "
+    print "   Two   "
   when 3
-    puts "  Three  "
+    print "  Three  "
   else
-    puts "ERROR accessing card number!!/n"
+    puts "ERROR accessing card number!!"
   end
 
   case card.color
   when 1
-    puts "   Red   "
+    print "   Red   "
   when 2
-    puts "  Green  "
+    print "  Green  "
   when 3
-    puts " Purple  "
+    print " Purple  "
   else
-    puts "ERROR accessing card color!!/n"
+    puts "ERROR accessing card color!!"
   end
 
   case card.pattern
   when 1
-    puts "  Empty  "
+    print "  Empty  "
   when 2
-    puts " Striped "
+    print " Striped "
   when 3
-    puts " Filled  "
+    print " Filled  "
   else
-    puts "ERROR accessing card pattern!!/n"
+    puts "ERROR accessing card pattern!!"
   end
 
   case card.shape
   when 1
-    puts "  Oval   "
+    print "  Oval   "
   when 2
-    puts " Square  "
+    print " Square  "
   when 3
-    puts " Diamond "
+    print " Diamond "
   else
-    puts "ERROR accessing card shape!!/n"
+    puts "ERROR accessing card shape!!"
   end
 
-  puts "s" unless card.number == 1
-  puts "/t"
+  print "s" unless card.number == 1
+  print "/t"
 end

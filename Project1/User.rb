@@ -1,13 +1,10 @@
 require 'set'
 
 class Player
-    @@num = 1
-    @@hotkeySet = Set.new
-    attr_accessor :username, :score, :hotkey
+    attr_accessor :username, :score
 
-    def initialize
-      @username = "Player ".concat(@@num.to_s)
-      @@num += 1
+    def initialize (name)
+      @username = name
       @score = 0
     end
 
@@ -21,17 +18,4 @@ class Player
         end
     end
 
-    def addHotkey(char)
-        #add hotkey and check for duplicates
-        if @@hotkeySet.include?(char)
-            puts "Hotkey #{char} already taken."
-        else 
-            @hotkey = char
-            @@hotkeySet << char
-        end
-    end
-
-    def viewHotkeySet
-        puts @@hotkeySet
-    end
 end
