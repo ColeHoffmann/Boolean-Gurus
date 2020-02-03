@@ -6,7 +6,7 @@ def noSetsBehavior (table, player,deck)
   if deck.cardCount == 0
     puts "There is no set! We don't have cards left, Game Set!"
   else
-    changeCards(table, table.currentTable[0], table.currentTable[1], table.currentTable[2])
+    table.changeCards(table.currentTable[0], table.currentTable[1], table.currentTable[2],deck)
     puts "There is no set! Try again with updated table"
   end
 end

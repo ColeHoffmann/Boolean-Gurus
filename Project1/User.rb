@@ -1,4 +1,3 @@
-require 'set'
 
 class Player
     attr_accessor :username, :score

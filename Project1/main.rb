@@ -1,5 +1,11 @@
 #This will be the main code that runs the game of set. 
 require "./User.rb"
+require "./userTurn.rb"
+require "./noSetsOption.rb"
+require "./SetCardDeck.rb"
+require "./setsOnTable.rb"
+require "./TableMechanics.rb"
+require "./putCard.rb"
 
 #initial greeting
 def greeting
@@ -40,7 +46,7 @@ numPlayers = greeting
 arrayOfPlayers = Array.new #create array of players
 i = 0
 while i < numPlayers
-  puts "Player #{i}, Please input your name. Shorter is better."
+  puts "Player #{i+1}, Please input your name. Shorter is better."
   puts "Because you have to type your name in."
   name = getName
   while existName?(name,arrayOfPlayers)
@@ -79,14 +85,14 @@ gets
 
 loop do
   deck = Deck.new
-  table = Table.new
+  table = Table.new(deck)
   puts "Game start!"
-  sleep(1.second)
+  sleep(1)
 
   until table.availableSets == 0 && deck.cardCount == 0
     #clear console
     system("cls") || system("clear") || puts("\e[H\e[2J")
-    putTable (table)
+    table.putTable
     puts "Remaining cards: #{deck.cardCount}"
     puts "Please type in your name if you found a set / no set"
     name = getName
