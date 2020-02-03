@@ -98,12 +98,15 @@ loop do
     name = getName
     until existName?(name, arrayOfPlayers)
         puts "Name not found! Please type again!"
+        puts "Current Players: "
+        arrayOfPlayers.each { |player| print "#{player.username} " }
         name = getName
     end
+    puts " "
     arrayOfPlayers.each { |player| @currentPlayer = player if player.username == name}
     turn(table,@currentPlayer,deck)
     puts "Clearing in 2 seconds"
-    #sleep 2
+    sleep 2
   end
   #Game set
 

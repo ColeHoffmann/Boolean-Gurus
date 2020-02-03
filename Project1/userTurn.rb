@@ -16,10 +16,10 @@ def turn(table, player, deck)
   system("cls") || system("clear") || puts("\e[H\e[2J")
 
   table.putTable
-  puts "Please pick your first card or enter \"no set\" "
+  puts "#{player.username}, please pick your first card or enter \"no set\" "
   s = gets.chomp
   until s == "no set" || s == "no sets" || validIn?(s)
-    puts "Please pick your first card or enter \"no set\" "
+    puts "#{player.username}, please pick your first card or enter \"no set\" "
     s = gets.chomp
   end
   if (s == "no set" || s == "no sets")
@@ -32,23 +32,25 @@ end
 def pickCardsOption (table, player, firstCard,deck)
   firstCardNum = firstCard - 1
 
-  puts "Please pick your second card"
+  puts "#{player.username}, please pick your second card"
   inStr = gets.chomp
-  until (validIn?(inStr))
-    puts "Please pick your second card"
+  until validIn?(inStr) && inStr.to_i - 1 != firstCardNum
+    puts "Aha you tried to enter two identical cards!" if inStr.to_i - 1 == firstCardNum
+    puts "#{player.username}, please pick your second card"
     inStr = gets.chomp
   end
   secondCardNum = inStr.to_i - 1
 
-  puts "Please pick your third card"
+  puts "#{player.username}, please pick your third card"
   inStr = gets.chomp
-  until (validIn?(inStr))
-    puts "Please pick your third card"
+  until validIn?(inStr) && inStr.to_i - 1 != firstCardNum && inStr.to_i - 1 != secondCardNum
+    puts "Aha you tried to enter two identical cards!" if inStr.to_i - 1 == firstCardNum ||inStr.to_i - 1 == secondCardNum
+    puts "#{player.username}, please pick your third card"
     inStr = gets.chomp
   end
   thirdCardNum = inStr.to_i - 1
 
-  if (isProperSet(table.currentTable[firstCardNum], table.currentTable[secondCardNum], table.currentTable[thirdCardNum]))
+  if isProperSet(table.currentTable[firstCardNum], table.currentTable[secondCardNum], table.currentTable[thirdCardNum])
     pickedProper(table, player, firstCardNum, secondCardNum, thirdCardNum, deck)
   else 
     pickedImproper(player)
