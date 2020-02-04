@@ -78,6 +78,8 @@ puts "The game will end when there are no cards in the deck and there are"
 puts "no sets on the table. The first player correctly called out \"no set\""
 puts "will be awarded a point and the game will finish"
 puts "The player with the most points will win"
+puts "Game will start after the first correct guess"
+puts "Note: player score will not decrease below zero"
 puts "If everyone playing is ready, please press enter"
 gets
 
