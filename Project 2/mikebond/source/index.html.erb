@@ -1,23 +1,142 @@
----
-title: Welcome to Middleman
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> Home page of Micheal D. Bond </title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="">
+  </head>
+  <body>
+    <div class="column" id="bio"> <!-- div container with bio infro -->
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" class="middleman-logo" aria-labelledby="middleman-logo__title" role="img">
-  <title id="middleman-logo__title">Middleman</title>
-  <path class="middleman-logo__top-left-bar" fill-opacity=".45" d="M0 40L200 0v30L0 60z"/>
-  <path class="middleman-logo__top-right-bar" fill="#fff" d="M200 0l200 40v20L200 30z"/>
-  <path class="middleman-logo__left-m" fill-opacity=".45" d="M0 78v184l45 5V152l45 83 47-83v129l53 7V52l-57 8-43 83-43-70z"/>
-  <path class="middleman-logo__right-m" fill="#fff" d="M400 78v184l-45 5V152l-45 83-47-83v129l-53 7V52l57 8 43 83 43-70z"/>
-  <path class="middleman-logo__bottom-left-bar" fill-opacity=".45" d="M0 300l200 40v-30L0 280z"/>
-  <path class="middleman-logo__bottom-right-bar" fill="#fff" d="M200 340l200-40v-20l-200 30z"/>
-</svg>
+      <img src = "/images/assist.jpeg" width="200" alt="picture of Bond">
+      <p>
+        <br>Micheal D. Bond
+      </p>
+      <p>
+        Associate Professor<br>
+        Computer Science &amp; Engineering<br>
+        Ohio State University
+      </p>
+      <p> 
+        <a href="mailto:mikebond.cse.ohio-state.edu">mikebond@cse.ohio-state.edu</a>
+      </p>
+      <p> 
+        697 Dreese Labs
+      </p>
 
-<h1>
-  Middleman is Running
-</h1>
+    </div>
 
-<%= link_to(
-  "Read Documentation",
-  "https://middlemanapp.com/basics/templating_language/",
-  target: "_blank"
-) %>
+    <!-- div with News Column -->
+    <div class="column" id="news">
+      <h2>NEWS</h2>
+        <p> 
+          Rui Zhang's paper on <a href ="http://web.cse.ohio-state.edu/~mikebond/papers.html#peaceni">Peacenik: architecture support for not failing under fail-stop memory consisitency</a>
+          will appear at ASPLOS 2020!
+        </p>
+        <p>
+          Jake Roemer defended his PhD thesis in April and graduated in August 2019!
+          He's seeking industry and industrial research jobs.
+        </p>
+        <p>
+          Kanan Genc's paper on <a href="http://web.cse.ohio-state.edu/~mikebond/papers.html#depawar">dependence-aware predictive race detection</a>
+          appeared at OOPSLA 2019!
+        </p>
+        <p>
+          Swarnendu Biswas's paper on <a href="http://web.cse.ohio-state.edu/~mikebond/papers.html#arc">ARC: rethinking support for region conflict exceptions</a>
+          appeared at IPDPS 2019!
+        </p>
+    </div>
+
+    <!-- div containing the research column -->
+    <div class="column" id="research">
+      <h2>RESEARCH</h2>
+        My <a href="http://web.cse.ohio-state.edu/~mikebond/plass/"><b>research group</b></a>
+        develops program analyses and software systems
+        that make complex, concurrent software significantly more
+        reliable, scalable, and secure than it is today.
+      <p>
+        General interests: programming languages, software and hardware systems,
+        program analysis, compilers, security
+      </p>
+      <p>
+        <a href="http://web.cse.ohio-state.edu/~mikebond/pubs.html"><b>Publications</b></a>
+      </p>
+      <p>
+        <a href="http://web.cse.ohio-state.edu/~mikebond/papers.html">Publicly available research software</a> (see "Source code" for each paper)
+      </p>
+      <p>
+        Current advisees:
+      </p>
+      <ul>
+        <li>Kaan Genc (PhD Student)</li>
+        <li>Rui Zhang </li>
+      </ul>
+      <p>
+        Graduated advisees:
+      </p>
+      <ul>
+        <li>Jake Roemer&nbsp; (PhD, 2019) — seeking industry and industrial research jobs.</li>
+        <li><a href="http://www.cse.ohio-state.edu/~caoma/">Man Cao</a>&nbsp; (PhD, 2017) — Google.</li>
+        <li><a href="http://www.cse.ohio-state.edu/~sengupta/">Aritra Sengupta</a>&nbsp; (PhD, 2017) — Samsung Research America.</li>
+        <li><a href="https://www.cse.iitk.ac.in/users/swarnendu/">Swarnendu Biswas</a>&nbsp; (PhD, 2016) — IIT Kanpur (tenure-track faculty).</li>
+        <li><a href="http://zhangminjia.me/">Minjia Zhang</a>&nbsp; (PhD, 2016) — Microsoft Research.</li>
+        <li><a href="http://huangjip.github.io/">Jipeng Huang</a>&nbsp; (MS, 2014) — Google.</li>
+      </ul>
+    </div>
+
+    <!-- div wit Teaching column -->
+    <div class="column" id="teaching">
+      <h2>TEACHING</h2>
+      <div class="semester">
+        <p>
+          Spring 2020: CSE 6341
+         </p>
+          <ul>
+            <li><a href="https://piazza.com/osu/spring2020/cse6341/home/">Foundations of Programming Languages</a></li>
+           </ul>
+      </div>
+      <div class="semester">
+        <p>
+          Autumn 2019
+        </p>
+        <ul>
+          <li>CSE 5349: <a href="https://piazza.com/osu/autumn2019/cse5349/home">Language and System Support for Non-Volatile/Persistent Memory</a></li> 
+          <li>CSE 6341: <a href="https://piazza.com/osu/autumn2019/cse6341/home">Foundations of Programming Languages</a><br></li>
+
+        </ul>
+          <p>
+            <a href="http://web.cse.ohio-state.edu/~mikebond/misc.html#teaching">All teaching</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- div with MISC column -->
+      <div class="column" id="misc">
+        <div class="misc_element">
+          <h2>MISC</h2>
+            <ul>
+              <li>Program committee, PLDI 2020</li>
+              <li>Program committee, ASPLOS 2020</li>
+              <li>Program committee, ASPLOS 2019</li>
+              <li>Program committee, ISMM 2019</li>
+            </ul>
+        </div>
+        <div class="misc_element">
+          <p>
+            <a href="http://web.cse.ohio-state.edu/~mikebond/misc.html#activities">All activities</a>
+          </p>
+        </div>
+        <div class="misc_element">
+          <p>
+            <a href="http://web.cse.ohio-state.edu/~mikebond/misc.html#awards">Awards</a>
+          </p>
+        </div>
+        <div class="misc_element">
+          <p>
+            <a href="http://web.cse.ohio-state.edu/~mikebond/misc.html#funding">Funding</a>
+        </div>
+
+      </div>
+  </body>
+
+</html>
