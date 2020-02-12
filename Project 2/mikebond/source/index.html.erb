@@ -1,142 +1,295 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title> Home page of Micheal D. Bond </title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css", href="stylesheets/site.css.scss">
-  </head>
-  <body>
-    <div class="column" id="bio"> <!-- div container with bio infro -->
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css", href="stylesheets/site.css.scss">
+  <title>
+    Home Page of Michael D. Bond
+  </title>
 
-      <img src = "/images/assist.jpeg" width="200" alt="picture of Bond">
-      <p>
-        <br>Micheal D. Bond
-      </p>
-      <p>
-        Associate Professor<br>
-        Computer Science &amp; Engineering<br>
-        Ohio State University
-      </p>
-      <p> 
-        <a href="mailto:mikebond.cse.ohio-state.edu">mikebond@cse.ohio-state.edu</a>
-      </p>
-      <p> 
-        697 Dreese Labs
-      </p>
+  <script src="../../Home%20page%20of%20Michael%20D.%20Bond_files/namefix.js"></script>
+  <script src="../../Home%20page%20of%20Michael%20D.%20Bond_files/jquery.js"></script>
+  <script>
+      $(function(){
+          $("#news").load("news.html");
+      });
+  </script>
 
-    </div>
+</head>
 
-    <!-- div with News Column -->
-    <div class="column" id="news">
-      <h2>NEWS</h2>
-        <p> 
-          Rui Zhang's paper on <a href ="papers.html.erb#peacenik">Peacenik: architecture support for not failing under fail-stop memory consisitency</a>
-          will appear at ASPLOS 2020!
-        </p>
-        <p>
-          Jake Roemer defended his PhD thesis in April and graduated in August 2019!
-          He's seeking industry and industrial research jobs.
-        </p>
-        <p>
-          Kanan Genc's paper on <a href="papers.html.erb#depaware">dependence-aware predictive race detection</a>
-          appeared at OOPSLA 2019!
-        </p>
-        <p>
-          Swarnendu Biswas's paper on <a href="papers.html.erb#arc">ARC: rethinking support for region conflict exceptions</a>
-          appeared at IPDPS 2019!
-        </p>
-    </div>
+<body text="#000000" bgcolor="#ffffff">
 
-    <!-- div containing the research column -->
-    <div class="column" id="research">
-      <h2>RESEARCH</h2>
-        My <a href="researchgroup.html"><b>research group</b></a>
-        develops program analyses and software systems
-        that make complex, concurrent software significantly more
-        reliable, scalable, and secure than it is today.
-      <p>
-        General interests: programming languages, software and hardware systems,
-        program analysis, compilers, security
-      </p>
-      <p>
-        <a href="publications.html.erb"><b>Publications</b></a>
-      </p>
-      <p>
-        <a href="papers.html.erb">Publicly available research software</a> (see "Source code" for each paper)
-      </p>
-      <p>
-        Current advisees:
-      </p>
-      <ul>
-        <li>Kaan Genc (PhD Student)</li>
-        <li>Rui Zhang </li>
-      </ul>
-      <p>
-        Graduated advisees:
-      </p>
-      <ul>
-        <li>Jake Roemer&nbsp; (PhD, 2019) — seeking industry and industrial research jobs.</li>
-        <li><a href="http://www.cse.ohio-state.edu/~caoma/">Man Cao</a>&nbsp; (PhD, 2017) — Google.</li>
-        <li><a href="http://www.cse.ohio-state.edu/~sengupta/">Aritra Sengupta</a>&nbsp; (PhD, 2017) — Samsung Research America.</li>
-        <li><a href="https://www.cse.iitk.ac.in/users/swarnendu/">Swarnendu Biswas</a>&nbsp; (PhD, 2016) — IIT Kanpur (tenure-track faculty).</li>
-        <li><a href="http://zhangminjia.me/">Minjia Zhang</a>&nbsp; (PhD, 2016) — Microsoft Research.</li>
-        <li><a href="http://huangjip.github.io/">Jipeng Huang</a>&nbsp; (MS, 2014) — Google.</li>
-      </ul>
-    </div>
 
-    <!-- div wit Teaching column -->
-    <div class="column" id="teaching">
-      <h2>TEACHING</h2>
-      <div class="semester">
-        <p>
-          Spring 2020: CSE 6341
-         </p>
+<!--
+If you're an Ohio State CSE graduate student
+interested in working with me on
+programming languages and software systems,
+please stop by my office or send me an e-mail.
+-->
+
+<table cellpadding="10">
+  <img src = "../../Home%20page%20of%20Michael%20D.%20Bond_files/TheOhioStateUniversity.png">
+  <br>
+  <hr>
+  <ul id=menu>
+    <li><a href="index.html.erb">Mike Bond</a></li>
+    <li><a href="publications.html.erb">Publications</a></li>
+    <li><a href="papers.html.erb">Papers</a></li>
+    <li><a href="researchgroup.html.erb">Plass</a></li>
+    <li><a href="activities.html.erb">Misc</a></li>
+  </ul>
+  <tbody><tr>
+    <td valign="top">
+      <img src="../../Home%20page%20of%20Michael%20D.%20Bond_files/assist.jpeg" width="200">
+      <p>
+        <br>
+        Michael D. Bond
+      </p><p>
+      Associate Professor<br>
+      Computer Science &amp; Engineering<br>
+      Ohio State University
+    </p><p>
+      <a href="mailto:mikebond@cse.ohio-state.edu">mikebond@cse.ohio-state.edu</a>
+    </p><p>
+      697 Dreese Labs
+      <!--<p>
+      <b>On sabbatical Autumn 2018 &ndash; Spring 2019</b>-->
+    </p></td>
+
+    <td width="30%" valign="top">
+      <table cellpadding="10" border="1">
+        <tbody><tr>
+          <td>
+            <center><h2>NEWS</h2></center>
+            <div id="news">    Rui Zhang's paper on
+              <a href="papers.html.erb">Peacenik: architecture support for not failing under fail-stop memory consistency</a>
+              <!--http://web.cse.ohio-state.edu/~mikebond/papers.html#peacenik-->
+              will appear at ASPLOS 2020!
+              <p>
+                Jake Roemer defended his PhD thesis in April and graduated in August 2019!
+                He's seeking industry and industrial research jobs.
+              </p><p>
+              Kaan Genç's paper on
+              <a href="papers.html.erb#depaware">dependence-aware predictive race detection</a>
+              <!--http://web.cse.ohio-state.edu/~mikebond/papers.html#depaware-->
+              appeared at OOPSLA 2019!
+            </p><p>
+              Swarnendu Biswas's paper on
+              <a href="papers.html.erb#arc">ARC: rethinking support for region conflict exceptions</a>
+              <!--http://web.cse.ohio-state.edu/~mikebond/papers.html#arc-->
+              appeared at IPDPS 2019!
+              <!--
+              <p>
+              Jake Roemer's paper on
+              <a href=papers.html#vindicator>high-coverage, unbounded predictive race detection</a>
+              appeared at PLDI 2018!
+              <p>
+              A paper on <a href="papers.html#fib">instrumentation bias for efficient data race detection<a>
+              co-authored by PLaSS members Man Cao and Mike Bond
+              and led by Ben Wood (Wellesley College)
+              appeared at OOPSLA 2017!
+              <p>
+              Man Cao's paper on
+              <a href=papers.html#hybrid-relaxed-tracking-topc>
+              hybridizing and relaxing dependence tracking</a>
+              has been published in a special edition of ACM Transactions on Parallel Computing (TOPC) in August 2017!
+              <p>
+              Aritra Sengupta defended his dissertation and graduated in Spring 2017! He joined Samsung Research America in July.
+              <p>
+              Man Cao defended his dissertation and graduated in Spring 2017! He joined Google in May.
+              <p>
+              Minjia Zhang's paper on <a href=papers.html#avalon>avoiding consistency exceptions under strong memory models</a>
+              appeared at ISMM 2017!
+              <p>
+              Aritra Sengupta's paper on <a href=papers.html#legato>commodity HTM support for bounded region serializability</a>
+              appeared at CGO 2017!
+              <p>
+              Swarnendu Biswas's paper on <a href=papers.html#racechaser-caper>lightweight data race detection for production runs</a>
+              appeared at CC 2017!
+              <p>
+              Swarnendu Biswas defended his PhD thesis succcessfully in August 2016!
+              He's now a postdoc at UT Austin working with Keshav Pingali.
+              <p>
+              Minjia Zhang defended his PhD thesis successfully in April 2016!
+              He's now at Microsoft Research.
+              <p>
+              Swarnendu Biswas won
+              <a href=http://www.acm.org/media-center/2016/june/src-2016-grand-finals>
+              First Place in the Graduate Category</a>
+              of the 2016 ACM Student Research Competition!
+              <p>
+              Man Cao's paper on
+              <a href=papers.html#prescient-memory>exposing weak memory model behaviors by
+              "looking into the future"</a>
+              appeared at ISMM 2016!
+              <p>
+              Swarnendu Biswas received the CSE department's Graduate Research Award!
+              <p>
+              Minjia Zhang's paper on
+              <a href=papers.html#relaxed-tracking>relaxed dependence tracking for parallel runtime support</a>
+              appeared at CC 2016!
+              <p>
+              Man Cao's paper on
+              <a href=papers.html#hybrid-tracking>combining pessimistic and optimistic tracking of cross-thread dependences</a>
+              appeared at PPoPP 2016!
+              <p>
+              Swarnendu Biswas's paper on
+              <a href=papers.html#valor>efficient data race exceptions</a>
+              received the OOPSLA 2015 Distinguished Paper Award!
+              <p>
+              Swarnendu Biswas's artifact for
+              <a href=papers.html#valor>efficient data race exceptions</a>
+              received the OOPSLA 2015 Distinguished Artifact Award!
+              <p>
+              Swarnendu Biswas won 1st place at the OOPSLA 2015 Student Research Competition
+              for his ongoing work on hardware cache coherence and consistency!
+              <p>
+              Minjia Zhang won 3rd place at the OOPSLA 2015 Student Research Competition
+              for his ongoing work on snapshot isolation&ndash;based memory model enforcement!
+              <p>
+              Aritra Sengupta's paper on
+              <a href=index.html#papers>hybrid synchronization for enforcing region serializability</a>
+              and our paper on
+              <a href=papers.html#replay>efficient deterministic replay</a>
+              appeared at PPPJ 2015!
+              <p>
+              Swarnendu Biswas and Jake Roemer won 1st and 2nd place, respectively,
+              at the
+              <a href=http://conf.researchr.org/track/pldi2015/Student+Research+Competition>
+              PLDI 2015 Student Research Competition</a>!
+              <p>
+              Aritra Sengupta's paper on
+              <a href=papers.html#enforser>enforcing region serializability of statically bounded regions</a>
+              appeared at ASPLOS 2015!
+              <p>
+              Minjia Zhang's paper on
+              <a href="papers.html#larktm">software transactional memory</a>
+              appeared at PPoPP 2015!
+              <p>
+              Swarnendu Biswas's paper on
+              <a href="papers.html#doublechecker">efficient dynamic atomicity checking</a>
+              appeared at PLDI 2014!
+              <p>
+              <a href=papers.html#laminar-toplas>Laminar</a>
+              (language and system support for decentralized information flow control)
+              has been published in TOPLAS (November 2014)!
+              -->
+              <!--
+              <p>
+              Man Cao's paper on
+              <a href="papers.html#adaptive-sync">adaptive synchronization for
+              efficient parallel runtime support</a>
+              appeared at WoDet 2014!
+              Our paper on <a href="papers.html#octet">efficient dynamic analysis for parallel programs</a>
+              appeared at OOPSLA 2013!
+              <p>
+              Jipeng Huang's paper on <a href="papers.html#ccu">efficient context-sensitive dynamic analysis</a>
+              appeared at OOPSLA 2013!
+              <p>
+              Minjia Zhang won 2nd place at the PLDI 2013 Student Research Competition!
+              <p>
+              Swarnendu Biswas, Aritra Sengupta, and Minjia Zhang's posters were selected to
+              appear at the PLDI 2013 Student Research Competition!
+              <p>
+              I received the NSF CAREER Award!
+              -->
+              <!--
+              <p>
+              Swarnendu Biswas's poster received an Honorable Mention in the CSE Poster Competition!
+              -->
+
+            </p></div>
+          </td></tr>
+        </tbody></table>
+      <!--</tr>
+      </table>
+
+      <table cellpadding=10>
+      <tr>-->
+    </td><td width="30%" valign="top">
+    <table cellpadding="10" border="1">
+      <tbody><tr>
+        <td>
+          <center><h2>RESEARCH</h2></center>
+          My <a href="researchgroup.html.erb"><b>research group</b></a>
+          <!--"http://web.cse.ohio-state.edu/~mikebond/plass/"-->
+          develops program analyses and software systems
+          that make complex, concurrent software significantly more
+          reliable, scalable, and secure than it is today.
+          <p>
+            General interests: programming languages, software and hardware systems,
+            program analysis, compilers, security
+          </p><p>
+          <a href="publications.html.erb"><b>Publications</b></a>
+        </p><p>
+          <a href="papers.html.erb">Publicly available research software</a> (see "Source code" for each paper)
+        </p><p>
+          Current advisees:
+        </p><ul>
+          <li>Kaan Genç&nbsp; (PhD student)
+          </li><li>Rui Zhang&nbsp; (PhD candidate)
+        </li></ul>
+          Graduated advisees, with positions as of 2019:
           <ul>
-            <li><a href="https://piazza.com/osu/spring2020/cse6341/home/">Foundations of Programming Languages</a></li>
-           </ul>
-      </div>
-      <div class="semester">
-        <p>
-          Autumn 2019
-        </p>
-        <ul>
-          <li>CSE 5349: <a href="https://piazza.com/osu/autumn2019/cse5349/home">Language and System Support for Non-Volatile/Persistent Memory</a></li> 
-          <li>CSE 6341: <a href="https://piazza.com/osu/autumn2019/cse6341/home">Foundations of Programming Languages</a><br></li>
-
-        </ul>
+            <li>Jake Roemer&nbsp; (PhD, 2019) — seeking industry and industrial research jobs
+            </li><li><a href="http://www.cse.ohio-state.edu/~caoma/">Man Cao</a>&nbsp; (PhD, 2017) — Google
+          </li><li><a href="http://www.cse.ohio-state.edu/~sengupta/">Aritra Sengupta</a>&nbsp; (PhD, 2017) — Samsung Research America
+          </li><li><a href="https://www.cse.iitk.ac.in/users/swarnendu/">Swarnendu Biswas</a>&nbsp; (PhD, 2016) — IIT Kanpur (tenure-track faculty)
+          </li><li><a href="http://zhangminjia.me/">Minjia Zhang</a>&nbsp; (PhD, 2016) — Microsoft Research
+          </li><li><a href="http://huangjip.github.io/">Jipeng Huang</a>&nbsp; (MS, 2014) — Google
+          </li></ul>
+        </td></tr>
+      </tbody></table>
+  </td><td width="30%" valign="top">
+    <table width="100%" cellpadding="10" border="1">
+      <tbody><tr>
+        <td>
+          <center><h2>TEACHING</h2></center>
+          Spring 2020: CSE 6341: <a href="https://piazza.com/osu/spring2020/cse6341/home/">Foundations of Programming Languages</a>
           <p>
-            <a href="activities.html.erb#teaching">All teaching</a>
-          </p>
-        </div>
-      </div>
+            Autumn 2019:
+          </p><ul>
+          <li>CSE 5349: <a href="https://piazza.com/osu/autumn2019/cse5349/home">Language and System Support for Non-Volatile/Persistent Memory</a>
+          </li><li>CSE 6341: <a href="https://piazza.com/osu/autumn2019/cse6341/home">Foundations of Programming Languages</a><br>
+          <!--Waitlisted for 6341? Visit the course web page for info.-->
+        </li></ul>
+          <!--Waitlisted for a section of 6341 or 3341? Visit the course web page for info.
+          <p>-->
+          <!--
+          P.S. If you're on the waitlist for a section of 3341:
 
-      <!-- div with MISC column -->
-      <div class="column" id="misc">
-        <div class="misc_element">
-          <h2>MISC</h2>
+          If you're interested in getting enrolled, please attend class while you're on the waitlist! During the first week of class, the enrollment system will automatically enroll waitlisted students as spots become available. During the second week of class, as spaces become available in each section, I'll help students get enrolled based on the same order used by the enrollment system (per CSE department policy): (1) priority for CSE/CIS/DA majors and (2) waitlist order.
+
+          Please understand that, in an effort to be fair to everyone, I won't help anyone get into the class out of priority+waitlist order, and I won't start adding anyone before the second week of class. When you're eligible to be added, I'll let you know by contacting you via Piazza and in class. So you don't need to do anything other than attend class and check e-mail/Piazza. :)
+          -->
+          <a href="activities.html.erb#teaching">All teaching</a>
+          <!--"http://web.cse.ohio-state.edu/~mikebond/misc.html#teaching"-->
+        </td></tr>
+      </tbody></table>
+    <!--<td valign=top width=25%>-->
+    <p>
+      <table width="100%" cellpadding="10" border="1">
+        <tbody><tr>
+          <td>
+            <center><h2>MISC</h2></center>
+            Major recent/upcoming activities:
             <ul>
-              <li>Program committee, PLDI 2020</li>
-              <li>Program committee, ASPLOS 2020</li>
-              <li>Program committee, ASPLOS 2019</li>
-              <li>Program committee, ISMM 2019</li>
-            </ul>
-        </div>
-        <div class="misc_element">
-          <p>
-            <a href="activities.html.erb#activities">All activities</a>
-          </p>
-        </div>
-        <div class="misc_element">
-          <p>
-            <a href="activities.html.erb#awards">Awards</a>
-          </p>
-        </div>
-        <div class="misc_element">
-          <p>
-            <a href="activities.html.erb#funding">Funding</a>
-        </div>
+              <li> Program committee, PLDI 2020
+              </li><li> Program committee, ASPLOS 2020
+            </li><li> Program committee, ASPLOS 2019
+            </li><li> Program committee, ISMM 2019
+            </li></ul>
+            <a href="activities.html.erb#activities"><!--Past -->All activities</a>
+            <!--http://web.cse.ohio-state.edu/~mikebond/misc.html#activities"-->
+    <p>
+      <a href="activities.html.erb#awards">Awards</a>
+      <!--"http://web.cse.ohio-state.edu/~mikebond/misc.html#awards"-->
+    </p><p>
+    <a href="activities.html.erb#funding">Funding</a>
+    <!--"http://web.cse.ohio-state.edu/~mikebond/misc.html#funding"-->
+  </p></td></tr></tbody></table>
+</p></td></tr>
+</tbody></table>
 
-      </div>
-  </body>
 
-</html>
+
+
+</body></html>
