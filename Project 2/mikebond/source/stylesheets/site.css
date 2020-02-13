@@ -24,7 +24,7 @@ h2, h3 {
 ul {
   list-style-position: inside;
   text-align: left;
-  float: left;
+  /*float: left;*/
   padding: 0px;
   border-width: 2px;
   border-color: black;
@@ -87,7 +87,10 @@ th:nth-child(even) {
   margin-left: 0em;
 
 }
-
+.DoubleList, .semester {
+	width: 50%;
+	float: left;
+}
 
 a {
   color: black;
