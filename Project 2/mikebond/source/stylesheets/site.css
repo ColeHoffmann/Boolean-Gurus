@@ -21,6 +21,7 @@ ul {
   list-style-position: inside;
   padding: 1px;
   border-width: 1px;
+
   border-color: black;
   border-style: solid;
   margin-left: 2px;
@@ -73,7 +74,10 @@ th:nth-child(even) {
   margin-left: 0em;
 
 }
-
+.DoubleList, .semester {
+	width: 50%;
+	float: left;
+}
 
 /* unvisited link */
 a:link {
@@ -130,12 +134,5 @@ a:active {
 #menu a{
   color: white;
   text-decoration: none;
-  &:visited {
-    color: white;
-  }
-  &:hover{
-    text-decoration: underline;
-  }
-
 }
 
