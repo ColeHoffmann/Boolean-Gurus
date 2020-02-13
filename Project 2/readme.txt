@@ -1,7 +1,8 @@
 Readme for project 2: Static Web Site ReDesign
 
 Use index.html for the home page.
-
+We edited the homepage, Publications page, Papers page, PlaSS page and MISC page. You can 
+find the edited pages in the navigation section on the top right corner of each edited page.
 The website incoperated designs considers the mobile devices with vertical screens.
 The website also features dark backgrounds and colored tables and lists to make 
 reading easier on a mordern moniter and phones with OLED screens.
