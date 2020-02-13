@@ -68,13 +68,13 @@ th:nth-child(even) {
   background-color: maroon;
 }
 
-.activities, .awards, .funding {
+.tripleList {
   width: 33%;
   float: left;
   margin-left: 0em;
 
 }
-.DoubleList, .semester {
+.doubleList {
 	width: 50%;
 	float: left;
 }
