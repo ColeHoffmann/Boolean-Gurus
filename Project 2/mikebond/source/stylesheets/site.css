@@ -31,6 +31,7 @@ ul {
 li {
   background-color: rgb(15,15,15);
   padding: 1px;
+  list-style: none;
 }
 
 
@@ -101,13 +102,13 @@ a:active {
 #menu {
   position: fixed;
   right: 0;
-  top: 0;
+  top: 10%;
   width: 8em;
   margin-top: 0;
   border-style: solid;
   border-width: 0 0 1px 1px;
   background: white;
-  opacity: 0.2;
+  opacity: 0.35;
 
 }
 
@@ -117,6 +118,7 @@ a:active {
 
 #menu li{
   list-style: none;
+  height: 2em;
 }
 #menu ul{
   border: black;
