@@ -65,13 +65,13 @@ tr:nth-child(even) td:nth-child(odd), tr:nth-child(odd) td:nth-child(even), tr:n
 }
 
 
-.activities, .awards, .funding {
+.tripleList {
   width: 33%;
   float: left;
   margin-left: 0em;
 
 }
-.DoubleList, .semester {
+.doubleList {
 	width: 50%;
 	float: left;
 }
