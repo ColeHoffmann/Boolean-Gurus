@@ -38,7 +38,7 @@ li {
 
 
 table {
-  border: 1px solid black;
+  border: 1px solid;
   /* border-collapse: collapse;                alternative look*/
   background-color: black;
   width: 100%;
@@ -151,6 +151,5 @@ a:active {
 }
 
 #BottomPicture {
-	height: 18.65em;
-	width: 12em;
+	max-height: 18.65em;
 }
