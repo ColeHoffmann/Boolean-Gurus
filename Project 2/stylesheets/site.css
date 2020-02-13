@@ -9,8 +9,8 @@ body {
    "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
   "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu",
   "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
-  text-align: center;
   padding: 1px;
+  text-align: center;
   
 }
 
@@ -19,46 +19,46 @@ h1 , h4 {
 }
 
 ul {
-  list-style-position: inside;
-  padding: 1px;
-  border-width: 1px;
-
   border-color: black;
   border-style: solid;
-  margin-left: 2px;
+  border-width: 1px;
   color: white;
+  list-style-position: inside;
+  margin-left: 2px;
+  padding: 1px;
 }
 
 li {
   background-color: rgb(15,15,15);
-  padding: 1px;
   list-style: none;
+  padding: 1px;
 }
 
 
 
 table {
+  background-color: black;
   border: 1px solid;
   /* border-collapse: collapse;                alternative look*/
-  background-color: black;
-  width: 100%;
-  overflow-x:auto;
   color: white;
+  overflow-x:auto;
+  width: 100%;
 }
 
 .flex-container-vertical {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	border-bottom: 1px solid white;
+  border-bottom: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .flex-container-horizontal {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: center;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
+
 /*Stripes styling for lists*/
 li:nth-child(even){
   background-color: 	rgb(25, 0, 0);
@@ -71,6 +71,7 @@ th, td {
 th {
   height: 2em;
 }
+
 /*Chess-board pattern styling for the table*/
 tr:nth-child(odd) td:nth-child(odd), tr:nth-child(even) td:nth-child(even), tr:nth-child(odd) th:nth-child(odd){
   background-color: rgb(30,10,10);
@@ -82,8 +83,8 @@ tr:nth-child(even) td:nth-child(odd), tr:nth-child(odd) td:nth-child(even), tr:n
 
 /*Group together two lists in order to use horizontal space more effectively*/
 .doubleList {
-	width: 50%;
-	float: left;
+  float: left;
+  width: 50%;
 }
 
 /* unvisited link */
@@ -109,16 +110,15 @@ a:active {
 
 /*Navigation bar*/
 #menu {
+  background: white;
+  border-style: solid;
+  border-width: 0 0 1px 1px;
+  margin-top: 0;
+  opacity: 0.35;
   position: fixed;
   right: 0;
   top: 5%;
   width: 8em;
-  margin-top: 0;
-  border-style: solid;
-  border-width: 0 0 1px 1px;
-  background: white;
-  opacity: 0.35;
-
 }
 
 #menu:hover {
@@ -126,8 +126,8 @@ a:active {
 }
 
 #menu li{
-  list-style: none;
   height: 1.5em;
+  list-style: none;
 }
 #menu ul{
   border: black;
