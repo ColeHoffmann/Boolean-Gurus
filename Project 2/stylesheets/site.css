@@ -56,6 +56,8 @@ table {
 .flex-container-horizontal {
 	display: flex;
 	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
 }
 
 li:nth-child(even){
@@ -148,3 +150,7 @@ a:active {
   text-decoration: none;
 }
 
+#BottomPicture {
+	height: 18.65em;
+	width: 12em;
+}
