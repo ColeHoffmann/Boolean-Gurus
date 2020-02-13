@@ -49,8 +49,14 @@ table {
 .flex-container-vertical {
 	display: flex;
 	flex-direction: column;
+<<<<<<< HEAD
 	justify-content: center;
 	border-top: 1px solid white;
+=======
+  justify-content: center;
+  border-width: 0px, 0px, 2px, 0px;
+  border-color: white;
+>>>>>>> 062e01d2078d5bb85ec619953094d9a0e2f9f841
 }
 
 .flex-container-horizontal {
