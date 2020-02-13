@@ -1,0 +1,9 @@
+Correctness: Game lets user select negative number of players or more than 4 players. Program crashes if user enters in card number outside of range of cards that are on the board. No test cases are present to automatically test functionality of program.
+
+Functionality/Features: Very hard to play game without colors or physical depiction of cards. Nice display of rules at start of game. Game doesn't provide intuitive way to quit or display winner. There is no additional functionality beyond multi-player mode. Consider adding hint functionality, more intuitive UI, leaderboard, etc.
+
+Design: In general, good breakup of functionality into classes. Some naming conventions seem odd (User.rb is for Player class, SetCardDeck.rb contains both Card and Deck classes). Some utility functions have their own file, which is unnecessary (package these all up into a single file/class).
+
+Documentation: Readme is missing and doesn't provide info on running the game, functionality, etc. Missing class-level documentation and comments displaying what each function does (parameters, return value, etc.). Nice substantial commit messages.
+
+Style: Good use of consistent styling between all files. Consider citing a style guide in your Readme or documenting general style rules that your team follows. Good job utilizing common Ruby features!
