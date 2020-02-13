@@ -50,8 +50,6 @@ table {
 	display: flex;
 	flex-direction: column;
   justify-content: center;
-  border-width: 0px, 0px, 2px, 0px;
-  border-color: white;
 }
 
 .flex-container-horizontal {
@@ -98,7 +96,7 @@ a:link {
 
 /* visited link */
 a:visited {
-  color: darkred;
+  color: rgb(100, 0, 0);
 }
 
 /* mouse over link */
