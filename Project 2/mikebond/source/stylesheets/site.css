@@ -1,48 +1,35 @@
+head{
+  background-color: black;
+}
 body {
-  background-image: white;
-  color: black;
-  font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir",
-  "Segoe UI", "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
-  "Roboto", "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu",
+  background-color: black;
+  color: lightblue;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir",
+   "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
+  "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu",
   "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
   text-align: center;
   padding: 1px;
-  text-align: left;
 }
 
 h1 {
-  //background-image: linear-gradient(black, white);
-  margins: 1px;
+  text-align: left;
+  margin: 1px;
   height: 2em;
-  text-align: center;
 }
-
-h2, h3 {
-	text-align: center;
-}
-
 ul {
   list-style-position: inside;
-  text-align: left;
-  float: left;
-  padding: 0px;
-  border-width: 2px;
+  padding: 1px;
+  border-width: 1px;
   border-color: black;
   border-style: solid;
   margin-left: 2px;
   color: white;
-  text
 }
-#mainTable{
-  width: 100%;
-}
+
 li {
-  background-color: #404040;
+  background-color: rgb(15,5,5);
   padding: 1px;
-  border-width: 1px 1px;
-  border-style: solid;
-  border-color: black;
-  list-style: none;
 }
 
 
@@ -54,11 +41,10 @@ table {
   width: 100%;
   overflow-x:auto;
   color: white;
-  text-align: center;
 }
 
 li:nth-child(even){
-  background-color: 	#C0C0C0;
+  background-color: 	rgb(19, 0, 0);
 }
 
 th, td {
@@ -89,24 +75,26 @@ th:nth-child(even) {
 }
 
 
-a {
-  color: black;
-  &:visited{
-    color: whitesmoke;
-  }
-  &:focus,
-  &:hover {
-    color: White;
-  }
-}
-a:visited{
-  color: gray;
+/* unvisited link */
+a:link {
+  color: red;
 }
 
-.middleman-logo {
-  margin-bottom: 1rem;
-  width: 10rem;
+/* visited link */
+a:visited {
+  color: darkred;
 }
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}
+
 
 
 #menu {
