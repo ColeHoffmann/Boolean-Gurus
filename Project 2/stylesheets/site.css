@@ -1,5 +1,6 @@
 head{
   background-color: black;
+  padding: 1px;
 }
 body {
   background-color: black;
@@ -13,11 +14,10 @@ body {
   
 }
 
-h1 {
+h1 , h4 {
   text-align: left;
-  margin: 1px;
-  height: 2em;
 }
+
 ul {
   list-style-position: inside;
   padding: 1px;
