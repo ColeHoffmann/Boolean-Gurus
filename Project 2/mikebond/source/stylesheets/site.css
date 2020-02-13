@@ -29,7 +29,7 @@ ul {
 }
 
 li {
-  background-color: rgb(15,5,5);
+  background-color: rgb(15,15,15);
   padding: 1px;
 }
 
@@ -45,7 +45,7 @@ table {
 }
 
 li:nth-child(even){
-  background-color: 	rgb(19, 0, 0);
+  background-color: 	rgb(25, 0, 0);
 }
 
 th, td {
@@ -57,16 +57,13 @@ th {
 }
 
 tr:nth-child(odd) td:nth-child(odd), tr:nth-child(even) td:nth-child(even), tr:nth-child(odd) th:nth-child(odd){
-  background-color: rgb(64,64,64);
+  background-color: rgb(30,10,10);
 }
 
 tr:nth-child(even) td:nth-child(odd), tr:nth-child(odd) td:nth-child(even), tr:nth-child(odd) th:nth-child(even){
-  background-color: maroon;
+  background-color: rgb(30,30,30);
 }
 
-th:nth-child(even) {
-  background-color: maroon;
-}
 
 .activities, .awards, .funding {
   width: 33%;
