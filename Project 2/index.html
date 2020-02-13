@@ -3,6 +3,7 @@
 <head>
   <meta  http-equiv="content-type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Link CSS styling  -->
   <link rel="stylesheet" type="text/css" href="stylesheets/site.css"/>
 
   <title>
@@ -11,7 +12,7 @@
 </head>
 
 <body>
-
+	<!-- Navigation menu  -->
   <ul id=menu>
     <li><a href="index.html">Mike Bond</a></li>
     <li><a href="publications.html">Publications</a></li>
@@ -25,13 +26,12 @@
   
 <hr/>
 <br/>
-
-<table id = mainTable>
-  <tr id="research">
-    <td>
+<div class="flex-container-vertical">
+	<!-- id used to make css customization easier  -->
+  <p id="research">
       <h2>RESEARCH</h2>
       <p>
-        My <a href="researchgroup.html"><b>research group</b></a>develops program analyses and software systems that make complex, concurrent software significantly more reliable, scalable, and secure than it is today.
+        My <a href="researchgroup.html"><b>research group</b></a> develops program analyses and software systems that make complex, concurrent software significantly more reliable, scalable, and secure than it is today.
         <br/>
         <br/>
         If you're an Ohio State CSE graduate student interested in working with me on programming languages and software systems, please stop by my office or send me an e-mail.
@@ -46,14 +46,18 @@
         <a href="papers.html">Publicly available research software</a> (see "Source code" for each paper)
         <br/>
         <br/>
-	      <div class="doubleList">
+	<!-- elements from double list class in css have width set to 50% and float to the left so that we use
+		horizontal space more effectively
+	-->
+	<div class="flex-container-horizontal">
+    <div class="doubleList">
           Current advisees:
           <ul>
             <li>Kaan Genc (PhD Student)</li>
             <li>Rui Zhang </li>
           </ul>
-	      </div>
-	      <div class="doubleList">
+    </div>
+    <div class="doubleList">
           Graduated advisees:
           <ul>
             <li>Jake Roemer&nbsp; (PhD, 2019) — seeking industry and industrial research jobs.</li>
@@ -63,13 +67,13 @@
             <li><a href="http://zhangminjia.me/">Minjia Zhang</a>&nbsp; (PhD, 2016) — Microsoft Research.</li>
             <li><a href="http://huangjip.github.io/">Jipeng Huang</a>&nbsp; (MS, 2014) — Google.</li>
           </ul>
-        </div>
-    </td>
-  </tr>
+    </div>
+	</div>
+ </p>
 
-  <tr id="teaching">
-    <td>
+  <p id="teaching">
       <h2>TEACHING</h2>
+	<div class="flex-container-horizontal">
       <div class="doubleList">
         <p>
           Spring 2020: CSE 6341
@@ -86,15 +90,14 @@
           <li>CSE 5349: <a href="https://piazza.com/osu/autumn2019/cse5349/home">Language and System Support for Non-Volatile/Persistent Memory</a></li> 
           <li>CSE 6341: <a href="https://piazza.com/osu/autumn2019/cse6341/home">Foundations of Programming Languages</a><br></li>
         </ul>
+	</div>
+	</div>
         <p>
            <a href=misc.html#teaching>All teaching</a>
         </p>
-      </div>
-    </td>
-  </tr>
+  </p>
 
-  <tr id="misc">
-    <td>
+  <p id="misc">
       <h2>MISC</h2>
       <p>
         Major recent/upcoming activities:
@@ -115,11 +118,9 @@
         <br/>
         <a href=misc.html#funding>Funding</a>
       </p>
-    </td>
-  </tr>
+  </p>
 
-  <tr id="news">
-    <td>
+  <p id="news">
       <h2>NEWS</h2>
       <p> 
         Rui Zhang's paper on <a href ="papers.html#peaceni">Peacenik: architecture support for not failing under fail-stop memory consisitency</a>
@@ -137,13 +138,11 @@
         Swarnendu Biswas's paper on <a href="papers.html#arc">ARC: rethinking support for region conflict exceptions</a>
         appeared at IPDPS 2019!
       </p>
-    </td>
-  </tr>
+ </p>
 
 
 
-</table>
-
+</div>
 
 <br/>
 <hr/>

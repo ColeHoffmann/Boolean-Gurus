@@ -46,6 +46,17 @@ table {
   color: white;
 }
 
+.flex-container-vertical {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.flex-container-horizontal {
+	display: flex;
+	flex-direction: row;
+}
+
 li:nth-child(even){
   background-color: 	rgb(25, 0, 0);
 }
