@@ -5,7 +5,7 @@ head{
 body {
   background-color: black;
   color: lightblue;
-  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir",
+  font-family: "Segoe UI", "Avenir Next", "Avenir",
    "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
   "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu",
   "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
@@ -145,6 +145,14 @@ a:active {
 }
 
 /*Picture in the index footer*/
-#BottomPicture {
-	max-height: 18.65em;
+.horizontalPicture {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50vw;
+}
+
+.verticalPicture {
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 18.5rem;
 }

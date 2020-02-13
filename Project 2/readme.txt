@@ -11,4 +11,4 @@ pages of the website.
 The website include almost all the informations available at his orginal site. The website
 also have URL links to resources not availble locally.
 The website have consistent design pulling from a single CSS sheet. 
-The website is all html5 complient and validated.
+The website is all html5 complient and validated according to W3C validator.
