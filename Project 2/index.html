@@ -3,6 +3,7 @@
 <head>
   <meta  http-equiv="content-type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Link CSS styling  -->
   <link rel="stylesheet" type="text/css" href="stylesheets/site.css"/>
 
   <title>
@@ -11,27 +12,25 @@
 </head>
 
 <body>
-
+	<!-- Navigation menu  -->
   <ul id=menu>
     <li><a href="index.html">Mike Bond</a></li>
     <li><a href="publications.html">Publications</a></li>
     <li><a href="papers.html">Papers</a></li>
-    <li><a href="researchgroup.html">Plass</a></li>
-    <li><a href="misc.html">Misc</a></li>
+    <li><a href="researchgroup.html">PLaSS</a></li>
+    <li><a href="misc.html">MISC</a></li>
   </ul>
 
 <h1>Michael D. Bond</h1>
-
-  
+<h4>An Associate Professor at Computer Science &amp; Engineering department at Ohio State University</h4>
 <hr/>
-<br/>
-
-<table id = mainTable>
-  <tr id="research">
-    <td>
-      <h2>RESEARCH</h2>
+<p>
+</p>
+<!-- id used to make css customization easier  -->
+<div class="flex-container-vertical" id="research">
+      <h2><a href="researchgroup.html">RESEARCH</a></h2>
       <p>
-        My <a href="researchgroup.html"><b>research group</b></a>develops program analyses and software systems that make complex, concurrent software significantly more reliable, scalable, and secure than it is today.
+        My <a href="researchgroup.html"><b>research group</b></a> develops program analyses and software systems that make complex, concurrent software significantly more reliable, scalable, and secure than it is today.
         <br/>
         <br/>
         If you're an Ohio State CSE graduate student interested in working with me on programming languages and software systems, please stop by my office or send me an e-mail.
@@ -39,21 +38,30 @@
         <br/>
         General interests: programming languages, software and hardware systems, program analysis, compilers, security
       </p>
-        <br/>
-        <br/>
+      <br/>
+</div>
+
+
+<div class="flex-container-vertical" id="publications">
+      <br/>
         <h2><a href="publications.html"><b>Publications</b></a></h2>
         <br/>
         <a href="papers.html">Publicly available research software</a> (see "Source code" for each paper)
-        <br/>
-        <br/>
-	      <div class="doubleList">
+      <br/>
+
+	<!-- elements from double list class in css have width set to 50% and float to the left so that we use
+		horizontal space more effectively
+	-->
+	<div class="flex-container-horizontal">
+    <div class="doubleList">
           Current advisees:
           <ul>
             <li>Kaan Genc (PhD Student)</li>
             <li>Rui Zhang </li>
           </ul>
-	      </div>
-	      <div class="doubleList">
+    </div>
+
+    <div class="doubleList">
           Graduated advisees:
           <ul>
             <li>Jake Roemer&nbsp; (PhD, 2019) — seeking industry and industrial research jobs.</li>
@@ -63,13 +71,18 @@
             <li><a href="http://zhangminjia.me/">Minjia Zhang</a>&nbsp; (PhD, 2016) — Microsoft Research.</li>
             <li><a href="http://huangjip.github.io/">Jipeng Huang</a>&nbsp; (MS, 2014) — Google.</li>
           </ul>
-        </div>
-    </td>
-  </tr>
+    </div>
+  </div>
+  <br/>
+	</div>
+  
+  <br/>
 
-  <tr id="teaching">
-    <td>
-      <h2>TEACHING</h2>
+
+	<div class="flex-container-vertical" id="teaching">
+    <h2><a href=misc.html#teaching>TEACHING</a></h2>
+      <div class="flex-container-horizontal">
+	
       <div class="doubleList">
         <p>
           Spring 2020: CSE 6341
@@ -86,16 +99,19 @@
           <li>CSE 5349: <a href="https://piazza.com/osu/autumn2019/cse5349/home">Language and System Support for Non-Volatile/Persistent Memory</a></li> 
           <li>CSE 6341: <a href="https://piazza.com/osu/autumn2019/cse6341/home">Foundations of Programming Languages</a><br></li>
         </ul>
-        <p>
-           <a href=misc.html#teaching>All teaching</a>
-        </p>
-      </div>
-    </td>
-  </tr>
+	    </div>
+    </div>
+    <br/>
+  </div>
 
-  <tr id="misc">
-    <td>
-      <h2>MISC</h2>
+
+  
+
+  <br/>
+  
+  <br/>
+  <div class="flex-container-vertical" id="misc">
+      <h2><a href=misc.html>MISC</a></h2>
       <p>
         Major recent/upcoming activities:
       </p>
@@ -115,12 +131,12 @@
         <br/>
         <a href=misc.html#funding>Funding</a>
       </p>
-    </td>
-  </tr>
-
-  <tr id="news">
-    <td>
-      <h2>NEWS</h2>
+      <br/>
+	</div>
+  
+  <div class="flex-container-vertical" id="news">
+    <br/>
+      <h2><a href ="papers.html">NEWS</a></h2>
       <p> 
         Rui Zhang's paper on <a href ="papers.html#peaceni">Peacenik: architecture support for not failing under fail-stop memory consisitency</a>
         will appear at ASPLOS 2020!
@@ -137,31 +153,24 @@
         Swarnendu Biswas's paper on <a href="papers.html#arc">ARC: rethinking support for region conflict exceptions</a>
         appeared at IPDPS 2019!
       </p>
-    </td>
-  </tr>
+      <br/>
+	</div>
+ 
 
 
 
-</table>
 
 
 <br/>
-<hr/>
-<br/>
-<table>
-  <tr>
-    <td>
-      <img src="images/assist.jpeg" alt = "Mike Bond Picture">
-    </td>
-    <td>
-      <table>
-        <tr>
-          <td>
-            <img src = "images/TheOhioStateUniversity.png" alt = "OSU Logo"/>
-          </td>
-        </tr>
-        <tr>
-          <td>
+
+<div class="flex-container-horizontal">
+	<div>
+      	<img src="images/assist.jpeg" alt = "Mike Bond Picture" class="verticalPicture"/>
+	</div>
+	
+	<div class="flex-container-vertical">
+            <img src = "images/TheOhioStateUniversity.png" alt = "OSU Logo" class="horizontalPicture"/>
+
             <p>
               Associate Professor<br>
               Computer Science &amp; Engineering<br>
@@ -173,12 +182,8 @@
             <p>
               697 Dreese Labs
             </p>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+	</div>
+</div>
 
 
 </body>

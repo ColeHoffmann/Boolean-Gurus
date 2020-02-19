@@ -1,50 +1,65 @@
 head{
   background-color: black;
+  padding: 1px;
 }
 body {
   background-color: black;
   color: lightblue;
-  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir",
+  font-family: "Segoe UI", "Avenir Next", "Avenir",
    "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
   "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu",
   "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
+  padding: 1px;
   text-align: center;
-  padding: 1px;
+  
 }
 
-h1 {
+h1 , h4 {
   text-align: left;
-  margin: 1px;
-  height: 2em;
 }
-ul {
-  list-style-position: inside;
-  padding: 1px;
-  border-width: 1px;
 
+ul {
   border-color: black;
   border-style: solid;
-  margin-left: 2px;
+  border-width: 1px;
   color: white;
+  list-style-position: inside;
+  margin-left: 2px;
+  padding: 1px;
 }
 
 li {
   background-color: rgb(15,15,15);
-  padding: 1px;
   list-style: none;
+  padding: 1px;
 }
 
 
 
 table {
-  border: 1px solid black;
-  /* border-collapse: collapse;                alternative look*/
   background-color: black;
-  width: 100%;
-  overflow-x:auto;
+  border: 1px solid;
+  /* border-collapse: collapse;                alternative look*/
   color: white;
+  overflow-x:auto;
+  width: 100%;
 }
 
+.flex-container-vertical {
+  border-bottom: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex-container-horizontal {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/*Stripes styling for lists*/
 li:nth-child(even){
   background-color: 	rgb(25, 0, 0);
 }
@@ -57,6 +72,7 @@ th {
   height: 2em;
 }
 
+/*Chess-board pattern styling for the table*/
 tr:nth-child(odd) td:nth-child(odd), tr:nth-child(even) td:nth-child(even), tr:nth-child(odd) th:nth-child(odd){
   background-color: rgb(30,10,10);
 }
@@ -65,16 +81,10 @@ tr:nth-child(even) td:nth-child(odd), tr:nth-child(odd) td:nth-child(even), tr:n
   background-color: rgb(30,30,30);
 }
 
-
-.tripleList {
-  width: 33%;
-  float: left;
-  margin-left: 0em;
-
-}
+/*Group together two lists in order to use horizontal space more effectively*/
 .doubleList {
-	width: 50%;
-	float: left;
+  float: left;
+  width: 50%;
 }
 
 /* unvisited link */
@@ -84,7 +94,7 @@ a:link {
 
 /* visited link */
 a:visited {
-  color: darkred;
+  color: rgb(100, 0, 0);
 }
 
 /* mouse over link */
@@ -98,18 +108,17 @@ a:active {
 }
 
 
-
+/*Navigation bar*/
 #menu {
+  background: white;
+  border-style: solid;
+  border-width: 0 0 1px 1px;
+  margin-top: 0;
+  opacity: 0.35;
   position: fixed;
   right: 0;
   top: 5%;
   width: 8em;
-  margin-top: 0;
-  border-style: solid;
-  border-width: 0 0 1px 1px;
-  background: white;
-  opacity: 0.35;
-
 }
 
 #menu:hover {
@@ -117,8 +126,8 @@ a:active {
 }
 
 #menu li{
+  height: 1.5em;
   list-style: none;
-  height: 2em;
 }
 #menu ul{
   border: black;
@@ -135,3 +144,15 @@ a:active {
   text-decoration: none;
 }
 
+/*Picture in the index footer*/
+.horizontalPicture {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50vw;
+}
+
+.verticalPicture {
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 18.5rem;
+}
