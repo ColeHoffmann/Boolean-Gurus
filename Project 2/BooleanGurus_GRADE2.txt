@@ -1,0 +1,11 @@
+Client Impression: Nice job including all of the information from the original site in a much more visually-appealing manner! Side navigation bar and linkable headers make it very easy to navigate between pages on the site. Tables on misc and publications page are a great improvement over the original site. I could definitely see this being adopted with just a few changes!
+
+Aesthetics: Some formatting inconsistencies (ex: most headers on main page are written in all caps, except for "Publications"). Great use of dark background with light colors and specific formatting for tables! Visited links can be a little hard to see, as the dark red text blends into the black background. Great spacing and centering of text/images to utilize the entire screen!
+
+Performance: Performance seems good!
+
+Design: No use of Middleman, embedded ruby, partial files, etc. Great use of descriptive CSS classes and loose coupling between HTML and CSS files! Next step would be to use partial files and more features of embedded ruby to reduce amount of repeated code (ex: there is no need for nav bar code to be repeated between each HTML page).
+
+Documentation: Good thorough README specifying what design decisions were made and why (in the future, make the filename README.md for proper markdown format). Commit messages are sufficient. Some good in-code documentation...would recommend adding file-level documentation that states what each page contains.
+
+Style: Great job writing valid HTML to pass validator! Some spacing and indentation between HTML files is a little inconsistent.
