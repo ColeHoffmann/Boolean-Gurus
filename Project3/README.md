@@ -7,21 +7,22 @@ gem install nokogiri
 gem install mechanize
 
 Needed data types:
-Table: Section
+Table: section
 ID
-Section Number - required -integer
-Course number - external key -ID
+sectionNumber - required -integer
+Course number - external key
 location -string
 time -string
 instructor -string
-Session length - char - '1' for first session, '2' for second session, 'f' for full term
+Session length - string - '1' for first session, '2' for second session, 'f' for full term
 term -string
 Section component -string
 Related Sections - Array of IDs (one to many)
 
 
 Table: Courses
-Course number - required, id
+ID
+Course number - required
 Course name - string
 Sections - external key - array of IDs (one to many)
 
