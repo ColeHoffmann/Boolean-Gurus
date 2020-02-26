@@ -1,7 +1,6 @@
 require 'mechanize'
 require 'nokogiri'
 require 'httparty'
-require 'byebug'
 
 def scraper
   
