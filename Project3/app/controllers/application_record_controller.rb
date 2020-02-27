@@ -1,2 +1,0 @@
-class ApplicationRecordController < ApplicationController
-end
