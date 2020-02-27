@@ -11,6 +11,7 @@ Instructor for each section<br />
 Section component<br />
 
 **_Instruction_:<br />
+Install the required software by running "bundle install" and "yarn install" first.
 Before running the rails server, be sure to run "rails db:migrate", followed by "rails db:seed" to first scrape, and store the course data into the database. rails db:seed runs app/model/scraper.rb which contains the code to scrape the data from the url given above.** 
 
 This project was completed by:<br />
