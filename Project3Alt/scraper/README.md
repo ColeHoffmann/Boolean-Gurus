@@ -10,7 +10,7 @@ Location for each section<br />
 Instructor for each section<br />
 Section component<br />
 
-Before running the rails server, be sure to run "rails db:seed" to first scrape, and store the course data into the database. rails db:seed runs app/model/scraper.rb which contains the code to scrape the data from the url given above. 
+Before running the rails server, be sure to run "rake db:seed" to first scrape, and store the course data into the database. rails db:seed runs app/model/scraper.rb which contains the code to scrape the data from the url given above. 
 
 This project was completed by:<br />
 Ryan Lannutti<br />
