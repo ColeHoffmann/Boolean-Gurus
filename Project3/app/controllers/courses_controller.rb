@@ -1,6 +1,24 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
+ # GET /search
+ def search
+	if (params[:searchSection].blank?  && params[:searchInstructor].blank? && params[:searchCourse].blank?)
+   		@results = Course.all
+ 	else  
+		@parameter1 = params[:searchSection] 
+		@parameter2 = params[:searchInstructor]
+		@parameter3 = params[:searchCourse]
+		@query = ""
+		@query += "section_number LIKE '%#@parameter1%' AND " unless params[:searchSection].blank?
+		@query += "instructor LIKE '%#@parameter2%' AND " unless params[:searchInstructor].blank?
+		@query += "course_number LIKE '%#@parameter3%' AND " unless params[:searchCourse].blank?
+		@query.delete_suffix!(" AND ")
+   		@results = Course.where(@query) 
+			
+ 	 end 
+  end
+
   # GET /courses
   # GET /courses.json
   def index
