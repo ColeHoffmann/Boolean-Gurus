@@ -1,0 +1,20 @@
+h1{ 
+    color: darkred;
+    background: gray;
+}
+
+
+Table{
+    background: Lightgrey;
+    Width: 100%
+}
+
+
+/*This zebra like display is credited to w3schools*/
+tr:nth-child(even){ background: white; }
+}
+
+
+th{ 
+    text-align: left; 
+}

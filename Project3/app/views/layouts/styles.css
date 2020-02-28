@@ -1,4 +1,4 @@
-h1{ 
+h1{
     color: darkred;
     background: gray;
 }
@@ -15,6 +15,7 @@ tr:nth-child(even){ background: white; }
 }
 
 
-th{ 
-    text-align: left; 
+th{
+    text-align: left;
 }
+

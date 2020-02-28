@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'scraper'
+Course.destroy_all
+
+scrape = WebScraper.new
+courses = scrape.scraper
+Course.create_from_collection(courses)
+puts Course.count
