@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Course Number</th>
       <th>Title</th>
       <th>Section number</th>
       <th>Component</th>
@@ -19,7 +20,8 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= course.title %></td>
+        <td><%= course.course_number %></td>
+        <td><%= course.title[9...course.title.length] %></td>
         <td><%= course.section_number %></td>
         <td><%= course.component %></td>
         <td><%= course.location %></td>

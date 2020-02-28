@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_033231) do
     t.string "time"
     t.string "instructor"
     t.string "session"
+    t.integer "course_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

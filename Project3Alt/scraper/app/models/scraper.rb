@@ -39,7 +39,8 @@ class WebScraper
           :location => section_location,
           :time => section_times,
           :instructor => section_instructor,
-          :session => section_session
+          :session => section_session,
+          :course_number => title[0,10].split(//).map {|x| x[/\d+/]}.compact.join("").to_i
         }
       hash_list << course_info
       end

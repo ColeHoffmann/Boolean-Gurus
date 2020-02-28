@@ -8,6 +8,7 @@ class CreateCourses < ActiveRecord::Migration[6.0]
       t.string :time
       t.string :instructor
       t.string :session
+      t.integer :course_number
 
       t.timestamps
     end
