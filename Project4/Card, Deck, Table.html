@@ -1,0 +1,58 @@
+<html>
+<script>
+/* so far copies Card, Deck, Table class defenitions of our old project but in javaScript. Except I don't think
+there is array.shuffle() function in JS, so still need to implement that. Just to have some output, it draws
+initial cards to the table and prints them in text view. */
+
+function test() {
+function Card(shape, color, pattern, number) {
+	this.shape = shape;
+	this.color = color;
+	this.pattern = pattern;
+	this.number = number;
+};
+
+function Deck() {
+	this.cards = new Array();
+	for (var i = 1; i < 4; i++) {
+		for (var j = 1; j < 4; j++) {
+			for (var k = 1; k < 4; k++) {
+				for (var l = 1; l < 4; l++) {
+					this.cards.push(new Card(i,j,k,l));
+				}
+			}
+		}
+	}
+};
+
+function putCard(card) {
+	document.writeln(card.shape.toString() + card.color.toString() + card.pattern.toString() + card.number.toString());
+};
+function shuffle (deck) {
+
+};
+
+function drawTwelve (table) {
+	for (var i = 0; i < 12; i++) {
+		table.onTable.push(table.deck.cards.pop());
+	}
+};
+
+function Table(deck) {
+	this.deck = deck;
+	this.onTable = new Array();
+	drawTwelve(this);
+
+};
+
+var deck = new Deck();
+shuffle(deck);
+var table = new Table(deck);
+for (var i = 0; i < table.onTable.length; i++) {
+putCard(table.onTable[i]);
+}
+}
+
+</script>
+<input type='button' onclick="test()" />  
+</html>
