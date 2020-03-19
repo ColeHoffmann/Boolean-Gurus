@@ -90,9 +90,13 @@ class SetGame {
     }
 }
 
+//add click-on cards to arr
+
 
 
 //run
+
+
 
 var deck = new Deck();
 deck.shuffleCards();
@@ -101,8 +105,14 @@ var user = new User("Franklin", 'i');
 var newGame = new SetGame(deck, table, user);
 newGame.initTable();
 
+//add Evenhandlers
+var tableContainer = document.getElementsByClassName('card');
+var tableContainerArray = Array.from(tableContainer);
+tableContainerArray.forEach(card=>{
+    card.addEventListener('click', ()=>{
 
-
+    }) //add click on card function here
+})
 
 
 
