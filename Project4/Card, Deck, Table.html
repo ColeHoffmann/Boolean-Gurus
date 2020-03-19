@@ -1,8 +1,6 @@
 <html>
 
-<body onload = "test()" >
 
-</body>
 <script>
 /* so far copies Card, Deck, Table class defenitions of our old project but in javaScript. Except I don't think
 there is array.shuffle() function in JS, so still need to implement that. Just to have some output, it draws
@@ -48,12 +46,19 @@ function Table(deck) {
 
 };
 
-function isProperSet(card1, card2, card3) {
-	var valid = new Array(3,6,9);
-	var toIterate = new Array(card1, card2, card3);
-	var toCheck = newArray();
+function includes (array, element) {
+    var answer = false;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i]===element) answer = true;
+    }
+    return answer;
+}
+
+function isProperSet(array) {
+	var valid = [3, 6, 9];
+/*	var toCheck = new Array();
 	var answer = true;
-	for (temp in toIterate) {
+	for (temp in array) {
 		var i = 0;
 		for (p in temp) {
 			toCheck[i] += temp.p;
@@ -62,7 +67,18 @@ function isProperSet(card1, card2, card3) {
 	}
 	for (temp2 in toCheck) {
 		answer = answer && valid.includes(temp2);
+	}*/
+	var shape = 0;
+	var color = 0;
+	var pattern = 0;
+	var number = 0;
+	for (var i = 0; i < array.length; i++) {
+		shape += array[i].shape;
+        color += array[i].color;
+        pattern += array[i].pattern;
+        number += array[i].number;
 	}
+	var answer = ((includes(valid, shape))&&(includes(valid, color))&&(includes(valid, pattern))&&(includes(valid, number)));
 	return answer;
 }
 
@@ -77,27 +93,70 @@ function putTable (table) {
 var deck = new Deck();
 shuffle(deck);
 var table = new Table(deck);
+var currentSet = [];
 
 function test() {
-    putTable(table);
+    putTable(table);     
 }
-var currentSet = new Array();
+
+
+function remove (array, index) {
+    for (var i = index; i < array.length - 1; i++) {
+        array[i] = array[i+1];
+    }
+    array.length--;
+}
+
 
 function cardChosen(number) {
-    currentSet.push(table.onTable[number]);
-    alert("You have chosen card number: " + number);
+   var bool = includes(currentSet, table.onTable[number]);
+    if (bool) {
+        var index = currentSet.indexOf(table.onTable[number]);
+        if (index != -1) remove (currentSet, index);
+        alert("You have unchosen card number: " + number);
+       
+    }
+    else {
+        if (currentSet.length < 3) {
+             currentSet.push(table.onTable[number]);
+             alert("You have chosen card number: " + number);
+        }
+        else {
+            alert("Set includes only 3 cards!");
+            document.getElementById("check" + number.toString()).checked = false;
+        }
+    }
 }
 
 function setChosen() {
-    alert("You have chosen a Set!");
-    for (var i = 0; i < currentSet.length; i++) {
-      /*  for (prop in currentSet[i]) {
-            document.body.innerHTML += currentSet[i].prop;
+    if (currentSet.length < 3) {
+        alert("Please choose 3 cards!");
+    }
+    else {
+        alert("You have chosen a Set!");
+        if (isProperSet(currentSet)) {
+            alert("That is a proper set indeed!");
+            for (var i = 0; i < currentSet.length; i++) {
+        /*  for (prop in currentSet[i]) {
+               document.body.innerHTML += currentSet[i].prop;
         }*/
             
-        document.body.innerHTML += currentSet[i].shape.toString() + currentSet[i].color.toString() + currentSet[i].pattern.toString() + currentSet[i].number.toString() + " ";
+                document.body.innerHTML += currentSet[i].shape.toString() + currentSet[i].color.toString() + currentSet[i].pattern.toString() + currentSet[i].number.toString() + " ";
+            }
+            currentSet = [];
+        }
+        else {
+            alert("That is not a proper set, please try again.");
+             for (var i = 0; i < currentSet.length; i++) {
+                document.body.innerHTML += currentSet[i].shape.toString() + currentSet[i].color.toString() + currentSet[i].pattern.toString() + currentSet[i].number.toString() + " ";
+            }
+            currentSet = [];
+        }
     }
        // document.body.innerHTML += currentSet[0].shape;
 }
 </script> 
+<body onload = "test()" >
+
+</body>
 </html>
