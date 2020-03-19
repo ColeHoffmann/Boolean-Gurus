@@ -1,14 +1,18 @@
-
-function test() {
-
-    function Card(shape, color, pattern, number) {
+class Card {
+    constructor(shape, color, pattern, number){
         this.shape = shape;
         this.color = color;
         this.pattern = pattern;
         this.number = number;
-    };
+    }
 
-    function Deck() {
+    toString(){
+        return "Shape: " + this.shape + "\nColor: "+ this.color + "\nPattern: " + this.pattern+ "\nNumber:  "+ this.number; 
+    }
+}
+
+class Deck {
+    constructor(){
         this.cards = new Array();
         for (var i = 1; i < 4; i++) {
             for (var j = 1; j < 4; j++) {
@@ -19,78 +23,86 @@ function test() {
                 }
             }
         }
-    };
+    }
 
-    function putCard(card) {
-        document.writeln(card.shape.toString() + card.color.toString() + card.pattern.toString() + card.number.toString());
-    };
-
-    function shuffle (deck) {
-        for(i = 0; i < deck.cards.length; i++){
-            var x = Math.floor((Math.random() * deck.length) + 1);
-            var y = Math.floor((Math.random() * deck.length) + 1);
-            var temp = deck.cards[x];
-            deck.cards[x] = deck.cards[y];
-            deck.cards[y] = temp;
+    shuffleCards(){
+        let i = this.cards.length;
+        while (i--) {
+          const x = Math.floor(Math.random() * (i + 1));
+          [this.cards[i], this.cards[x]] = [this.cards[x], this.cards[i]];
         }
-    };
+    }
 
-    function drawTwelve (table) {
-       
-        for (var i = 0; i < 12; i++) {
-            table.onTable.push(table.deck.cards.pop());
+    drawTwelve(){
+        var table = new Array();
+        for(var i = 0; i < 12; i++){
+            table.push(this.cards.pop());
         }
+
         return table;
-    };
+    }
 
-    function Table(deck) {
+}
+
+class User {
+    //user functionalities
+    constructor(name, hotkey){
+        this.name = name;
+        this.hotkey = hotkey;
+    }
+}
+
+class SetGame {
+    //functionalities for the set game
+    constructor(deck, table, users){
         this.deck = deck;
-        this.onTable = new Array();
-        drawTwelve(this);
-       
-    };
-
-    function toString(card){
-        return "Shape: " + card.shape + "\nColor: "+ card.color + "\nPattern: " + card.pattern+ "\nNumber:  "+ card.number; 
+        this.table = table;
+        this.users = users
     }
 
-    
-    var deck = new Deck();
-    console.log(deck);
-    shuffle(deck);
-    console.log(deck);
-    var table = new Table(deck);
+    isProperSet(card1, card2, card3){
+        var valid = new Array(3,6,9);
+        var toIterate = new Array(card1, card2, card3);
+        var toCheck = newArray();
+        var answer = true;
+        for (temp in toIterate) {
+            var i = 0;
+            for (p in temp) {
+                toCheck[i] += temp.p;
+                i++;
+            }
+        }
+        for (temp2 in toCheck) {
+            answer = answer && valid.includes(temp2);
+        }
+        return answer
+    }
 
-    var card = document.getElementsByClassName('card')
-    var tableCards = Array.from(card); 
-    
-
-    //initialize table cards.
-    for(var i = 0; i < tableCards.length; i++){
-        //card.document
-        var textNode = document.createTextNode(toString(table.onTable[i]));
-        tableCards[i].appendChild(textNode);
+    //initialize table ie. populate it with cards
+    initTable(){
+        var tableContainer = document.getElementsByClassName('card');
+        var tableContainerArray = Array.from(tableContainer);
+        for(var i = 0; i < tableContainerArray.length; i++){
+            //add cards info to table 
+            var textNode = document.createTextNode(this.table[i].toString())
+            tableContainer[i].appendChild(textNode);
+        }
     }
 }
 
-if (document.readyState == 'loading') {
-    document.addEventListener('DOMContentLoaded', ready);
-} else {
-    ready();
-}
 
-//add your game logic here or in the test function which is called in read()
-//use whichever is convenient
-function ready(){
-    test();
-    var i = 0;
-    var tableCards = Array.from(document.getElementsByClassName('card'));
 
-    tableCards.forEach(card => {
-            card.addEventListener('click', addCardToCheck(card)) //add click on card function here
-        })
+//run
 
-    function addCardToCheck(card) {
-        console.log(i+1);
-    }
-}
+var deck = new Deck();
+deck.shuffleCards();
+var table = deck.drawTwelve();
+var user = new User("Franklin", 'i');
+var newGame = new SetGame(deck, table, user);
+newGame.initTable();
+
+
+
+
+
+
