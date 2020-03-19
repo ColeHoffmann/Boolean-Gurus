@@ -1,10 +1,13 @@
 <html>
+
+<body onload = "test()" >
+
+</body>
 <script>
 /* so far copies Card, Deck, Table class defenitions of our old project but in javaScript. Except I don't think
 there is array.shuffle() function in JS, so still need to implement that. Just to have some output, it draws
 initial cards to the table and prints them in text view. */
 
-function test() {
 function Card(shape, color, pattern, number) {
 	this.shape = shape;
 	this.color = color;
@@ -25,13 +28,13 @@ function Deck() {
 	}
 };
 
-function putCard(card) {
-	document.writeln(card.shape.toString() + card.color.toString() + card.pattern.toString() + card.number.toString());
+function putCard(card, num) {
+	document.body.innerHTML += (card.shape.toString() + card.color.toString() + card.pattern.toString() + card.number.toString());
+	document.body.innerHTML += ("<input type='checkbox' id = 'check" + num + "' onclick = 'cardChosen(" + num + ")' //>");
 };
 function shuffle (deck) {
 
 };
-
 function drawTwelve (table) {
 	for (var i = 0; i < 12; i++) {
 		table.onTable.push(table.deck.cards.pop());
@@ -45,14 +48,56 @@ function Table(deck) {
 
 };
 
+function isProperSet(card1, card2, card3) {
+	var valid = new Array(3,6,9);
+	var toIterate = new Array(card1, card2, card3);
+	var toCheck = newArray();
+	var answer = true;
+	for (temp in toIterate) {
+		var i = 0;
+		for (p in temp) {
+			toCheck[i] += temp.p;
+			i++;
+		}
+	}
+	for (temp2 in toCheck) {
+		answer = answer && valid.includes(temp2);
+	}
+	return answer;
+}
+
+function putTable (table) {
+    for (var i = 0; i < table.onTable.length; i++) {
+        putCard(table.onTable[i], i);
+    }
+    document.body.innerHTML += ("<input type='button' onclick = 'setChosen()' //>");
+    
+    
+}
 var deck = new Deck();
 shuffle(deck);
 var table = new Table(deck);
-for (var i = 0; i < table.onTable.length; i++) {
-putCard(table.onTable[i]);
+
+function test() {
+    putTable(table);
 }
+var currentSet = new Array();
+
+function cardChosen(number) {
+    currentSet.push(table.onTable[number]);
+    alert("You have chosen card number: " + number);
 }
 
-</script>
-<input type='button' onclick="test()" />  
+function setChosen() {
+    alert("You have chosen a Set!");
+    for (var i = 0; i < currentSet.length; i++) {
+      /*  for (prop in currentSet[i]) {
+            document.body.innerHTML += currentSet[i].prop;
+        }*/
+            
+        document.body.innerHTML += currentSet[i].shape.toString() + currentSet[i].color.toString() + currentSet[i].pattern.toString() + currentSet[i].number.toString() + " ";
+    }
+       // document.body.innerHTML += currentSet[0].shape;
+}
+</script> 
 </html>
