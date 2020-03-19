@@ -14,7 +14,7 @@ body {
     
 }
 
-.cards-container {
+.cards-container #table {
   display: grid;
   grid-template-columns: repeat(4, auto);
   margin: 50px;
