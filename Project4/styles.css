@@ -33,6 +33,14 @@ body {
   width: 150px;
 }
 
+.card:hover{ 
+
+    border-color:red; 
+    transform:scale(1.20);
+
+}
+
+
 .tut, .hint{
    
   font-family: 'Nova Square', cursive;
