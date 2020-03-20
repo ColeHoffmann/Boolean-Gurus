@@ -137,8 +137,16 @@ tableContainerArray.forEach(card=>{
         //if 3 cards are have been selected
         if(cardCount == 3){
             alert("You have selected 3 cards.")
-            replaceSelectedcards(cardsToCheck);
-            var isASet = checkForSet(cardsToCheck);
+            //replaceSelectedcards(cardsToCheck);
+            var isASet = checkForSet(cardsToCheck); 
+            if(isASet){
+                replaceSelectedcards(cardsToCheck);
+            } else {
+                // clear selected background color
+                cardsToCheck.forEach(card=>{
+                    document.getElementById(card.id).style.backgroundColor = 'white';
+                })
+            }
             alert(isASet);
             cardCount = 0; 
             cardsToCheck.clear(); //clear set
