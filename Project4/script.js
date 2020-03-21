@@ -111,7 +111,7 @@ class SetGame {
 
 function run(){ 
 
-    /This will prompt for the number of players.
+    //This will prompt for the number of players.
     var numPlayers = window.prompt("How many players will be playing?", "Select (1,2,3,4)");
     var possiblePlayerNumber = ["1", "2", "3", "4"];
 
