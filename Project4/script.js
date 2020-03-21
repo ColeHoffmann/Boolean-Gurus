@@ -108,7 +108,31 @@ class SetGame {
 }
 
 
-//run
+
+function run(){ 
+
+    /This will prompt for the number of players.
+    var numPlayers = window.prompt("How many players will be playing?", "Select (1,2,3,4)");
+    var possiblePlayerNumber = ["1", "2", "3", "4"];
+
+    //If the responce is invalid, keep asking for number of Players.
+    while(!possiblePlayerNumber.includes(numPlayers)){
+        var numPlayers = window.prompt("Oops. You chose an incorrect Value. How many players will be playing?", "Select (1,2,3,4)");
+    }
+    //turn it from a string to an int. (i.e. "1" * 1.0 = 1.0)
+    numPlayers = numPlayers * 1;
+
+    var cardCount = 0;
+    var deck = new Deck();
+
+
+}
+
+
+
+
+
+
 
 
 var cardCount = 0;

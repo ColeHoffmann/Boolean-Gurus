@@ -54,6 +54,18 @@ body {
 
 }
 
+.runGame{ 
+  font-family: 'Nova Square', cursive;
+  border-color: floralwhite;
+  border-width:thin; 
+  color:white;
+  background-color: red;
+  padding: 0em 1em;
+  font-size: 16px;
+}
+
+
+
 .tut:hover, .hint:hover{
     background-color:blanchedalmond;
 }
