@@ -108,6 +108,37 @@ class SetGame {
 }
 
 
+function findImage(card){
+    var filepath = "SetCards/";
+    var shape = card.shape.toString();
+    var color = card.color.toString();
+    var pattern = card.pattern.toString();
+    var number = card.number.toString();
+    var extension =  (".svg");
+
+    var fullPath = filepath.concat(shape,color, pattern, number, extension);
+    return fullPath;
+
+}
+
+function createView(table){
+
+    var cardsOnTable = document.getElementsByClassName('card');
+    var i = 1;
+    for(i = 1; i <= table.length; i++){ 
+
+        var imageName = findImage(table[i -1]);
+        var cardID = "card" + i.toString();
+        document.getElementById(cardID).style.backgroundImage = "url(" + imageName + ")";
+        document.getElementById(cardID).style.backgroundRepeat = "no-repeat";
+    }
+
+}
+
+
+
+
+
 
 function run(){ 
 
@@ -142,6 +173,7 @@ var table = deck.drawTwelve();
 var user = new User("Franklin", 'i');
 var newGame = new SetGame(deck, table, user);
 newGame.initTable();
+createView(table);
 //set to keep 3 cards selected, wont accept duplicates
 var cardsToCheck = new Set();
 
