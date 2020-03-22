@@ -62,9 +62,18 @@ class Deck {
 
 class User {
     //user functionalities
-    constructor(name, hotkey){
+    constructor(name, hotkey, score){
         this.name = name;
         this.hotkey = hotkey;
+        this.score = score;
+    }
+        
+    incrementScore(){
+        //increment the score
+        this.score++;
+        var currentScore = document.getElementById('score');
+        //update it
+        currentScore.childNodes[0].textContent = user.score;
     }
 }
 
@@ -139,7 +148,7 @@ var cardCount = 0;
 var deck = new Deck();
 deck.shuffleCards();
 var table = deck.drawTwelve();
-var user = new User("Franklin", 'i');
+var user = new User("Franklin", 'i', 0);
 var newGame = new SetGame(deck, table, user);
 newGame.initTable();
 //set to keep 3 cards selected, wont accept duplicates
@@ -164,6 +173,7 @@ tableContainerArray.forEach(card=>{
             //replaceSelectedcards(cardsToCheck);
             var isASet = checkForSet(cardsToCheck); 
             if(isASet){
+                user.incrementScore();
                 replaceSelectedcards(cardsToCheck);
             } else {
                 // clear selected background color
