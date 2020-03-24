@@ -1,5 +1,7 @@
 READ ME FOR PROJECT 4: GAME OF SET. 
+
 Use set.html.
+
 This game involving matching and selecting three cards with the same or all different amount of shapes, colors, infills and numbers.
 There are twelve cards on the screen all the time. The deck will have 69 cards remaining in the begining.
 The game defaults into single player mode.
