@@ -28,11 +28,11 @@ class Deck {
     }
 
     shuffleCards(){
-        let i = this.cards.length;
+        /*let i = this.cards.length;
         while (i--) {
           const x = Math.floor(Math.random() * (i + 1));
           [this.cards[i], this.cards[x]] = [this.cards[x], this.cards[i]];
-        }
+        } */
     }
 
     drawTwelve(){
@@ -60,6 +60,8 @@ class Deck {
 
 }
 
+
+    
 class User {
     //user functionalities
     constructor(name, hotkey){
@@ -73,7 +75,7 @@ class User {
         this.score++;
         var currentScore = document.getElementById('score');
         //update it
-        currentScore.childNodes[0].textContent = this.score;
+       // currentScore.childNodes[0].textContent = this.score;
         //return score
         return this.score;
     }
@@ -96,6 +98,14 @@ class User {
     
 }
 
+function includes (array, element) {
+    var answer = false;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i]===element) answer = true;
+    }
+    return answer;
+}
+
 class SetGame {
     //functionalities for the set game
     constructor(deck, table, users){
@@ -104,23 +114,33 @@ class SetGame {
         this.users = users
     }
 
-    isProperSet(card1, card2, card3){
-        var valid = new Array(3,6,9);
-        var toIterate = new Array(card1, card2, card3);
-        var toCheck = new Array();
-        var answer = true;
-        for (var temp in toIterate) {
-            var i = 0;
-            for (var p in temp) {
-                toCheck[i] += temp.p;
-                i++;
-            }
-        }
-        for (var temp2 in toCheck) {
-            answer = answer && valid.includes(temp2);
-        }
-        return answer
-    }
+
+
+isProperSet(card1, card2, card3) {
+    var array = [table[card1.id - 1], table[card2.id - 1], table[card3.id - 1]];
+  //  console.log(array[1].color);
+	var valid = [3, 6, 9];
+	var shape = 0;
+	var color = 0;
+	var pattern = 0;
+	var number = 0;
+	for (var i = 0; i < array.length; i++) {
+		shape += array[i].shape;
+        color += array[i].color;
+        pattern += array[i].pattern;
+    //    console.log(array[i].pattern);
+        number += array[i].number;
+	}
+//	console.log(color);
+	var answer = ((includes(valid, shape))&&(includes(valid, color))&&(includes(valid, pattern))&&(includes(valid, number)));
+/*	console.log(answer);
+	console.log(pattern);
+	console.log(includes(valid, shape));
+	console.log(includes(valid, color));
+	console.log(includes(valid, pattern));
+	console.log(includes(valid, number)); */
+	return answer;
+}
 
     //initialize table ie. populate it with cards
     initTable(){
@@ -156,7 +176,7 @@ function createView(table){
     for(i = 1; i <= table.length; i++){ 
 
         var imageName = findImage(table[i -1]);
-        var cardID = "card" + i.toString();
+        var cardID = i.toString();
         document.getElementById(cardID).style.backgroundImage = "url(" + imageName + ")";
         document.getElementById(cardID).style.backgroundRepeat = "no-repeat";
     }
@@ -266,8 +286,11 @@ tableContainerArray.forEach(card=>{
 function replaceSelectedcards(cardsToCheck){
     cardsToCheck.forEach(card=>{
         var oldCard = document.getElementById(card.id);
+        console.log(card.id);
         var newCard = deck.drawcard();
-        oldCard.childNodes[1].textContent = newCard.toString();
+        table[card.id - 1] = newCard;
+        var imageName = findImage(newCard);
+        oldCard.style.backgroundImage = "url(" + imageName + ")";
         oldCard.style.backgroundColor = 'white';
         //exit if deck size is zero
         if(deck.length == 0){
@@ -290,9 +313,11 @@ function addCardToSet(card){
 }
 function checkForSet(cardsToCheck){
     var it = cardsToCheck.values();
-    var card1 = it.next();
-    var card2 = it.next();
-    var card3 = it.next();
+    var card1 = it.next().value;
+    var card2 = it.next().value;
+    var card3 = it.next().value;
+    //console.log(card1.color);
+    //console.log(card2.color);
     //check if card is a set
     return newGame.isProperSet(card1, card2, card3);
 }
