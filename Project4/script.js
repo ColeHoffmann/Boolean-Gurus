@@ -189,17 +189,17 @@ function versusSetup(){
     numPlayers = numPlayers * 1;
     console.log(numPlayers);
 
+    var names = ["","\n"];
     for(var i = 1; i <= numPlayers; i++){
-        var name;
-        /*while (!includes(arrayOfUsers,name)){
-            name = prompt("Player " +i+ " enter your Username: ");
-            if (includes(arrayOfUsers,name)){
-                prompt("User name taken! Please choose another one");
-            }else{
-                arrayOfUsers.push(new User(name));
-            }
-        }*/
+        var name = prompt("Player " +i+ " enter your Username: ");;
+        while (includes(names,name)){
+            name = prompt("User name taken! Please choose another one!\nPlayer " +i+ " enter your Username: ");
+        }
+        arrayOfUsers.push(new User(name));
+        names.push(name);
+
         //create player divs with class and id attr        arrayOfUsers.push(new User(name));
+        var playerNameDiv = document.createElement('div');
         playerNameDiv.setAttribute('class', 'player-name'); //class player-name
         playerNameDiv.setAttribute('id', 'player'+i+'-name'); //eg id=player1-name
         playerNameDiv.textContent = "Player " + i + ": " + name;
