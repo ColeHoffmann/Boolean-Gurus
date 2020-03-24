@@ -74,10 +74,12 @@ body {
 
 .tut:hover, .hint:hover{
     background-color:blanchedalmond;
+    border-radius: 3px;
 }
 
 .tut:active, .hint:active{ 
     background-color: peachpuff;
+    border-radius: 3px;
 }
 
 /* w3 school */
