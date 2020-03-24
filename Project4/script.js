@@ -28,11 +28,11 @@ class Deck {
     }
 
     shuffleCards(){
-        /*let i = this.cards.length;
+        let i = this.cards.length;
         while (i--) {
           const x = Math.floor(Math.random() * (i + 1));
           [this.cards[i], this.cards[x]] = [this.cards[x], this.cards[i]];
-        } */
+        } 
     }
 
     drawTwelve(){
@@ -116,31 +116,31 @@ class SetGame {
 
 
 
-isProperSet(card1, card2, card3) {
-    var array = [table[card1.id - 1], table[card2.id - 1], table[card3.id - 1]];
-  //  console.log(array[1].color);
-	var valid = [3, 6, 9];
-	var shape = 0;
-	var color = 0;
-	var pattern = 0;
-	var number = 0;
-	for (var i = 0; i < array.length; i++) {
-		shape += array[i].shape;
-        color += array[i].color;
-        pattern += array[i].pattern;
-    //    console.log(array[i].pattern);
-        number += array[i].number;
-	}
-//	console.log(color);
-	var answer = ((includes(valid, shape))&&(includes(valid, color))&&(includes(valid, pattern))&&(includes(valid, number)));
-/*	console.log(answer);
-	console.log(pattern);
-	console.log(includes(valid, shape));
-	console.log(includes(valid, color));
-	console.log(includes(valid, pattern));
-	console.log(includes(valid, number)); */
-	return answer;
-}
+    isProperSet(card1, card2, card3) {
+        var array = [table[card1.id - 1], table[card2.id - 1], table[card3.id - 1]];
+        //  console.log(array[1].color);
+	    var valid = [3, 6, 9];
+	    var shape = 0;
+	    var color = 0;
+	    var pattern = 0;
+	    var number = 0;
+	    for (var i = 0; i < array.length; i++) {
+	    	shape += array[i].shape;
+            color += array[i].color;
+            pattern += array[i].pattern;
+        //    console.log(array[i].pattern);
+            number += array[i].number;
+	    }
+        //	console.log(color);
+	    var answer = ((includes(valid, shape))&&(includes(valid, color))&&(includes(valid, pattern))&&(includes(valid, number)));
+        /*	console.log(answer);
+	    console.log(pattern);
+	    console.log(includes(valid, shape));
+	    console.log(includes(valid, color));
+	    console.log(includes(valid, pattern));
+	    console.log(includes(valid, number)); */
+	    return answer;
+    }
 
     //initialize table ie. populate it with cards
     initTable(){
@@ -170,10 +170,7 @@ function findImage(card){
 }
 
 function createView(table){
-
-    var cardsOnTable = document.getElementsByClassName('card');
-    var i = 1;
-    for(i = 1; i <= table.length; i++){ 
+    for(var i = 1; i <= table.length; i++){ 
 
         var imageName = findImage(table[i -1]);
         var cardID = i.toString();
@@ -186,9 +183,9 @@ function createView(table){
 
 
 
-
 var numPlayers = 0;
 var arrayOfUsers = [];
+
 function run(){ 
     //add reset html page before fun 
 
@@ -201,7 +198,7 @@ function run(){
     while(!possiblePlayerNumber.includes(numPlayers)){
         var numPlayers = window.prompt("Oops. You chose an incorrect Value. How many players will be playing?", "Select (1,2,3,4)");
     }
-    //turn it from a string to an int. (i.e. "1" * 1.0 = 1.0)
+    //turn it from a string to an int. (i.e. "1" * 1.0 = 1.0)    //    console.log(array[i].pattern);
     numPlayers = numPlayers * 1;
     console.log(numPlayers);
 
