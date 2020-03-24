@@ -233,7 +233,19 @@ function run(){
 }
 
 
-
+function hint(){
+    for(var i = 0; i < 10; i++){
+        for(var j = i + 1; j < 11; j++){
+            for(var k = i + 2; k < 12; k++){
+                hintCheckCards = [tableContainerArray[i], tableContainerArray[j], tableContainerArray[k]];
+                if(checkForSet(hintCheckCards)){
+                    alert(tableContainerArray[i].id + " and " + tableContainerArray[j].id + " and " + tableContainerArray[k].id + " are a set");
+                    return;
+                }
+            }
+        }
+    }
+}
 
 
 
