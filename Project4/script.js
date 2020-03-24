@@ -255,29 +255,34 @@ var tableContainerArray = Array.from(tableContainer);
 
 tableContainerArray.forEach(card=>{
     card.addEventListener('click', () =>{
-        cardCount = cardCount + 1;
-        addCardToSet(card)
-        var c = card.childNodes;
-        console.log(c[1].textContent); //debugging
-        alert("you chose: " + card.id + "\n " + c[1].textContent); //for debugging 
-        clearSelectedCard(card.id);
-        //if 3 cards are have been selected
-        if(cardCount == 3){
-            alert("You have selected 3 cards.")
-            //replaceSelectedcards(cardsToCheck);
-            var isASet = checkForSet(cardsToCheck); 
-            if(isASet){
-                user.incrementScore();
-                replaceSelectedcards(cardsToCheck);
-            } else {
-                // clear selected background color
-                cardsToCheck.forEach(card=>{
-                    document.getElementById(card.id).style.backgroundColor = 'white';
-                })
+        if(!cardsToCheck.has(card)){
+            cardCount = cardCount + 1;
+            addCardToSet(card)
+            var c = card.childNodes;
+            console.log(c[1].textContent); //debugging
+            alert("you chose: " + card.id + "\n " + c[1].textContent); //for debugging
+            clearSelectedCard(card.id);
+            //if 3 cards are have been selected
+            if(cardCount == 3){
+                alert("You have selected 3 cards.")
+                //replaceSelectedcards(cardsToCheck);
+                var isASet = checkForSet(cardsToCheck);
+                if(isASet){
+                    user.incrementScore();
+                    replaceSelectedcards(cardsToCheck);
+                } else {
+                    // clear selected background color
+                    cardsToCheck.forEach(card=>{
+                        document.getElementById(card.id).style.backgroundColor = 'white';
+                    })
+                }
+                alert(isASet);
+                cardCount = 0;
+                cardsToCheck.clear(); //clear set
             }
-            alert(isASet);
-            cardCount = 0; 
-            cardsToCheck.clear(); //clear set
+        }
+        else{
+            alert("You can't select the same card more than once");
         }
     })
 })
