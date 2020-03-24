@@ -188,7 +188,7 @@ function increaseScore (){
     }else{
         name = prompt("Player enter your Username for scoring (Please be honest)");
         while (!includes(names,name)){
-            name = prompt("Username not found!\nPlayer enter your Username for scoring (Please be honest)");
+            name = prompt("Username not found!<br>Player enter your Username for scoring (Please be honest)");
         }
         console.log(arrayOfUsers);
         for (let i = 0; i < arrayOfUsers.length; i++){
@@ -210,7 +210,7 @@ function decreaseScore (){
     }else{
         name = prompt("Player enter your Username for scoring (Please be honest)");
         while (!includes(names,name)){
-            name = prompt("Username not found!\nPlayer enter your Username for scoring (Please be honest)");
+            name = prompt("Username not found!<br>Player enter your Username for scoring (Please be honest)");
         }
         console.log(arrayOfUsers);
         for (let i = 0; i < arrayOfUsers.length; i++){
@@ -263,7 +263,9 @@ function popup(stringElement){
 
     //var text = document.createTextNode(text);
     var popupContent = document.getElementById("popup-content");
-    popupContent.textContent = stringElement;
+   // popupContent.textContent = stringElement;
+    popupContent.innerHTML = "";
+    popupContent.innerHTML = stringElement;
         // Get the modal
     var modal = document.getElementById("myModal");
 
@@ -290,12 +292,12 @@ function popup(stringElement){
 function reset() {
     numPlayers = document.getElementById("players-number").textContent * 1;
     if (numPlayers == 1){
-        popup("Deck is empty. You score is " + score + " pts. Thank you for the game! New Game will start once you press OK");
+        popup("Deck is empty. You score is " + score + " pts. <br>Thank you for the game! New Game will start once you press OK");
         score = 0;
         document.getElementById('player-score').textContent = "Score: " + score+" pts";
     }else{
         arrayOfUsers.sort(function(a, b){return b.score-a.score}); 
-        let msg = "Deck is empty. Thank you for the game!  New Game will start once you press OK\nLeaderboard:\n";
+        let msg = "Deck is empty. Thank you for the game!  New Game will start once you press OK.<br>Leaderboard: <br>";
         for (let i = 0; i < arrayOfUsers.length; i++){
             msg += arrayOfUsers[i].name +": "+arrayOfUsers[i].score +" pts\n";
             arrayOfUsers[i].score = 0;
@@ -405,7 +407,7 @@ function hint(){
     var setFound = findSet();
     if (setFound.length > 0){
         decreaseScore();
-        popup("Sets found! You got penalized 1 pts for this!\n(But you will get it back if you clicked on the hints right.");
+        popup("Sets found! You got penalized 1 pts for this!(But you will get it back if you clicked on the hints right.");
         console.log(setFound);
         paintCard(setFound.pop(), 'yellow');
         paintCard(setFound.pop(), 'yellow');
