@@ -99,7 +99,7 @@ class User {
 }
 
 function endGame() {
-     alert("Deck is empty. You score is " + score + " Thank you for the game! New Game will start once you press OK");
+     alert("Deck is empty. You score is " + score + ". Thank you for the game! New Game will start once you press OK");
      location.reload(5);
 }
 
@@ -227,12 +227,17 @@ function paintCard (number, color) {
 }
 
 function hint(){
-    var foundSet = false;
+    let foundSet = false;
+    document.getElementById('player-score').textContent = "Score: " + score;
     for(var i = 0; i < 10; i++){
         for(var j = i + 1; j < 11; j++){
             for(var k = i + 2; k < 12; k++){
                 hintCheckCards = [tableContainerArray[i], tableContainerArray[j], tableContainerArray[k]];
                 if(checkForSet(hintCheckCards)){
+                    if (score > 0) {
+                        score--;
+                        document.getElementById('player-score').textContent = "Score: " + score;
+                    }
                    foundSet = true;
                    paintCard(i + 1, 'yellow');
                    paintCard(j + 1, 'yellow');
@@ -243,7 +248,10 @@ function hint(){
         }
     }
     if (!foundSet) {
-        alert("No sets found, replacing 3 cards");
+        alert("No sets found, replacing 3 cards. You earned a free point!");
+        
+        score = score + 1;
+        document.getElementById('player-score').textContent = "Score: " + score;
         var array = [];
         for (var r = 1; r < 13; r++) {
             array[r-1] = r;
@@ -273,8 +281,6 @@ function replaceSelectedcards(cardsToCheck){
     }
     else {
         endGame();
-       
-
     }
 }
 
@@ -355,9 +361,9 @@ tableContainerArray.forEach(card=>{
                     score++;
                     document.getElementById('player-score').textContent = "Score: " + score;
                 }
-
-                replaceSelectedcards(cardsToCheck);
                 alert("You are right! score incremented!");
+                replaceSelectedcards(cardsToCheck);
+                
             } else {
                 // clear selected background color
                 if(numPlayers == 1) {
