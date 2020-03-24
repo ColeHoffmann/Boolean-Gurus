@@ -22,6 +22,11 @@ body {
   grid-gap: 10px;
 }
 
+.player-info {
+  display: grid;
+  grid-template-columns: auto;
+}
+
 .game-container-info {
   /* web dev simplified */
   grid-column: 1 / -1

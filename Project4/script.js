@@ -62,10 +62,10 @@ class Deck {
 
 class User {
     //user functionalities
-    constructor(name, hotkey, score){
+    constructor(name, hotkey){
         this.name = name;
         this.hotkey = hotkey;
-        this.score = score;
+        this.score = 0;
     }
         
     incrementScore(){
@@ -73,8 +73,27 @@ class User {
         this.score++;
         var currentScore = document.getElementById('score');
         //update it
-        currentScore.childNodes[0].textContent = user.score;
+        currentScore.childNodes[0].textContent = this.score;
+        //return score
+        return this.score;
     }
+
+    decrementScore(){
+        if(this.score != 0){
+            this.score--;
+            var currentScore = document.getElementById('score');
+            //update it
+            currentScore.childNodes[0].textContent = this.score;
+        }
+        //return score
+        return this.score;
+    }
+
+    getScore(){
+        return this.score;
+    }
+
+    
 }
 
 class SetGame {
@@ -148,27 +167,50 @@ function createView(table){
 
 
 
-
+var numPlayers = 0;
+var arrayOfUsers = [];
 function run(){ 
+    //add reset html page before fun 
 
+    
     //This will prompt for the number of players.
-    var numPlayers = window.prompt("How many players will be playing?", "Select (1,2,3,4)");
+    numPlayers = prompt("How many players will be playing?", "Select (1,2,3,4)");
     var possiblePlayerNumber = ["1", "2", "3", "4"];
-
+    
     //If the responce is invalid, keep asking for number of Players.
     while(!possiblePlayerNumber.includes(numPlayers)){
         var numPlayers = window.prompt("Oops. You chose an incorrect Value. How many players will be playing?", "Select (1,2,3,4)");
     }
     //turn it from a string to an int. (i.e. "1" * 1.0 = 1.0)
     numPlayers = numPlayers * 1;
+    console.log(numPlayers);
 
-    var cardCount = 0;
-    var deck = new Deck();
+    for(var i = 1; i <= numPlayers; i++){
+        var name = prompt("Player " +i+ " enter your Username: ");
+        var hotkey = prompt("Player " +i+ " enter your hot key to choose when to play: ");
+        arrayOfUsers.push(new User(name, hotkey));
+        //create player divs with class and id attr
+        var playerNameDiv = document.createElement('div');
+        playerNameDiv.setAttribute('class', 'player-name'); //class player-name
+        playerNameDiv.setAttribute('id', 'player'+i+'-name'); //eg id=player1-name
+        playerNameDiv.textContent = "Player " + i + ": " + name;
 
+        var playerScoreDiv = document.createElement('div');
+        playerScoreDiv.setAttribute('class', 'player-score');
+        playerScoreDiv.setAttribute('id', 'player'+i+'-score'); //eg id=player1-score
+        playerScoreDiv.textContent = "Player " + i + " score: " + arrayOfUsers[i-1].getScore();
+        
+
+        //append to div class = player-name & div class = player-score
+        document.getElementsByClassName('player-info')[0].appendChild(playerNameDiv);
+        document.getElementsByClassName('player-info')[0].appendChild(playerScoreDiv);
+
+    }
+
+    //write the number of players
+    document.getElementById("players-number").textContent = numPlayers;
 
 }
-
-
 
 
 
@@ -179,10 +221,10 @@ var cardCount = 0;
 var deck = new Deck();
 deck.shuffleCards();
 var table = deck.drawTwelve();
-var user = new User("Franklin", 'i', 0);
+var user = new User("Franklin", 'i');
 var newGame = new SetGame(deck, table, user);
 newGame.initTable();
-createView(table);
+createView(table); 
 //set to keep 3 cards selected, wont accept duplicates
 var cardsToCheck = new Set();
 
