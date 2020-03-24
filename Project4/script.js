@@ -313,7 +313,12 @@ tableContainerArray.forEach(card=>{
                         paintCard(i, 'white');
                     }
                 })
-                alert("Sorry, you are wrong! Score decremented, please try again!");
+                if(numPlayers == 1) {
+                    score--;
+                    if (score < 0) score = 0;
+                    document.getElementById('player-score').textContent = "Score: " + score;
+                }
+                alert("Sorry, you are wrong! Score decremented (not below 0)! Please try again!");
             }
             
             cardCount = 0;
