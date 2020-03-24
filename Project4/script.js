@@ -248,7 +248,9 @@ function hint(){
         }
     }
     if (!foundSet) {
-        alert("No sets found, sorry, you lose. Life is unfair.");
+        alert("No sets found, replacing 3 cards");
+        cardsToReplace = [document.getElementById(1), document.getElementById(2), document.getElementById(3)];
+        replaceSelectedcards(cardsToReplace);
     }
 }
 
@@ -291,12 +293,14 @@ tableContainerArray.forEach(card=>{
             //replaceSelectedcards(cardsToCheck);
             var isASet = checkForSet(cardsToCheck);
             if(isASet){
-                user.incrementScore();
+               // user.incrementScore();
                 replaceSelectedcards(cardsToCheck);
             } else {
                 // clear selected background color
                 cardsToCheck.forEach(card=>{
-                    document.getElementById(card.id).style.backgroundColor = 'white';
+                    for (var i = 1; i < 13; i++) {
+                        paintCard(i, 'white');
+                    }
                 })
             }
             alert(isASet);
