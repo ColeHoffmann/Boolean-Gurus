@@ -1,3 +1,19 @@
+//initialize
+var numPlayers = 1;
+var arrayOfUsers = [];
+var names = ["","\n"];
+
+if (numPlayers == 1){
+    var score = 0;
+    var playerScoreDiv = document.createElement('div');
+    playerScoreDiv.setAttribute('class', 'player-score');
+    playerScoreDiv.setAttribute('id', 'player-score'); //eg id=player1-score
+    playerScoreDiv.textContent = "Score: " + score;
+    document.getElementsByClassName('player-info')[0].appendChild(playerScoreDiv);
+}
+
+
+
 class Card {
     constructor(shape, color, pattern, number){
         this.shape = shape;
@@ -67,35 +83,6 @@ class User {
         this.name = name;
         this.score = 0;
     }
-        
-    incrementScore(){
-        //increment the score
-        this.score++;
-        //var currentScore = document.getElementById('score');
-        //update it
-       // currentScore.childNodes[0].textContent = this.score;
-        //return score
-        return this.score;
-    }
-
-    decrementScore(){
-        if(this.score != 0){
-            this.score--;
-            /*
-            var currentScore = document.getElementById('score');
-            //update it
-            currentScore.childNodes[0].textContent = this.score;
-            */
-        }
-        //return score
-        return this.score;
-    }
-
-    getScore(){
-        return this.score;
-    }
-
-    
 }
 
 function endGame() {
@@ -176,6 +163,8 @@ function versusSetup(){
     newGame = new SetGame(deck, table);
     createView(table); 
     document.getElementsByClassName('player-info')[0].innerHTML = '';
+    arrayOfUsers = [];
+    names = ["","\n"];
     
     //This will prompt for the number of players.
     numPlayers = prompt("How many players will be playing?", "Select (2,3,4)");
@@ -189,7 +178,7 @@ function versusSetup(){
     numPlayers = numPlayers * 1;
     console.log(numPlayers);
 
-    var names = ["","\n"];
+    
     for(var i = 1; i <= numPlayers; i++){
         var name = prompt("Player " +i+ " enter your Username: ");;
         while (includes(names,name)){
@@ -207,7 +196,7 @@ function versusSetup(){
         var playerScoreDiv = document.createElement('div');
         playerScoreDiv.setAttribute('class', 'player-score');
         playerScoreDiv.setAttribute('id', 'player'+i+'-score'); //eg id=player1-score
-        playerScoreDiv.textContent = "Player " + i + " score: " + arrayOfUsers[i-1].getScore();
+        playerScoreDiv.textContent = "Player " + i + " score: " + arrayOfUsers[i-1].score;
         
 
         //append to div class = player-name & div class = player-score
@@ -215,6 +204,11 @@ function versusSetup(){
         document.getElementsByClassName('player-info')[0].appendChild(playerScoreDiv);
 
     }
+
+    //premoving the "" and "\n"
+    names.shift();
+    names.shift();
+    console.log(names);
 
     //write the number of players
     document.getElementById("players-number").textContent = numPlayers;
@@ -300,17 +294,7 @@ function checkForSet(cardsToCheck){
 //main function
 
 
-var numPlayers = 1;
-var arrayOfUsers = [];
 
-if (numPlayers == 1){
-    var score = 0;
-    var playerScoreDiv = document.createElement('div');
-    playerScoreDiv.setAttribute('class', 'player-score');
-    playerScoreDiv.setAttribute('id', 'player-score'); //eg id=player1-score
-    playerScoreDiv.textContent = "Score: " + score;
-    document.getElementsByClassName('player-info')[0].appendChild(playerScoreDiv);
-}
 
 //initialize game
 var deck = new Deck();
@@ -330,6 +314,8 @@ var tableContainerArray = Array.from(tableContainer);
 var cardCount = 0;
 tableContainerArray.forEach(card=>{
     card.addEventListener('click', () =>{
+        numPlayers = document.getElementById("players-number").textContent * 1;
+        console.log(numPlayers);
         if(!cardsToCheck.has(card)){
             cardCount = cardCount + 1;
             addCardToSet(card)
@@ -353,6 +339,20 @@ tableContainerArray.forEach(card=>{
                 if(numPlayers == 1) {
                     score++;
                     document.getElementById('player-score').textContent = "Score: " + score;
+                }else{
+                    name = prompt("Player enter your Username for scoring (Please be honest)");
+                    while (!includes(names,name)){
+                        name = prompt("Username not found!\nPlayer enter your Username for scoring (Please be honest)");
+                    }
+                    console.log(arrayOfUsers);
+                    for (let i = 0; i < arrayOfUsers.size; i++){
+                        console.log(arrayOfUsers[i].name);
+                        if (arrayOfUsers[i].name == name) {
+                            arrayOfUsers[i].score ++;
+                            //update the view
+                            document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score;
+                        }
+                    }
                 }
 
                 replaceSelectedcards(cardsToCheck);
