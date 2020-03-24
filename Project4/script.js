@@ -227,6 +227,9 @@ function run(){
 
 }
 
+function paintCard (number, color) {
+    document.getElementById(number).style.backgroundColor = color;
+}
 
 function hint(){
     for(var i = 0; i < 10; i++){
@@ -234,7 +237,10 @@ function hint(){
             for(var k = i + 2; k < 12; k++){
                 hintCheckCards = [tableContainerArray[i], tableContainerArray[j], tableContainerArray[k]];
                 if(checkForSet(hintCheckCards)){
-                    alert(tableContainerArray[i].id + " and " + tableContainerArray[j].id + " and " + tableContainerArray[k].id + " are a set");
+                   // alert(tableContainerArray[i].id + " and " + tableContainerArray[j].id + " and " + tableContainerArray[k].id + " are a set");
+                   paintCard(i + 1, 'red');
+                   paintCard(j + 1, 'red');
+                   paintCard(k + 1, 'red');
                     return;
                 }
             }
