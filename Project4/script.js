@@ -297,14 +297,14 @@ function popup(stringElement, title){
 function reset() {
     numPlayers = document.getElementById("players-number").textContent * 1;
     if (numPlayers == 1){
-        popup("Deck is empty. You score is " + score + " pts. <br>Thank you for the game! New Game will start once you press OK", "Good job!");
+        popup("Deck is empty. You score is " + score + " pts. <br>Thank you for the game! New Game will start opon closing this window", "Good job!");
         score = 0;
         document.getElementById('player-score').textContent = "Score: " + score+" pts";
     }else{
         arrayOfUsers.sort(function(a, b){return b.score-a.score}); 
-        let msg = "Deck is empty. Thank you for the game!  New Game will start once you press OK.<br>Leaderboard: <br>";
+        let msg = "Deck is empty. Thank you for the game!  New Game will start opon closing this window.<br>Leaderboard: <br>";
         for (let i = 0; i < arrayOfUsers.length; i++){
-            msg += arrayOfUsers[i].name +": "+arrayOfUsers[i].score +" pts\n";
+            msg += arrayOfUsers[i].name +": "+arrayOfUsers[i].score +" pts<br>";
             arrayOfUsers[i].score = 0;
             //update the view
             document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score+" pts";
@@ -324,6 +324,27 @@ function reset() {
 
 
 //button functions
+
+function tut(){
+    popup("This game involving matching and selecting three cards with the same or all different amount of shapes, colors, infills and numbers.<br>"+
+    "There are twelve cards on the screen all the time. The deck will have 69 cards remaining in the begining.<br>"+
+    "The game defaults into single player mode.<br>"+
+    "The game is playable in single player mode and it will count the overall score of the player.<br>"+
+    "The game can also be played in multiplayer local versus mode.<br>"+
+    "After clicking the start a versus game button, the web page will go into versus mode. It will first reset/restart all the current deck,<br>"+
+    "  table,scores etc, then the users are prompt to input how many players there will be.<br>"+
+    "And all the users need to input their user name as a tracker.<br>"+
+    "After input is complete, the game will start.<br>"+
+    "Upon selecting a set, the game will check if it is a set or not.<br>"+
+    "If in multiplyer mode, the game will ask for the current player's username before displaying the result and modifing the score.<br>"+
+    "User get one point if they get it right. User lose one point if they get it wrong.<br>"+
+    "User score cannot go below zero. This means the user can guess as many time as they want if their score is zero. (New player friendly)<br>"+
+    "Once the deck is empty and the user found a set, the game ends. And scores will be displayed.<br>"+
+    "After user closing the window, a new game will be started and the user can start again.<br>"+
+    "The maximum possible point avaiable for a player is 24 points.<br>"+
+    "If you want to restart the game, simply refresh the page.<br>"+
+    "For more informations, please refer to readme.md","How to play");
+}
 
 
 function cheat(){
@@ -412,13 +433,13 @@ function hint(){
     var setFound = findSet();
     if (setFound.length > 0){
         decreaseScore();
-        popup("Sets found! You got penalized 1 pts for this!(But you will get it back if you clicked on the hints right.", "Hint");
+        popup("Sets found! You got penalized 1 pts for this!<br>(But you will get it back if you clicked on the hints right.)", "No sets?");
         console.log(setFound);
         paintCard(setFound.pop(), 'yellow');
         paintCard(setFound.pop(), 'yellow');
         paintCard(setFound.pop(), 'yellow');
     }else{
-        popup("No sets found, replacing 3 cards. You earned a bonus point!", "Hint");
+        popup("You are right! No sets found!<br>Replacing 3 cards.<br>You earned a bonus point!", "No sets?");
         
         increaseScore();
         cardsToReplace = [document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12))];

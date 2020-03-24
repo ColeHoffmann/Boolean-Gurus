@@ -9,6 +9,8 @@ After clicking the start a versus game button, the web page will go into versus 
   table,scores etc, then the users are prompt to input how many players there will be.
 And all the users need to input their user name as a tracker.
 After input is complete, the game will start.
+Select the card you want to choose usign mouse clicks. The selected cards will be highlighted.
+If you want to unselect cards, select it twice.
 Upon selecting a set, the game will check if it is a set or not.
 If in multiplyer mode, the game will ask for the current player's username before displaying the result and modifing the score.
 User get one point if they get it right. User lose one point if they get it wrong.
@@ -16,6 +18,7 @@ User score cannot go below zero. This means the user can guess as many time as t
 Once the deck is empty and the user found a set, the game ends. And scores will be displayed.
 After user closing the window, a new game will be started and the user can start again.
 The maximum possible point avaiable for a player is 24 points.
+If you want to restart the game, simply refresh the page.
 
 "No set?" button:
 It is possible for the table to not have a valid set displayed. In this case, user can press the "No set?" botton.
