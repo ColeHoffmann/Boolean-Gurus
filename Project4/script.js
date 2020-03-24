@@ -99,11 +99,8 @@ class User {
 }
 
 function includes (array, element) {
-    var answer = false;
-    for (var i = 0; i < array.length; i++) {
-        if (array[i]===element) answer = true;
-    }
-    return answer;
+    if (array.indexOf(element) !== -1) return true;
+    return false;
 }
 
 class SetGame {
@@ -176,17 +173,13 @@ function createView(table){
 }
 
 
-
-
-var numPlayers = 1;
-var arrayOfUsers = [];
-
-function run(){ 
+function versusSetup(){ 
     //add reset html page before fun 
     var deck = new Deck();
-    var table = deck.drawTwelve();
-    var newGame = new SetGame(deck, table);
+    table = deck.drawTwelve();
+    newGame = new SetGame(deck, table);
     createView(table); 
+    document.getElementsByClassName('player-info')[0].innerHTML = '';
     
     //This will prompt for the number of players.
     numPlayers = prompt("How many players will be playing?", "Select (2,3,4)");
@@ -201,8 +194,15 @@ function run(){
     console.log(numPlayers);
 
     for(var i = 1; i <= numPlayers; i++){
-        var name = prompt("Player " +i+ " enter your Username: ");
-        arrayOfUsers.push(new User(name));
+        var name;
+        /*while (!includes(arrayOfUsers,name)){
+            name = prompt("Player " +i+ " enter your Username: ");
+            if (includes(arrayOfUsers,name)){
+                prompt("User name taken! Please choose another one");
+            }else{
+                arrayOfUsers.push(new User(name));
+            }
+        }*/
         //create player divs with class and id attr
         var playerNameDiv = document.createElement('div');
         playerNameDiv.setAttribute('class', 'player-name'); //class player-name
@@ -253,6 +253,54 @@ function hint(){
         replaceSelectedcards(cardsToReplace);
     }
 }
+
+//replace selected cards
+function replaceSelectedcards(cardsToCheck){
+    cardsToCheck.forEach(card=>{
+        var oldCard = document.getElementById(card.id);
+        console.log(card.id);
+        var newCard = deck.drawcard();
+        table[card.id - 1] = newCard;
+        var imageName = findImage(newCard);
+        oldCard.style.backgroundImage = "url(" + imageName + ")";
+        oldCard.style.backgroundColor = 'white';
+        //exit if deck size is zero
+        if(deck.length == 0){
+            //set olcard content no more cards in deck
+            oldCard.childNodes[1].textContent = "No more cards."
+        }
+       
+    })
+}
+
+
+//clear the card from the table ie set card to invisible
+function clearSelectedCard(cardID){
+    var cardToClear = document.getElementById(cardID);
+    cardToClear.style.backgroundColor = 'PaleTurquoise'; // change background to lime when card is selected
+}
+
+function addCardToSet(card){
+    cardsToCheck.add(card);
+}
+function checkForSet(cardsToCheck){
+    var it = cardsToCheck.values();
+    var card1 = it.next().value;
+    var card2 = it.next().value;
+    var card3 = it.next().value;
+    //console.log(card1.color);
+    //console.log(card2.color);
+    //check if card is a set
+    return newGame.isProperSet(card1, card2, card3);
+}
+
+
+
+//main function
+
+
+var numPlayers = 1;
+var arrayOfUsers = [];
 
 if (numPlayers == 1){
     var score = 0;
@@ -329,42 +377,3 @@ tableContainerArray.forEach(card=>{
     })
 })
 
-//replace selected cards
-function replaceSelectedcards(cardsToCheck){
-    cardsToCheck.forEach(card=>{
-        var oldCard = document.getElementById(card.id);
-        console.log(card.id);
-        var newCard = deck.drawcard();
-        table[card.id - 1] = newCard;
-        var imageName = findImage(newCard);
-        oldCard.style.backgroundImage = "url(" + imageName + ")";
-        oldCard.style.backgroundColor = 'white';
-        //exit if deck size is zero
-        if(deck.length == 0){
-            //set olcard content no more cards in deck
-            oldCard.childNodes[1].textContent = "No more cards."
-        }
-       
-    })
-}
-
-
-//clear the card from the table ie set card to invisible
-function clearSelectedCard(cardID){
-    var cardToClear = document.getElementById(cardID);
-    cardToClear.style.backgroundColor = 'PaleTurquoise'; // change background to lime when card is selected
-}
-
-function addCardToSet(card){
-    cardsToCheck.add(card);
-}
-function checkForSet(cardsToCheck){
-    var it = cardsToCheck.values();
-    var card1 = it.next().value;
-    var card2 = it.next().value;
-    var card3 = it.next().value;
-    //console.log(card1.color);
-    //console.log(card2.color);
-    //check if card is a set
-    return newGame.isProperSet(card1, card2, card3);
-}
