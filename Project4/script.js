@@ -232,19 +232,24 @@ function paintCard (number, color) {
 }
 
 function hint(){
+    var foundSet = false;
     for(var i = 0; i < 10; i++){
         for(var j = i + 1; j < 11; j++){
             for(var k = i + 2; k < 12; k++){
                 hintCheckCards = [tableContainerArray[i], tableContainerArray[j], tableContainerArray[k]];
                 if(checkForSet(hintCheckCards)){
                    // alert(tableContainerArray[i].id + " and " + tableContainerArray[j].id + " and " + tableContainerArray[k].id + " are a set");
-                   paintCard(i + 1, 'red');
-                   paintCard(j + 1, 'red');
-                   paintCard(k + 1, 'red');
+                   foundSet = true;
+                   paintCard(i + 1, 'yellow');
+                   paintCard(j + 1, 'yellow');
+                   paintCard(k + 1, 'yellow');
                     return;
                 }
             }
         }
+    }
+    if (!foundSet) {
+        alert("No sets found, sorry, you lose. Life is unfair.");
     }
 }
 
@@ -273,7 +278,7 @@ tableContainerArray.forEach(card=>{
             addCardToSet(card)
             var c = card.childNodes;
             console.log(c[1].textContent); //debugging
-            alert("you chose: " + card.id + "\n " + c[1].textContent); //for debugging
+          //  alert("you chose: " + card.id + "\n " + c[1].textContent); //for debugging
             clearSelectedCard(card.id);
         }
         else{
@@ -284,7 +289,7 @@ tableContainerArray.forEach(card=>{
         
         //if 3 cards are have been selected
         if(cardCount == 3){
-            alert("You have selected 3 cards.")
+          //  alert("You have selected 3 cards.")
             //replaceSelectedcards(cardsToCheck);
             var isASet = checkForSet(cardsToCheck);
             if(isASet){
