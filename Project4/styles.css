@@ -94,6 +94,7 @@ body {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  transition: all 5s ease-in-out;
 }
 
 /* Modal Content */
@@ -102,6 +103,7 @@ body {
   background-color: #fefefe;
   margin: auto;
   padding: 0;
+  border-radius: 10px;
   border: 1px solid #888;
   width: 50%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -109,6 +111,7 @@ body {
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s
+  
 }
 
 /* Add Animation for popup*/
@@ -124,7 +127,7 @@ body {
 
 /* The Close Button */
 .close {
-  color: white;
+  color: black;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -132,21 +135,23 @@ body {
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: red;
   text-decoration: none;
   cursor: pointer;
 }
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5eb5f0;
-  color: white;
+  background-color: white;
+  border-radius: 10px 10px 0px 0px;
+  color: black;
 }
 
 .modal-body {padding: 2px 16px;}
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5eb5f0;
-  color: white;
+  background-color: white;
+  border-radius: 0px 0px 10px 10px;
+  color: black;
 }
