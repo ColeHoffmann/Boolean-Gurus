@@ -181,7 +181,7 @@ function createView(table){
 
 
 
-var numPlayers = 0;
+var numPlayers = 1;
 var arrayOfUsers = [];
 
 function run(){ 
@@ -253,6 +253,12 @@ function hint(){
 }
 
 
+var score = 0;
+var playerScoreDiv = document.createElement('div');
+playerScoreDiv.setAttribute('class', 'player-score');
+playerScoreDiv.setAttribute('id', 'player-score'); //eg id=player1-score
+playerScoreDiv.textContent = "Score: " + score;
+document.getElementsByClassName('player-info')[0].appendChild(playerScoreDiv);
 
 var cardCount = 0;
 var deck = new Deck();
@@ -291,15 +297,20 @@ tableContainerArray.forEach(card=>{
             //replaceSelectedcards(cardsToCheck);
             var isASet = checkForSet(cardsToCheck);
             if(isASet){
-                user.incrementScore();
+                if(numPlayers == 1) {
+                    score++;
+                    document.getElementById('player-score').textContent = "Score: " + score;
+                }
                 replaceSelectedcards(cardsToCheck);
+                alert("You are right! score incremented!");
             } else {
                 // clear selected background color
                 cardsToCheck.forEach(card=>{
                     document.getElementById(card.id).style.backgroundColor = 'white';
                 })
+                alert("Sorry, you are wrong! Score decremented, please try again!");
             }
-            alert(isASet);
+            
             cardCount = 0;
             cardsToCheck.clear(); //clear set
         }
