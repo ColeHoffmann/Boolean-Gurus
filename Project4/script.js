@@ -98,6 +98,10 @@ class User {
     
 }
 
+function endGame() {
+     alert("Deck is empty. You score is " + score);
+}
+
 function includes (array, element) {
     var answer = false;
     for (var i = 0; i < array.length; i++) {
@@ -184,8 +188,8 @@ var arrayOfUsers = [];
 function run(){ 
     //add reset html page before fun 
     var deck = new Deck();
-    var table = deck.drawTwelve();
-    var newGame = new SetGame(deck, table);
+    table = deck.drawTwelve();
+    newGame = new SetGame(deck, table);
     createView(table); 
     
     //This will prompt for the number of players.
@@ -249,7 +253,17 @@ function hint(){
     }
     if (!foundSet) {
         alert("No sets found, replacing 3 cards");
-        cardsToReplace = [document.getElementById(1), document.getElementById(2), document.getElementById(3)];
+        var array = [];
+        for (var r = 1; r < 13; r++) {
+            array[r-1] = r;
+        }
+        var length = array.length;
+        console.log(length);
+        while (length--) {
+          const x = Math.floor(Math.random() * (i + 1));
+          [array[i], array[x]] = [array[x], array[i]];
+        }
+        cardsToReplace = [document.getElementById(array[0]), document.getElementById(array[1]), document.getElementById(array[2])];
         replaceSelectedcards(cardsToReplace);
     }
 }
@@ -307,7 +321,7 @@ tableContainerArray.forEach(card=>{
                 }
 
                 replaceSelectedcards(cardsToCheck);
-                alert("You are right! score incremented!");
+               // alert("You are right! score incremented!");
             } else {
                 // clear selected background color
                 cardsToCheck.forEach(card=>{
@@ -331,21 +345,21 @@ tableContainerArray.forEach(card=>{
 
 //replace selected cards
 function replaceSelectedcards(cardsToCheck){
-    cardsToCheck.forEach(card=>{
-        var oldCard = document.getElementById(card.id);
-        console.log(card.id);
-        var newCard = deck.drawcard();
-        table[card.id - 1] = newCard;
-        var imageName = findImage(newCard);
-        oldCard.style.backgroundImage = "url(" + imageName + ")";
-        oldCard.style.backgroundColor = 'white';
-        //exit if deck size is zero
-        if(deck.length == 0){
-            //set olcard content no more cards in deck
-            oldCard.childNodes[1].textContent = "No more cards."
-        }
+    if (deck.cards.length > 0) {
+        cardsToCheck.forEach(card=>{
+           var oldCard = document.getElementById(card.id);
+           var newCard = deck.drawcard();
+           table[card.id - 1] = newCard;
+           var imageName = findImage(newCard);
+           oldCard.style.backgroundImage = "url(" + imageName + ")";
+           oldCard.style.backgroundColor = 'white';   
+      })
+    }
+    else {
+        endGame();
        
-    })
+
+    }
 }
 
 
