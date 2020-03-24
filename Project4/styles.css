@@ -33,6 +33,7 @@ body {
 }
 
 .card {
+  font-size: 0;
   background-color: white;
   height: 200px;
   width: 150px;
