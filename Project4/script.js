@@ -25,6 +25,7 @@ class Deck {
                 }
             }
         }
+        this.shuffleCards();
     }
 
     shuffleCards(){
@@ -110,6 +111,13 @@ class SetGame {
     constructor(deck, table){
         this.deck = deck;
         this.table = table;
+        var tableContainer = document.getElementsByClassName('card');
+        var tableContainerArray = Array.from(tableContainer);
+        for(var i = 0; i < tableContainerArray.length; i++){
+            //add cards info to table 
+            var textNode = document.createTextNode(this.table[i].toString())
+            tableContainer[i].appendChild(textNode);
+        }
     }
 
 
@@ -140,17 +148,6 @@ class SetGame {
 	    return answer;
     }
 
-    //initialize table ie. populate it with cards
-    initTable(){
-        var tableContainer = document.getElementsByClassName('card');
-        var tableContainerArray = Array.from(tableContainer);
-        for(var i = 0; i < tableContainerArray.length; i++){
-            //add cards info to table 
-            var textNode = document.createTextNode(this.table[i].toString())
-            tableContainer[i].appendChild(textNode);
-        }
-        
-    }
 }
 
 
@@ -186,7 +183,10 @@ var arrayOfUsers = [];
 
 function run(){ 
     //add reset html page before fun 
-
+    var deck = new Deck();
+    var table = deck.drawTwelve();
+    var newGame = new SetGame(deck, table);
+    createView(table); 
     
     //This will prompt for the number of players.
     numPlayers = prompt("How many players will be playing?", "Select (2,3,4)");
@@ -254,21 +254,22 @@ function hint(){
     }
 }
 
+if (numPlayers == 1){
+    var score = 0;
+    var playerScoreDiv = document.createElement('div');
+    playerScoreDiv.setAttribute('class', 'player-score');
+    playerScoreDiv.setAttribute('id', 'player-score'); //eg id=player1-score
+    playerScoreDiv.textContent = "Score: " + score;
+    document.getElementsByClassName('player-info')[0].appendChild(playerScoreDiv);
+}
 
-var score = 0;
-var playerScoreDiv = document.createElement('div');
-playerScoreDiv.setAttribute('class', 'player-score');
-playerScoreDiv.setAttribute('id', 'player-score'); //eg id=player1-score
-playerScoreDiv.textContent = "Score: " + score;
-document.getElementsByClassName('player-info')[0].appendChild(playerScoreDiv);
-
-var cardCount = 0;
+//initialize game
 var deck = new Deck();
-deck.shuffleCards();
 var table = deck.drawTwelve();
 var newGame = new SetGame(deck, table);
-newGame.initTable();
 createView(table); 
+
+
 //set to keep 3 cards selected, wont accept duplicates
 var cardsToCheck = new Set();
 
@@ -277,6 +278,7 @@ var cardsToCheck = new Set();
 var tableContainer = document.getElementsByClassName('card');
 var tableContainerArray = Array.from(tableContainer);
 
+var cardCount = 0;
 tableContainerArray.forEach(card=>{
     card.addEventListener('click', () =>{
         if(!cardsToCheck.has(card)){
