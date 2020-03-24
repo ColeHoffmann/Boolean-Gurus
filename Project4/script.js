@@ -98,6 +98,10 @@ class User {
     
 }
 
+function endGame() {
+     alert("Deck is empty. You score is " + score);
+}
+
 function includes (array, element) {
     if (array.indexOf(element) !== -1) return true;
     return false;
@@ -131,17 +135,9 @@ class SetGame {
 	    	shape += array[i].shape;
             color += array[i].color;
             pattern += array[i].pattern;
-        //    console.log(array[i].pattern);
             number += array[i].number;
 	    }
-        //	console.log(color);
 	    var answer = ((includes(valid, shape))&&(includes(valid, color))&&(includes(valid, pattern))&&(includes(valid, number)));
-        /*	console.log(answer);
-	    console.log(pattern);
-	    console.log(includes(valid, shape));
-	    console.log(includes(valid, color));
-	    console.log(includes(valid, pattern));
-	    console.log(includes(valid, number)); */
 	    return answer;
     }
 
@@ -203,8 +199,7 @@ function versusSetup(){
                 arrayOfUsers.push(new User(name));
             }
         }*/
-        //create player divs with class and id attr
-        var playerNameDiv = document.createElement('div');
+        //create player divs with class and id attr        arrayOfUsers.push(new User(name));
         playerNameDiv.setAttribute('class', 'player-name'); //class player-name
         playerNameDiv.setAttribute('id', 'player'+i+'-name'); //eg id=player1-name
         playerNameDiv.textContent = "Player " + i + ": " + name;
@@ -237,7 +232,6 @@ function hint(){
             for(var k = i + 2; k < 12; k++){
                 hintCheckCards = [tableContainerArray[i], tableContainerArray[j], tableContainerArray[k]];
                 if(checkForSet(hintCheckCards)){
-                   // alert(tableContainerArray[i].id + " and " + tableContainerArray[j].id + " and " + tableContainerArray[k].id + " are a set");
                    foundSet = true;
                    paintCard(i + 1, 'yellow');
                    paintCard(j + 1, 'yellow');
@@ -249,28 +243,38 @@ function hint(){
     }
     if (!foundSet) {
         alert("No sets found, replacing 3 cards");
-        cardsToReplace = [document.getElementById(1), document.getElementById(2), document.getElementById(3)];
+        var array = [];
+        for (var r = 1; r < 13; r++) {
+            array[r-1] = r;
+        }
+        var length = array.length;
+        console.log(length);
+        while (length--) {
+          const x = Math.floor(Math.random() * (i + 1));
+          [array[i], array[x]] = [array[x], array[i]];
+        }
+        cardsToReplace = [document.getElementById(array[0]), document.getElementById(array[1]), document.getElementById(array[2])];
         replaceSelectedcards(cardsToReplace);
     }
 }
 
 //replace selected cards
 function replaceSelectedcards(cardsToCheck){
-    cardsToCheck.forEach(card=>{
-        var oldCard = document.getElementById(card.id);
-        console.log(card.id);
-        var newCard = deck.drawcard();
-        table[card.id - 1] = newCard;
-        var imageName = findImage(newCard);
-        oldCard.style.backgroundImage = "url(" + imageName + ")";
-        oldCard.style.backgroundColor = 'white';
-        //exit if deck size is zero
-        if(deck.length == 0){
-            //set olcard content no more cards in deck
-            oldCard.childNodes[1].textContent = "No more cards."
-        }
+    if (deck.cards.length > 0) {
+        cardsToCheck.forEach(card=>{
+           var oldCard = document.getElementById(card.id);
+           var newCard = deck.drawcard();
+           table[card.id - 1] = newCard;
+           var imageName = findImage(newCard);
+           oldCard.style.backgroundImage = "url(" + imageName + ")";
+           oldCard.style.backgroundColor = 'white';   
+      })
+    }
+    else {
+        endGame();
        
-    })
+
+    }
 }
 
 
@@ -288,12 +292,9 @@ function checkForSet(cardsToCheck){
     var card1 = it.next().value;
     var card2 = it.next().value;
     var card3 = it.next().value;
-    //console.log(card1.color);
-    //console.log(card2.color);
     //check if card is a set
     return newGame.isProperSet(card1, card2, card3);
 }
-
 
 
 //main function
@@ -376,4 +377,3 @@ tableContainerArray.forEach(card=>{
         }
     })
 })
-
