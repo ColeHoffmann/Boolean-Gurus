@@ -42,8 +42,7 @@ class Deck {
         }
         this.size = this.size - 12;
         //update deck size
-        var cardsLeft = document.getElementById('cards-left');
-        cardsLeft.childNodes[0].textContent = deck.size; 
+        document.getElementById('cards-left').childNodes[0].textContent = deck.size; 
 
         return table;
     }
@@ -52,8 +51,7 @@ class Deck {
 
         this.size --;
          // update cards left
-         var cardsLeft = document.getElementById('cards-left');
-         cardsLeft.childNodes[0].textContent = deck.size;
+         document.getElementById('cards-left').childNodes[0].textContent = deck.size;
         return this.cards.pop();
         
     }
@@ -64,16 +62,15 @@ class Deck {
     
 class User {
     //user functionalities
-    constructor(name, hotkey){
+    constructor(name){
         this.name = name;
-        this.hotkey = hotkey;
         this.score = 0;
     }
         
     incrementScore(){
         //increment the score
         this.score++;
-        var currentScore = document.getElementById('score');
+        //var currentScore = document.getElementById('score');
         //update it
        // currentScore.childNodes[0].textContent = this.score;
         //return score
@@ -83,9 +80,11 @@ class User {
     decrementScore(){
         if(this.score != 0){
             this.score--;
+            /*
             var currentScore = document.getElementById('score');
             //update it
             currentScore.childNodes[0].textContent = this.score;
+            */
         }
         //return score
         return this.score;
@@ -191,12 +190,12 @@ function run(){
 
     
     //This will prompt for the number of players.
-    numPlayers = prompt("How many players will be playing?", "Select (1,2,3,4)");
-    var possiblePlayerNumber = ["1", "2", "3", "4"];
+    numPlayers = prompt("How many players will be playing?", "Select (2,3,4)");
+    var possiblePlayerNumber = ["2", "3", "4"];
     
     //If the responce is invalid, keep asking for number of Players.
     while(!possiblePlayerNumber.includes(numPlayers)){
-        var numPlayers = window.prompt("Oops. You chose an incorrect Value. How many players will be playing?", "Select (1,2,3,4)");
+        var numPlayers = window.prompt("Oops. You chose an incorrect Value. How many players will be playing?", "Select (2,3,4)");
     }
     //turn it from a string to an int. (i.e. "1" * 1.0 = 1.0)    //    console.log(array[i].pattern);
     numPlayers = numPlayers * 1;
@@ -204,8 +203,7 @@ function run(){
 
     for(var i = 1; i <= numPlayers; i++){
         var name = prompt("Player " +i+ " enter your Username: ");
-        var hotkey = prompt("Player " +i+ " enter your hot key to choose when to play: ");
-        arrayOfUsers.push(new User(name, hotkey));
+        arrayOfUsers.push(new User(name));
         //create player divs with class and id attr
         var playerNameDiv = document.createElement('div');
         playerNameDiv.setAttribute('class', 'player-name'); //class player-name
@@ -250,7 +248,7 @@ var cardCount = 0;
 var deck = new Deck();
 deck.shuffleCards();
 var table = deck.drawTwelve();
-var user = new User("Franklin", 'i');
+var user = new User("default");
 var newGame = new SetGame(deck, table, user);
 newGame.initTable();
 createView(table); 
@@ -271,29 +269,30 @@ tableContainerArray.forEach(card=>{
             console.log(c[1].textContent); //debugging
             alert("you chose: " + card.id + "\n " + c[1].textContent); //for debugging
             clearSelectedCard(card.id);
-            //if 3 cards are have been selected
-            if(cardCount == 3){
-                alert("You have selected 3 cards.")
-                //replaceSelectedcards(cardsToCheck);
-                var isASet = checkForSet(cardsToCheck);
-                if(isASet){
-                    user.incrementScore();
-                    replaceSelectedcards(cardsToCheck);
-                } else {
-                    // clear selected background color
-                    cardsToCheck.forEach(card=>{
-                        document.getElementById(card.id).style.backgroundColor = 'white';
-                    })
-                }
-                alert(isASet);
-                cardCount = 0;
-                cardsToCheck.clear(); //clear set
-            }
         }
         else{
             cardCount = cardCount - 1;
             cardsToCheck.delete(card);
             document.getElementById(card.id).style.backgroundColor = 'white';
+        }
+        
+        //if 3 cards are have been selected
+        if(cardCount == 3){
+            alert("You have selected 3 cards.")
+            //replaceSelectedcards(cardsToCheck);
+            var isASet = checkForSet(cardsToCheck);
+            if(isASet){
+                user.incrementScore();
+                replaceSelectedcards(cardsToCheck);
+            } else {
+                // clear selected background color
+                cardsToCheck.forEach(card=>{
+                    document.getElementById(card.id).style.backgroundColor = 'white';
+                })
+            }
+            alert(isASet);
+            cardCount = 0;
+            cardsToCheck.clear(); //clear set
         }
     })
 })
