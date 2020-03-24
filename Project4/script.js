@@ -213,24 +213,66 @@ function versusSetup(){
 
     //write the number of players
     document.getElementById("players-number").textContent = numPlayers;
-
+    
 }
 
 function paintCard (number, color) {
     document.getElementById(number).style.backgroundColor = color;
 }
 
+function increaseScore (){
+    numPlayers = document.getElementById("players-number").textContent * 1;
+    console.log(numPlayers);
+    if (numPlayers == 1){
+        score ++;
+        document.getElementById('player-score').textContent = "Score: " + score;
+    }else{
+        name = prompt("Player enter your Username for scoring (Please be honest)");
+        while (!includes(names,name)){
+            name = prompt("Username not found!\nPlayer enter your Username for scoring (Please be honest)");
+        }
+        console.log(arrayOfUsers);
+        for (let i = 0; i < arrayOfUsers.length; i++){
+            if (arrayOfUsers[i].name == name) {
+                arrayOfUsers[i].score ++;
+                //update the view
+                document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score;
+            }
+        }
+    }
+}
+function decreaseScore (){
+    numPlayers = document.getElementById("players-number").textContent * 1;
+    if (numPlayers == 1){
+        if (score > 0) {
+            score--;
+            document.getElementById('player-score').textContent = "Score: " + score;
+        }
+    }else{
+        name = prompt("Player enter your Username for scoring (Please be honest)");
+        while (!includes(names,name)){
+            name = prompt("Username not found!\nPlayer enter your Username for scoring (Please be honest)");
+        }
+        console.log(arrayOfUsers);
+        for (let i = 0; i < arrayOfUsers.length; i++){
+            if (arrayOfUsers[i].name == name && arrayOfUsers[i].score > 0) {
+                arrayOfUsers[i].score --;
+                //update the view
+                document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score;
+            }
+        }
+    }
+}
+
 function hint(){
     let foundSet = false;
-    document.getElementById('player-score').textContent = "Score: " + score;
     for(var i = 0; i < 10; i++){
         for(var j = i + 1; j < 11; j++){
             for(var k = i + 2; k < 12; k++){
                 hintCheckCards = [tableContainerArray[i], tableContainerArray[j], tableContainerArray[k]];
                 if(checkForSet(hintCheckCards)){
                     if (score > 0) {
-                        score--;
-                        document.getElementById('player-score').textContent = "Score: " + score;
+                        decreaseScore();
                     }
                    foundSet = true;
                    paintCard(i + 1, 'yellow');
@@ -242,10 +284,9 @@ function hint(){
         }
     }
     if (!foundSet) {
-        alert("No sets found, replacing 3 cards. You earned a free point!");
+        alert("No sets found, replacing 3 cards. You earned a bonus point!");
         
-        score = score + 1;
-        document.getElementById('player-score').textContent = "Score: " + score;
+        increaseScore();
         var array = [];
         for (var r = 1; r < 13; r++) {
             array[r-1] = r;
@@ -321,7 +362,6 @@ var tableContainerArray = Array.from(tableContainer);
 var cardCount = 0;
 tableContainerArray.forEach(card=>{
     card.addEventListener('click', () =>{
-        numPlayers = document.getElementById("players-number").textContent * 1;
         console.log(numPlayers);
         if(!cardsToCheck.has(card)){
             cardCount = cardCount + 1;
@@ -343,34 +383,13 @@ tableContainerArray.forEach(card=>{
             //replaceSelectedcards(cardsToCheck);
             var isASet = checkForSet(cardsToCheck);
             if(isASet){
-                if(numPlayers == 1) {
-                    score++;
-                    document.getElementById('player-score').textContent = "Score: " + score;
-                }else{
-                    name = prompt("Player enter your Username for scoring (Please be honest)");
-                    while (!includes(names,name)){
-                        name = prompt("Username not found!\nPlayer enter your Username for scoring (Please be honest)");
-                    }
-                    console.log(arrayOfUsers);
-                    for (let i = 0; i < arrayOfUsers.size; i++){
-                        console.log(arrayOfUsers[i].name);
-                        if (arrayOfUsers[i].name == name) {
-                            arrayOfUsers[i].score ++;
-                            //update the view
-                            document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score;
-                        }
-                    }
-                }
+                increaseScore();
                 alert("You are right! score incremented!");
                 replaceSelectedcards(cardsToCheck);
                 
             } else {
                 // clear selected background color
-                if(numPlayers == 1) {
-                    score--;
-                    if (score < 0) score = 0;
-                    document.getElementById('player-score').textContent = "Score: " + score;
-                }
+                decreaseScore();
                 alert("Sorry, you are wrong! Score decremented (not below 0)! Please try again!");
             }
             // clear selected and suggested cards background
