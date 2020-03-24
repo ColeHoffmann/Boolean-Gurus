@@ -259,13 +259,18 @@ function checkForSet(cardsToCheck){
     return newGame.isProperSet(card1, card2, card3);
 }
 
-function popup(stringElement){
+function popup(stringElement, title){
 
     //var text = document.createTextNode(text);
     var popupContent = document.getElementById("popup-content");
    // popupContent.textContent = stringElement;
     popupContent.innerHTML = "";
     popupContent.innerHTML = stringElement;
+
+    //add title
+    var header = document.getElementsByClassName("modal-header")[0].lastElementChild;
+    header.innerHTML = "";
+    header.innerHTML = title;
         // Get the modal
     var modal = document.getElementById("myModal");
 
@@ -292,7 +297,7 @@ function popup(stringElement){
 function reset() {
     numPlayers = document.getElementById("players-number").textContent * 1;
     if (numPlayers == 1){
-        popup("Deck is empty. You score is " + score + " pts. <br>Thank you for the game! New Game will start once you press OK");
+        popup("Deck is empty. You score is " + score + " pts. <br>Thank you for the game! New Game will start once you press OK", "Good job!");
         score = 0;
         document.getElementById('player-score').textContent = "Score: " + score+" pts";
     }else{
@@ -304,7 +309,7 @@ function reset() {
             //update the view
             document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score+" pts";
         }
-        popup(msg);
+        popup(msg, "Scores");
     }
     deck = new Deck();
     table = deck.drawTwelve();
@@ -407,13 +412,13 @@ function hint(){
     var setFound = findSet();
     if (setFound.length > 0){
         decreaseScore();
-        popup("Sets found! You got penalized 1 pts for this!(But you will get it back if you clicked on the hints right.");
+        popup("Sets found! You got penalized 1 pts for this!(But you will get it back if you clicked on the hints right.", "Hint");
         console.log(setFound);
         paintCard(setFound.pop(), 'yellow');
         paintCard(setFound.pop(), 'yellow');
         paintCard(setFound.pop(), 'yellow');
     }else{
-        popup("No sets found, replacing 3 cards. You earned a bonus point!");
+        popup("No sets found, replacing 3 cards. You earned a bonus point!", "Hint");
         
         increaseScore();
         cardsToReplace = [document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12))];
@@ -470,14 +475,14 @@ tableContainerArray.forEach(card=>{
             if(isASet){
                 increaseScore();
                 //alert("You are right! score incremented!");
-                popup("You are right! score incremented!");
+                popup("You are right! score incremented!", "&#128512");
                 replaceSelectedcards(cardsToCheck);
                 
             } else {
                 // clear selected background color
                 decreaseScore();
                 //alert("Sorry, you are wrong! Score decremented (not below 0)! Please try again!");
-                popup("Sorry, you are wrong! Score decremented (not below 0)! Please try again!"); 
+                popup("Sorry, you are wrong! Score decremented (not below 0)! Please try again!", "&#128542"); 
             }
             // clear selected and suggested cards background
             for (var i = 1; i < 13; i++) {
