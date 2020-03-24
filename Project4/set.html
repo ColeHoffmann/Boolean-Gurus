@@ -9,50 +9,66 @@
     <link href="https://fonts.googleapis.com/css?family=Nova+Square&display=swap" rel="stylesheet">
 
   </head>
-
   <body>
 
-    <!--script src="js/scripts.js"></script-->
-      <h1> The Game Of Set</h1>
-      <hr>
-          <!-- w3 schools --> 
-        <button class="tut" onclick ="alert('To Create a set, match 3 cards whose shapes, color, count and fill are all the same or all different!')" >How to Play </button>
+        <!-- The Modal w3 school-->
+        <div id="myModal" class="modal">
 
-        <button class = "hint" onclick = hint()> Hint </button>
-        <button class = "runGame" onclick = versusSetup()> Click here to start a versus game </button>
-        <button class = "cheat" onclick = cheat()> CHEAT! </button>
-
-  
-  
-  <div class="game-container-info">
-    <div class="game-info">
-      Number of Players: <span id="players-number"> 1 </span><br>
-      Cards left: <span id="cards-left"> 0 </span>
-    </div>
-    <div class="player-info">
-    </div>
-
-  <div class="cards-container">
-    <div id="table">
-      <button class="card" id="1"> </button>
-      <button class="card" id="2"> </button>
-      <button class="card" id="3"> </button>
-      <button class="card" id="4"> </button>
-      <button class="card" id="5"> </button>
-      <button class="card" id="6"> </button>
-      <button class="card" id="7"> </button>
-      <button class="card" id="8"> </button>
-      <button class="card" id="9"> </button>
-      <button class="card" id="10"> </button>
-      <button class="card" id="11"> </button>
-      <button class="card" id="12"> </button>
-    </div>
-  </div>
-
-  <div id ="cheat logs">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="close">&times;</span>
+              <h2>Set Game</h2>
+            </div>
+            <div class="modal-body" id="popup-content">
+            </div>
+            <div class="modal-footer">
+              <h3>Presented by Boolean Gurus</h3>
+            </div>
+          </div>
     
-  </div>
+        </div>
+      <!--script src="js/scripts.js"></script-->
+        <h1> The Game Of Set</h1>
+        <hr>
+            <!-- w3 schools --> 
+          <button class="tut" onclick ="alert('To Create a set, match 3 cards whose shapes, color, count and fill are all the same or all different!')" >How to Play </button>
 
-  <script src="script.js" ></script>
+          <button class = "hint" onclick = hint()> Hint </button>
+          <button class = "runGame" onclick = versusSetup()> Click here to start a versus game </button>
+          <button class = "cheat" onclick = cheat()> CHEAT! </button>
+
+    
+    
+    <div class="game-container-info">
+      <div class="game-info">
+        Number of Players: <span id="players-number"> 1 </span><br>
+        Cards left: <span id="cards-left"> 0 </span>
+      </div>
+      <div class="player-info">
+      </div>
+
+    <div class="cards-container">
+      <div id="table">
+        <button class="card" id="1"> </button>
+        <button class="card" id="2"> </button>
+        <button class="card" id="3"> </button>
+        <button class="card" id="4"> </button>
+        <button class="card" id="5"> </button>
+        <button class="card" id="6"> </button>
+        <button class="card" id="7"> </button>
+        <button class="card" id="8"> </button>
+        <button class="card" id="9"> </button>
+        <button class="card" id="10"> </button>
+        <button class="card" id="11"> </button>
+        <button class="card" id="12"> </button>
+      </div>
+    </div>
+
+    <div id ="cheat logs">
+      
+    </div>
+
+    <script src="script.js" ></script>
   </body>
 </html>

@@ -376,6 +376,34 @@ function checkForSet(cardsToCheck){
     return newGame.isProperSet(card1, card2, card3);
 }
 
+function popup(stringElement){
+
+    //var text = document.createTextNode(text);
+    var popupContent = document.getElementById("popup-content");
+    popupContent.textContent = stringElement;
+        // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    modal.style.display = "block";
+  
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
 
 //main function
 
@@ -422,13 +450,17 @@ tableContainerArray.forEach(card=>{
             var isASet = checkForSet(cardsToCheck);
             if(isASet){
                 increaseScore();
-                alert("You are right! score incremented!");
+                //alert("You are right! score incremented!");
+                var text = "You are right! score incremented!"; 
+                popup(text);
                 replaceSelectedcards(cardsToCheck);
                 
             } else {
                 // clear selected background color
                 decreaseScore();
-                alert("Sorry, you are wrong! Score decremented (not below 0)! Please try again!");
+                //alert("Sorry, you are wrong! Score decremented (not below 0)! Please try again!");
+                var text = "Sorry, you are wrong! Score decremented (not below 0)! Please try again!";
+                popup(text); 
             }
             // clear selected and suggested cards background
             for (var i = 1; i < 13; i++) {
