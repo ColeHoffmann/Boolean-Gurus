@@ -88,7 +88,7 @@ class User {
 function reset() {
     numPlayers = document.getElementById("players-number").textContent * 1;
     if (numPlayers == 1){
-        alert("Deck is empty. You score is " + score + " pts. Thank you for the game! New Game will start once you press OK");
+        popup("Deck is empty. You score is " + score + " pts. Thank you for the game! New Game will start once you press OK");
         score = 0;
         document.getElementById('player-score').textContent = "Score: " + score+" pts";
     }else{
@@ -100,7 +100,7 @@ function reset() {
             //update the view
             document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score+" pts";
         }
-        alert(msg);
+        popup(msg);
     }
     deck = new Deck();
     table = deck.drawTwelve();
@@ -326,13 +326,13 @@ function hint(){
     var setFound = findSet();
     if (setFound.length > 0){
         decreaseScore();
-        alert("Sets found! You got penalized 1 pts for this!\n(But you will get it back if you clicked on the hints right.");
+        popup("Sets found! You got penalized 1 pts for this!\n(But you will get it back if you clicked on the hints right.");
         console.log(setFound);
         paintCard(setFound.pop(), 'yellow');
         paintCard(setFound.pop(), 'yellow');
         paintCard(setFound.pop(), 'yellow');
     }else{
-        alert("No sets found, replacing 3 cards. You earned a bonus point!");
+        popup("No sets found, replacing 3 cards. You earned a bonus point!");
         
         increaseScore();
         cardsToReplace = [document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12))];
@@ -451,16 +451,14 @@ tableContainerArray.forEach(card=>{
             if(isASet){
                 increaseScore();
                 //alert("You are right! score incremented!");
-                var text = "You are right! score incremented!"; 
-                popup(text);
+                popup("You are right! score incremented!");
                 replaceSelectedcards(cardsToCheck);
                 
             } else {
                 // clear selected background color
                 decreaseScore();
                 //alert("Sorry, you are wrong! Score decremented (not below 0)! Please try again!");
-                var text = "Sorry, you are wrong! Score decremented (not below 0)! Please try again!";
-                popup(text); 
+                popup("Sorry, you are wrong! Score decremented (not below 0)! Please try again!"); 
             }
             // clear selected and suggested cards background
             for (var i = 1; i < 13; i++) {
