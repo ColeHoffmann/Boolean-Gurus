@@ -326,13 +326,17 @@ function hint(){
     var setFound = findSet();
     if (setFound.length > 0){
         decreaseScore();
-        alert("Sets found! You got penalized 1 pts for this!\n(But you will get it back if you clicked on the hints right.");
+       // alert("Sets found! You got penalized 1 pts for this!\n(But you will get it back if you clicked on the hints right.");
+        var text = "Sets found! You got penalized 1 pts for this!\n(But you will get it back if you clicked on the hints right."; 
+        popup(text);
         console.log(setFound);
         paintCard(setFound.pop(), 'yellow');
         paintCard(setFound.pop(), 'yellow');
         paintCard(setFound.pop(), 'yellow');
     }else{
         alert("No sets found, replacing 3 cards. You earned a bonus point!");
+        var text = "No sets found, replacing 3 cards. You earned a bonus point!";
+        popup(text); 
         
         increaseScore();
         cardsToReplace = [document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12))];
@@ -404,6 +408,10 @@ function popup(stringElement){
     }
 }
 
+function instruction(){
+    var text = "To Create a set, match 3 cards whose shapes, color, count and fill are all the same or all different!";
+    popup(text);
+}
 
 //main function
 
