@@ -86,7 +86,8 @@ class User {
 }
 
 function endGame() {
-     alert("Deck is empty. You score is " + score);
+     alert("Deck is empty. You score is " + score + ". Thank you for the game! New Game will start once you press OK");
+     location.reload(5);
 }
 
 function includes (array, element) {
@@ -220,12 +221,17 @@ function paintCard (number, color) {
 }
 
 function hint(){
-    var foundSet = false;
+    let foundSet = false;
+    document.getElementById('player-score').textContent = "Score: " + score;
     for(var i = 0; i < 10; i++){
         for(var j = i + 1; j < 11; j++){
             for(var k = i + 2; k < 12; k++){
                 hintCheckCards = [tableContainerArray[i], tableContainerArray[j], tableContainerArray[k]];
                 if(checkForSet(hintCheckCards)){
+                    if (score > 0) {
+                        score--;
+                        document.getElementById('player-score').textContent = "Score: " + score;
+                    }
                    foundSet = true;
                    paintCard(i + 1, 'yellow');
                    paintCard(j + 1, 'yellow');
@@ -236,7 +242,10 @@ function hint(){
         }
     }
     if (!foundSet) {
-        alert("No sets found, replacing 3 cards");
+        alert("No sets found, replacing 3 cards. You earned a free point!");
+        
+        score = score + 1;
+        document.getElementById('player-score').textContent = "Score: " + score;
         var array = [];
         for (var r = 1; r < 13; r++) {
             array[r-1] = r;
@@ -266,8 +275,6 @@ function replaceSelectedcards(cardsToCheck){
     }
     else {
         endGame();
-       
-
     }
 }
 
@@ -354,16 +361,11 @@ tableContainerArray.forEach(card=>{
                         }
                     }
                 }
-
-                replaceSelectedcards(cardsToCheck);
                 alert("You are right! score incremented!");
+                replaceSelectedcards(cardsToCheck);
+                
             } else {
                 // clear selected background color
-                cardsToCheck.forEach(card=>{
-                    for (var i = 1; i < 13; i++) {
-                        paintCard(i, 'white');
-                    }
-                })
                 if(numPlayers == 1) {
                     score--;
                     if (score < 0) score = 0;
@@ -371,7 +373,10 @@ tableContainerArray.forEach(card=>{
                 }
                 alert("Sorry, you are wrong! Score decremented (not below 0)! Please try again!");
             }
-            
+            // clear selected and suggested cards background
+            for (var i = 1; i < 13; i++) {
+                paintCard(i, 'white');
+            }
             cardCount = 0;
             cardsToCheck.clear(); //clear set
         }
