@@ -248,7 +248,9 @@ function hint(){
         }
     }
     if (!foundSet) {
-        alert("No sets found, sorry, you lose. Life is unfair.");
+        alert("No sets found, replacing 3 cards");
+        cardsToReplace = [document.getElementById(1), document.getElementById(2), document.getElementById(3)];
+        replaceSelectedcards(cardsToReplace);
     }
 }
 
@@ -301,12 +303,15 @@ tableContainerArray.forEach(card=>{
                     score++;
                     document.getElementById('player-score').textContent = "Score: " + score;
                 }
+
                 replaceSelectedcards(cardsToCheck);
                 alert("You are right! score incremented!");
             } else {
                 // clear selected background color
                 cardsToCheck.forEach(card=>{
-                    document.getElementById(card.id).style.backgroundColor = 'white';
+                    for (var i = 1; i < 13; i++) {
+                        paintCard(i, 'white');
+                    }
                 })
                 alert("Sorry, you are wrong! Score decremented, please try again!");
             }
