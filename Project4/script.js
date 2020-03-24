@@ -291,7 +291,9 @@ tableContainerArray.forEach(card=>{
             }
         }
         else{
-            alert("You can't select the same card more than once");
+            cardCount = cardCount - 1;
+            cardsToCheck.delete(card);
+            document.getElementById(card.id).style.backgroundColor = 'white';
         }
     })
 })
