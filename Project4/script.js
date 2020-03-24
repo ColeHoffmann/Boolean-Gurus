@@ -107,10 +107,9 @@ function includes (array, element) {
 
 class SetGame {
     //functionalities for the set game
-    constructor(deck, table, users){
+    constructor(deck, table){
         this.deck = deck;
         this.table = table;
-        this.users = users
     }
 
 
@@ -254,8 +253,7 @@ var cardCount = 0;
 var deck = new Deck();
 deck.shuffleCards();
 var table = deck.drawTwelve();
-var user = new User("default");
-var newGame = new SetGame(deck, table, user);
+var newGame = new SetGame(deck, table);
 newGame.initTable();
 createView(table); 
 //set to keep 3 cards selected, wont accept duplicates
@@ -326,7 +324,7 @@ function replaceSelectedcards(cardsToCheck){
 //clear the card from the table ie set card to invisible
 function clearSelectedCard(cardID){
     var cardToClear = document.getElementById(cardID);
-    cardToClear.style.backgroundColor = 'lime'; // change background to lime when card is selected
+    cardToClear.style.backgroundColor = 'PaleTurquoise'; // change background to lime when card is selected
 }
 
 function addCardToSet(card){
