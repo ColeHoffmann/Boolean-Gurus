@@ -8,7 +8,7 @@ if (numPlayers == 1){
     var playerScoreDiv = document.createElement('div');
     playerScoreDiv.setAttribute('class', 'player-score');
     playerScoreDiv.setAttribute('id', 'player-score'); //eg id=player1-score
-    playerScoreDiv.textContent = "Score: " + score;
+    playerScoreDiv.textContent = "Score: " + score +" pts";
     document.getElementsByClassName('player-info')[0].appendChild(playerScoreDiv);
 }
 
@@ -85,9 +85,52 @@ class User {
     }
 }
 
-function endGame() {
-     alert("Deck is empty. You score is " + score + ". Thank you for the game! New Game will start once you press OK");
-     location.reload(5);
+function reset() {
+    numPlayers = document.getElementById("players-number").textContent * 1;
+    if (numPlayers == 1){
+        alert("Deck is empty. You score is " + score + " pts. Thank you for the game! New Game will start once you press OK");
+        score = 0;
+        document.getElementById('player-score').textContent = "Score: " + score+" pts";
+    }else{
+        arrayOfUsers.sort(function(a, b){return b.score-a.score}); 
+        let msg = "Deck is empty. Thank you for the game!  New Game will start once you press OK\nLeaderboard:\n";
+        for (let i = 0; i < arrayOfUsers.length; i++){
+            msg += arrayOfUsers[i].name +": "+arrayOfUsers[i].score +" pts\n";
+            arrayOfUsers[i].score = 0;
+            //update the view
+            document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score+" pts";
+        }
+        alert(msg);
+    }
+    deck = new Deck();
+    table = deck.drawTwelve();
+    newGame = new SetGame(deck, table);
+    createView(table); 
+    document.getElementById('cheat logs').innerHTML = "";
+    
+}
+
+function getRandomInt(max) {
+    return (Math.floor(Math.random() * Math.floor(max))) + 1;
+}
+
+function cheat(){
+    if (deck.cards.length < 0) {
+        reset;
+    }else{
+        var setFound = findSet();
+        if (setFound.length > 0){
+            console.log(setFound);
+            increaseScore();
+            document.getElementById('cheat logs').innerHTML += "CHEAT: found set at location " + setFound[0]+", "+setFound[1]+", "+setFound[2] + ". Replaced cards<br>";
+            replaceSelectedcards([document.getElementById(setFound[0]), document.getElementById(setFound[1]), document.getElementById(setFound[2])]) ;
+        }else{
+            document.getElementById('cheat logs').innerHTML += "CHEAT: No sets found, replacing 3 cards.<br>";
+            increaseScore();
+            let cardsToReplace = [document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12))];
+            replaceSelectedcards(cardsToReplace);
+        }
+    }
 }
 
 function includes (array, element) {
@@ -159,7 +202,7 @@ function createView(table){
 
 function versusSetup(){ 
     //add reset html page before fun 
-    var deck = new Deck();
+    deck = new Deck();
     table = deck.drawTwelve();
     newGame = new SetGame(deck, table);
     createView(table); 
@@ -197,7 +240,7 @@ function versusSetup(){
         var playerScoreDiv = document.createElement('div');
         playerScoreDiv.setAttribute('class', 'player-score');
         playerScoreDiv.setAttribute('id', 'player'+i+'-score'); //eg id=player1-score
-        playerScoreDiv.textContent = "Player " + i + " score: " + arrayOfUsers[i-1].score;
+        playerScoreDiv.textContent = "Player " + i + " score: " + arrayOfUsers[i-1].score +" pts";
         
 
         //append to div class = player-name & div class = player-score
@@ -222,10 +265,9 @@ function paintCard (number, color) {
 
 function increaseScore (){
     numPlayers = document.getElementById("players-number").textContent * 1;
-    console.log(numPlayers);
     if (numPlayers == 1){
         score ++;
-        document.getElementById('player-score').textContent = "Score: " + score;
+        document.getElementById('player-score').textContent = "Score: " + score+" pts";
     }else{
         name = prompt("Player enter your Username for scoring (Please be honest)");
         while (!includes(names,name)){
@@ -236,7 +278,7 @@ function increaseScore (){
             if (arrayOfUsers[i].name == name) {
                 arrayOfUsers[i].score ++;
                 //update the view
-                document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score;
+                document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score+" pts";
             }
         }
     }
@@ -246,7 +288,7 @@ function decreaseScore (){
     if (numPlayers == 1){
         if (score > 0) {
             score--;
-            document.getElementById('player-score').textContent = "Score: " + score;
+            document.getElementById('player-score').textContent = "Score: " + score+" pts";
         }
     }else{
         name = prompt("Player enter your Username for scoring (Please be honest)");
@@ -258,46 +300,42 @@ function decreaseScore (){
             if (arrayOfUsers[i].name == name && arrayOfUsers[i].score > 0) {
                 arrayOfUsers[i].score --;
                 //update the view
-                document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score;
+                document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score+" pts";
             }
         }
     }
 }
 
-function hint(){
-    let foundSet = false;
-    for(var i = 0; i < 10; i++){
-        for(var j = i + 1; j < 11; j++){
-            for(var k = i + 2; k < 12; k++){
+function findSet(){
+    var foundSet = [];
+    for(let i = 0; i < 10; i++){
+        for(let j = i + 1; j < 11; j++){
+            for(let k = i + 2; k < 12; k++){
                 hintCheckCards = [tableContainerArray[i], tableContainerArray[j], tableContainerArray[k]];
                 if(checkForSet(hintCheckCards)){
-                    if (score > 0) {
-                        decreaseScore();
-                    }
-                   foundSet = true;
-                   paintCard(i + 1, 'yellow');
-                   paintCard(j + 1, 'yellow');
-                   paintCard(k + 1, 'yellow');
-                    return;
+                    foundSet.push(i + 1, j + 1,k + 1);
+                    return foundSet;
                 }
             }
         }
     }
-    if (!foundSet) {
+    return foundSet;
+}
+
+function hint(){
+    var setFound = findSet();
+    if (setFound.length > 0){
+        decreaseScore();
+        alert("Sets found! You got penalized 1 pts for this!\n(But you will get it back if you clicked on the hints right.");
+        console.log(setFound);
+        paintCard(setFound.pop(), 'yellow');
+        paintCard(setFound.pop(), 'yellow');
+        paintCard(setFound.pop(), 'yellow');
+    }else{
         alert("No sets found, replacing 3 cards. You earned a bonus point!");
         
         increaseScore();
-        var array = [];
-        for (var r = 1; r < 13; r++) {
-            array[r-1] = r;
-        }
-        var length = array.length;
-        console.log(length);
-        while (length--) {
-          const x = Math.floor(Math.random() * (i + 1));
-          [array[i], array[x]] = [array[x], array[i]];
-        }
-        cardsToReplace = [document.getElementById(array[0]), document.getElementById(array[1]), document.getElementById(array[2])];
+        cardsToReplace = [document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12)), document.getElementById(getRandomInt(12))];
         replaceSelectedcards(cardsToReplace);
     }
 }
@@ -315,7 +353,7 @@ function replaceSelectedcards(cardsToCheck){
       })
     }
     else {
-        endGame();
+        reset();
     }
 }
 
