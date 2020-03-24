@@ -99,7 +99,8 @@ class User {
 }
 
 function endGame() {
-     alert("Deck is empty. You score is " + score);
+     alert("Deck is empty. You score is " + score + " Thank you for the game! New Game will start once you press OK");
+     location.reload(5);
 }
 
 function includes (array, element) {
@@ -359,11 +360,6 @@ tableContainerArray.forEach(card=>{
                 alert("You are right! score incremented!");
             } else {
                 // clear selected background color
-                cardsToCheck.forEach(card=>{
-                    for (var i = 1; i < 13; i++) {
-                        paintCard(i, 'white');
-                    }
-                })
                 if(numPlayers == 1) {
                     score--;
                     if (score < 0) score = 0;
@@ -371,7 +367,10 @@ tableContainerArray.forEach(card=>{
                 }
                 alert("Sorry, you are wrong! Score decremented (not below 0)! Please try again!");
             }
-            
+            // clear selected and suggested cards background
+            for (var i = 1; i < 13; i++) {
+                paintCard(i, 'white');
+            }
             cardCount = 0;
             cardsToCheck.clear(); //clear set
         }
