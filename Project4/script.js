@@ -138,17 +138,9 @@ class SetGame {
 	    	shape += array[i].shape;
             color += array[i].color;
             pattern += array[i].pattern;
-        //    console.log(array[i].pattern);
             number += array[i].number;
 	    }
-        //	console.log(color);
 	    var answer = ((includes(valid, shape))&&(includes(valid, color))&&(includes(valid, pattern))&&(includes(valid, number)));
-        /*	console.log(answer);
-	    console.log(pattern);
-	    console.log(includes(valid, shape));
-	    console.log(includes(valid, color));
-	    console.log(includes(valid, pattern));
-	    console.log(includes(valid, number)); */
 	    return answer;
     }
 
@@ -241,7 +233,6 @@ function hint(){
             for(var k = i + 2; k < 12; k++){
                 hintCheckCards = [tableContainerArray[i], tableContainerArray[j], tableContainerArray[k]];
                 if(checkForSet(hintCheckCards)){
-                   // alert(tableContainerArray[i].id + " and " + tableContainerArray[j].id + " and " + tableContainerArray[k].id + " are a set");
                    foundSet = true;
                    paintCard(i + 1, 'yellow');
                    paintCard(j + 1, 'yellow');
@@ -321,7 +312,7 @@ tableContainerArray.forEach(card=>{
                 }
 
                 replaceSelectedcards(cardsToCheck);
-               // alert("You are right! score incremented!");
+                alert("You are right! score incremented!");
             } else {
                 // clear selected background color
                 cardsToCheck.forEach(card=>{
@@ -377,8 +368,6 @@ function checkForSet(cardsToCheck){
     var card1 = it.next().value;
     var card2 = it.next().value;
     var card3 = it.next().value;
-    //console.log(card1.color);
-    //console.log(card2.color);
     //check if card is a set
     return newGame.isProperSet(card1, card2, card3);
 }
