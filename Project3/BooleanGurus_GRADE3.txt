@@ -1,0 +1,9 @@
+Correctness: Great job scraping course number/title, section number, component, location, time, and instructor! Good job preventing duplication of data on multiple runs of application. Scraper does not seem to be too dependent on structure of website. Great job writing some sample test cases for course!
+
+Functionality/Features: Output HTML page is well organized. Great addition of search features for course number, section number, and instructor! Nice job allowing user to click on individual class sections to view full details. The addition of search functionality, advanced routing, and test cases will give you a good leg up for project 5...well done!
+
+Design: Nice model-view-controller design with rails! Scraper is fairly concise (but does use some literals instead of constants). Good routing with controllers and embedded ruby for output.
+
+Documentation: Good thorough README that includes necessary commands to run for project. Missing all file-level and function-level documentation (should explain what each file adds to the project and what each function does). Little useful in-code documentation. Commit messages are sufficient.
+
+Style: Consider citing a style guide or at least loose style rules that are followed. Good use of standard ruby features in scraper and embedded ruby for output file. Some coupling of CSS in embedded ruby files.
