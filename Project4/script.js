@@ -155,12 +155,18 @@ function findImage(card){
 }
 
 function createView(table){
+    let view = document.getElementById("table");
+    view.innerHTML = "";
     for(var i = 1; i <= table.length; i++){ 
 
         var imageName = findImage(table[i -1]);
         var cardID = i.toString();
-        document.getElementById(cardID).style.backgroundImage = "url(" + imageName + ")";
-        document.getElementById(cardID).style.backgroundRepeat = "no-repeat";
+        let card = document.createElement("BUTTON");
+        card.setAttribute("class", "card");
+        card.setAttribute("id", i);
+        card.style.backgroundImage = "url(" + imageName + ")";
+        card.style.backgroundRepeat = "no-repeat";
+        view.appendChild(card);
     }
 }
 
