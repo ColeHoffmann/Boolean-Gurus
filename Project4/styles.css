@@ -17,6 +17,29 @@ body {
     animation: gradient 15s ease infinite;
     
 }
+
+select {
+  font-family: 'Nova Square', cursive;
+  border-color: floralwhite;
+  border-width: thin;
+  color: black;
+  border-radius: 3px;
+  padding: 0em 4em;
+  font-size: 16px;
+  margins: 2em;
+}
+
+button {
+  font-family: 'Nova Square', cursive;
+  border-color: floralwhite;
+  border-width: thin;
+  color: black;
+  border-radius: 3px;
+  padding: 0em 4em;
+  font-size: 16px;
+  margins: 2em;
+}
+
 /* https://1stwebdesigner.com/15-css-background-effects/ */
 @keyframes gradient {
   0% {
@@ -175,3 +198,4 @@ body {
   border-radius: 0px 0px 10px 10px;
   color: black;
 }
+

@@ -210,22 +210,27 @@ function nameChosen () {
 }
 
 function changeScorePopup(increment, message) {
+    let text = document.createElement("p");
     message = parseInt(message);
     switch (message) {
         case 0: 
             if (increment) {
-                popup("You are right! score incremented!", "&#128512");
+                text.innerHTML = "You are right! score incremented!";
+                popupObject(text, "&#128512");
             }
             else {
-                popup("Sorry, you are wrong! Score decremented (not below 0)! Please try again!", "&#128542");
+                text.innerHTML = "Sorry, you are wrong! Score decremented (not below 0)! Please try again!";
+                popupObject(text, "&#128542");
             }
             break;
         case 1: 
             if (increment) {
-                popup("You are right! No sets found!<br>Replacing 3 cards.<br>You earned a bonus point!", "No sets?");
+                text.innerHTML = "You are right! No sets found!<br>Replacing 3 cards.<br>You earned a bonus point!";
+                popupObject(text, "No sets?");
             }
             else {
-                popup("Sets found! You got penalized 1 pts for this!<br>(But you will get it back if you clicked on the hints right.)", "No sets?");
+                text.innerHTML = "Sets found! You got penalized 1 pts for this!<br>(But you will get it back if you clicked on the hints right.)";
+                popupObject(text, "No sets?");
             }
             break;
         
@@ -330,57 +335,36 @@ function popupObject(object, title){
   
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
+    if (!((object.children.length > 0)&&(object.children[0].getAttribute("id") === "selectName"))) {
+        console.log("reached here");
+         span.onclick = function() {
+              modal.style.display = "none";
+         }
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
+        // When the user clicks anywhere outside of the modal, close it
+         window.onclick = function(event) {
+             if (event.target == modal) {
+                  modal.style.display = "none";
+            }
+         }
     }
+    else {
+        span.onclick = function() {};
+        window.onclick = function() {};
+        
+        
+    }
+    console.log(object.children[0].getAttribute("id"));
 }
 
-function popup(stringElement, title){
 
-    //var text = document.createTextNode(text);
-    var popupContent = document.getElementById("popup-content");
-   // popupContent.textContent = stringElement;
-    popupContent.innerHTML = "";
-    popupContent.innerHTML = stringElement;
-
-    //add title
-    var header = document.getElementsByClassName("modal-header")[0].lastElementChild;
-    header.innerHTML = "";
-    header.innerHTML = title;
-        // Get the modal
-    var modal = document.getElementById("myModal");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal 
-    modal.style.display = "block";
-  
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-}
 
 function reset() {
+    let text = document.createElement("p");
     numPlayers = document.getElementById("players-number").textContent * 1;
     if (numPlayers == 1){
-        popup("Deck is empty. You score is " + score + " pts. <br>Thank you for the game! New Game will start opon closing this window", "Good job!");
+    text.innerHTML = "Deck is empty. You score is " + score + " pts. <br>Thank you for the game! New Game will start opon closing this window";
+        popupObject(text, "Good job!");
         score = 0;
         document.getElementById('player-score').textContent = "Score: " + score+" pts";
     }else{
@@ -392,7 +376,8 @@ function reset() {
             //update the view
             document.getElementById('player'+(i+1)+'-score').textContent = "Player " + (i+1) + " score: " + arrayOfUsers[i].score+" pts";
         }
-        popup(msg, "Scores");
+        text.innerHTML = msg;
+        popupObject(text, "Scores");
     }
     deck = new Deck();
     table = deck.drawTwelve();
@@ -409,7 +394,8 @@ function reset() {
 //button functions
 
 function tut(){
-    popup("This game involving matching and selecting three cards with the same or all different amount of shapes, colors, infills and numbers.<br>"+
+    let text = document.createElement("p");
+    text.innerHTML = "This game involving matching and selecting three cards with the same or all different amount of shapes, colors, infills and numbers.<br>"+
     "There are twelve cards on the screen all the time. The deck will have 69 cards remaining in the begining.<br>"+
     "The game defaults into single player mode.<br>"+
     "The game is playable in single player mode and it will count the overall score of the player.<br>"+
@@ -426,7 +412,8 @@ function tut(){
     "After user closing the window, a new game will be started and the user can start again.<br>"+
     "The maximum possible point avaiable for a player is 24 points.<br>"+
     "If you want to restart the game, simply refresh the page.<br>"+
-    "For more informations, please refer to readme.md","How to play");
+    "For more informations, please refer to readme.md";
+    popupObject(text,"How to play");
 }
 
 
