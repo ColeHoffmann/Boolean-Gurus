@@ -1,4 +1,4 @@
-Project 3: Web Scraping
+Project 5: 
 This project requires rails, mechanize/httparty, nokogiri. All have been added in GEMFILE.
 
 This application scrapes course data for CSE from "https://web.cse.ohio-state.edu/oportal/schedule_display" and stores it in a database. Supports a view containing list of all courses, or only courses satisfying user-typed query based on course number, section, instructor.
