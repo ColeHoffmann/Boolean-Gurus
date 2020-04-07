@@ -1,0 +1,9 @@
+Correctness: It is not possible to read all of the how-to-play modal (doesn't fit on screen and doesn't scroll). Nice job checking user input to make sure that user enters in valid number of players and unique name for each player! It doesn't seem possible to actually click cards and declare a set...sometimes clicking 3 cards works, sometimes it checks for a set after 2 or 4 cards (none of the cards ever highlight upon selection)? Cheat button should probably be removed for game play.
+
+Functionality/Features: Good job including modal popup for how-to-play! Nice job allowing for single-player and multi-player game modes and having scoreboard at top. UI looks nice with changing background! However, there are no real additional features that make the game more engaging to play. Add the ability to play against the computer, hint functionality, more advanced statistics, etc. to improve the game.
+
+Design: Good job creating classes for Card, Deck, User, and SetGame, however these should each be placed in their own files. It is confusing and hard to read when all of the javascript code is in the same files, this should be modulated out into separate files based on function of the code. Large use of literals instead of constants in javascript code.
+
+Documentation: Nice thorough README! Good job documenting nuances in your code, but most function-level and file-level documentation is missing, making the code more difficult to read. Commit messages are solid.
+
+Style: Consider documenting general style rules. Nice consistent styling and good use of standard javascript features!
