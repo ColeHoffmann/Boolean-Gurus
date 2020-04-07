@@ -342,7 +342,6 @@ function popupObject(object, title){
 
     // When the user clicks on <span> (x), close the modal
     if (!((object.children.length > 0)&&(object.children[0].getAttribute("id") === "selectName"))) {
-        console.log("reached here");
          span.onclick = function() {
               modal.style.display = "none";
          }
@@ -360,7 +359,6 @@ function popupObject(object, title){
         
         
     }
-    console.log(object.children[0].getAttribute("id"));
 }
 
 
@@ -549,12 +547,10 @@ var tableContainerArray = Array.from(tableContainer);
 var cardCount = 0;
 tableContainerArray.forEach(card=>{
     card.addEventListener('click', () =>{
-        console.log(numPlayers);
         if(!cardsToCheck.has(card)){
             cardCount = cardCount + 1;
             addCardToSet(card)
             var c = card.childNodes;
-            console.log(c[1].textContent); //debugging
           //  alert("you chose: " + card.id + "\n " + c[1].textContent); //for debugging
             clearSelectedCard(card.id);
         }
