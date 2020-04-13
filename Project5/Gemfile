@@ -56,3 +56,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'httparty'
 gem 'mechanize'
 gem 'nokogiri'
+gem 'bcrypt'
+
+gem 'bootstrap', '~> 4.4.1'
+
+gem 'jquery-rails'
