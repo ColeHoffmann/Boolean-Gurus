@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'my_page', to: 'sessions#my_page_req_login'
   post 'logout', to: 'sessions#destroy'
+  get 'apply', to: 'apply#index'
+  post 'applied', to: 'applied#addApplicant'
+  get 'applied', to: 'applied#result'
   
 
   #  match '/scrabe', to: 'courses#scrape', via :post, on: :collection
