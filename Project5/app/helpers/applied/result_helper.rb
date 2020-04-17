@@ -1,0 +1,2 @@
+module Applied::ResultHelper
+end

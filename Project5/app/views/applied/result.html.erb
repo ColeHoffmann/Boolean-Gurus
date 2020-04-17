@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Applicants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Course Number</th>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Schedule</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @applicantList.each do |applicant| %>
+      <tr>
+        <td><%= applicant.course_number %></td>
+        <td><%= applicant.last_name%></td>
+	<td><%= applicant.first_name%></td>
+        <td><%= applicant.phone_number %></td>
+	<td><%= applicant.email%></td>
+	<td><%= applicant.schedule%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<!--%= link_to 'New Course', new_course_path %-->
