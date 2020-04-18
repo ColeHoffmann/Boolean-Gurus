@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'apply', to: 'apply#index'
   post 'applied', to: 'applied#addApplicant'
   get 'applied', to: 'applied#result'
+  get 'applied#edit/:id', to: 'applied#edit', as: :edit
   
 
   #  match '/scrabe', to: 'courses#scrape', via :post, on: :collection

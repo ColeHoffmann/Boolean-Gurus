@@ -23,6 +23,9 @@
         <td><%= applicant.phone_number %></td>
 	<td><%= applicant.email%></td>
 	<td><%= applicant.schedule%></td>
+	<% if applicant.email == current_user.read_attribute('username') + "@osu.edu" %>
+		<td><%= link_to 'Edit',  edit_path(applicant.id) %></td>
+	<% end %>
       </tr>
     <% end %>
   </tbody>
