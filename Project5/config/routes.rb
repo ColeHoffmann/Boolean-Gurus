@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :courses
 
   #routes for login and sign up
-  resources :users, only: [:new, :create]
+  resources :users
   
   get 'login', to: 'sessions#new'
   get 'login', to: 'sessions#create'
@@ -19,11 +19,13 @@ Rails.application.routes.draw do
   post 'applied', to: 'applied#addApplicant'
   get 'applied', to: 'applied#result'
   get 'applied#edit/:id', to: 'applied#edit', as: :edit
-  
-
+  get 'users', to: 'users#index'
+  get 'survey', to: 'users#search'
+  get '/users/:id/edit', to: 'users#edit'
   #  match '/scrabe', to: 'courses#scrape', via :post, on: :collection
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
    root to: 'courses#index'
    get '/search', to: 'courses#search'
+
 end

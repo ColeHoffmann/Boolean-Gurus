@@ -6,10 +6,12 @@
     <%= search_field_tag :searchSection, params[:searchSection], placeholder: "Section Number", class: "form-control"%>  
     <%= search_field_tag :searchInstructor, params[:searchInstructor], placeholder: "Instructor", class: "form-control"%>
     <%= search_field_tag :searchCourse, params[:searchCourse], placeholder: "Course Number", class: "form-control"%>
- 
-      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
 
+    <%= button_tag "Submit", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
 <% end %>
+<a class="btn btn-secondary" href="/users" role="button">
+  Search Users
+</a>
 
 <h1>Courses</h1>
 

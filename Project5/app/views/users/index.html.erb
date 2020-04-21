@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Search</h1>
+
+<%= form_tag("/survey", :method => "get", class: 'navbar-form navbar-left') do %>
+  <%= search_field_tag :searchLname, params[:searchLname], placeholder: "Last Name", class: "form-control"%>
+  <%= search_field_tag :searchUsername, params[:searchUsername], placeholder: "User Name", class: "form-control"%>
+  <%= search_field_tag :searchAffiliation, params[:searchAffiliation], placeholder: "Affiliation", class: "form-control"%>
+
+  <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+
+<% end %>
+<a class="btn btn-secondary" href="/courses" role="button">
+  Search Courses
+</a>
+<h1>Users</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Last</th>
+    <th>First</th>
+    <th>Affiliation</th>
+    <th>Username</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.lname %></td>
+      <td><%= user.fname %></td>
+      <td><%= user.affiliation %></td>
+      <td><%= user.username %></td>
+      <td><%= link_to 'Show', user %></td>
+        <!--<td><//%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td -->
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<!--%= link_to 'New Course', new_course_path %-->
