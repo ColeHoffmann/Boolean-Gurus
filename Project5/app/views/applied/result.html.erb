@@ -23,8 +23,9 @@
         <td><%= applicant.phone_number %></td>
 	<td><%= applicant.email%></td>
 	<td><%= applicant.schedule%></td>
-	<% if applicant.email == current_user.read_attribute('username') + "@osu.edu" %>
+	<% if applicant.email == current_user.read_attribute('username') + "@osu.edu"  or current_user.affiliation == "Admin"%>
 		<td><%= link_to 'Edit',  edit_path(applicant.id) %></td>
+    <td><%= link_to 'Destroy', applicant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	<% end %>
       </tr>
     <% end %>

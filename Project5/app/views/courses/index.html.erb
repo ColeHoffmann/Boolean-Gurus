@@ -12,6 +12,11 @@
 <a class="btn btn-secondary" href="/users" role="button">
   Search Users
 </a>
+<% if (logged_in? and current_user.affiliation == "Admin")%>
+  <a class="btn btn-secondary" href="/applied" role="button">
+    All Applications
+  </a>
+<%end %>
 
 <h1>Courses</h1>
 
