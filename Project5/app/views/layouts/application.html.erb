@@ -19,10 +19,19 @@
       <% if logged_in? %>
 
         <h4 class="text-light">Howdy, <%= current_user.fname %>!</h4>
-        <div class="dropdown", class="glyphicon glyphicon-off">
-          <%= button_to "Log out", logout_path, :class=>"btn btn-info btn-lg" %>
-          <%=link_to "Edit Profile", edit_user_path(current_user), :class=>"btn btn-info btn-lg" %>
+        <div class="d-flex flex-row-reverse" class="dropdown", class="glyphicon glyphicon-off">
+
+          <div><%= button_to "Log out", logout_path, :class=>"btn btn-info btn-lg" %></div>
+          <div><%=link_to "Edit Profile", edit_user_path(current_user), :class=>"btn btn-info btn-lg" %></div>
+
+        <% if current_user.affiliation == "Student" %>
+
+           <div><%=link_to "Apply", apply_path, :class=>"btn btn-info btn-lg" %></div>
+
+        <%end%>
+
         </div>
+
 
 
       <%else%>
