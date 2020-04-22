@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   resources :applied
 
+  resources :evaluation
+
+  resources :recommendation
+
   get 'login', to: 'sessions#new'
   get 'login', to: 'sessions#create'
   post 'login', to: 'sessions#create'
@@ -24,6 +28,7 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
   get 'survey', to: 'users#search'
   get '/users/:id/edit', to: 'users#edit'
+  get' recommendation', to: 'recommendation#index'
   #  match '/scrabe', to: 'courses#scrape', via :post, on: :collection
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

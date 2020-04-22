@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_193300) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "evaluations", force: :cascade do |t|
+  create_table "evaluation", force: :cascade do |t|
     t.string "ins_fname"
     t.string "ins_lname"
     t.string "ins_username"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_193300) do
     t.string "ta_username"
   end
 
-  create_table "recommendations", force: :cascade do |t|
+  create_table "recommendation", force: :cascade do |t|
     t.string "ins_fname"
     t.string "ins_lname"
     t.string "ins_username"
