@@ -23,12 +23,17 @@
 
   <div class="field">
     <%= form.label :affiliation %>
-    <%= form.select :affiliation, %w[Faculty Student] %>
+    <%= form.select :affiliation, %w[Admin Faculty Student] %>
   </div>
 
   <div class="field">
     <%= form.label :username %>
     <%= form.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
   </div>
 
   <div class="actions">

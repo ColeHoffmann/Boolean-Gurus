@@ -10,6 +10,7 @@
   <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
 
 <% end %>
+
 <a class="btn btn-secondary" href="/courses" role="button">
   Search Courses
 </a>
@@ -34,7 +35,10 @@
       <td><%= user.affiliation %></td>
       <td><%= user.username %></td>
       <td><%= link_to 'Show', user %></td>
-        <!--<td><//%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td -->
+      <% if (logged_in? and current_user.affiliation == "Admin")%>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%end %>
     </tr>
   <% end %>
   </tbody>
