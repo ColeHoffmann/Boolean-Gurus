@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   #routes for login and sign up
   resources :users
-  
+
+  resources :applied
+
   get 'login', to: 'sessions#new'
   get 'login', to: 'sessions#create'
   post 'login', to: 'sessions#create'
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
   get 'apply', to: 'apply#index'
   post 'applied', to: 'applied#addApplicant'
   get 'applied', to: 'applied#result'
-  get 'applied#edit/:id', to: 'applied#edit', as: :edit
+  get 'applied/:id/edit', to: 'applied#edit', as: :edit
   get 'users', to: 'users#index'
   get 'survey', to: 'users#search'
   get '/users/:id/edit', to: 'users#edit'

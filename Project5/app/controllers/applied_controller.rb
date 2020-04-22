@@ -15,8 +15,11 @@ class AppliedController < ApplicationController
 	end 
 			
  
- end
+	end
 
+def index
+	@applicantList = Apply.all
+end
 def result
 	@applicantList = Apply.all
 end
@@ -24,5 +27,7 @@ end
 def edit
 	@application = Apply.find(params[:id])
 end
-
+def show
+	@application = Apply.find(params[:id])
+end
 end

@@ -37,11 +37,11 @@
 
 <!--%= link_to 'Edit', edit_course_path(@course) %--> |
 
-<% if logged_in? %>
+<% if logged_in? and (current_user.affiliation == "Student" or current_user.affiliation == "Admin")%>
   <%=
       link_to 'Apply', apply_path %> |
-      <%=
-      link_to 'Back', courses_path
-      %>
 <% end %>
+<%=
+  link_to 'Back', courses_path
+%>
 
