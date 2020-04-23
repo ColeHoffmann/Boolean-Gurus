@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :applications
   get 'my_applications', to: 'applications#my_application'
+  
 
   resources :evaluations
 

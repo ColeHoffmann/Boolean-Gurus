@@ -26,9 +26,8 @@
 </p>
 
 
-<% if (logged_in? and (current_user.id.to_i == curr_user.id.to_i or current_user.affiliation == "Admin" or current_user.affiliation == "Faculty"))%>
 
-
+<% if logged_in? and (current_user.id.to_i == curr_user.id.to_i or current_user.affiliation == "Admin" or current_user.affiliation == "Faculty")%>
 
 <h3> Studied Courses</h3>
   <table>
@@ -52,6 +51,7 @@
 
 
 
+>>>>>>> d40690dd545274060f22f7a6183e70a10d9842eb
   <h3> Current Applications</h3>
   <table>
     <thead>
