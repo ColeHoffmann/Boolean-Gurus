@@ -50,7 +50,12 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-  end
+  end 
+
+  def dashboard
+    
+    
+  end 
 
   private
     def set_user

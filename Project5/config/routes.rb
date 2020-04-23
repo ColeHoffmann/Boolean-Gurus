@@ -9,12 +9,15 @@ Rails.application.routes.draw do
 
   #routes for login and sign up
   resources :users
+  get 'dashboard', to: 'users#dashboard'
 
   resources :applied
 
   resources :evaluation
 
   resources :recommendation
+
+  resources :student_courses
 
   get 'login', to: 'sessions#new'
   get 'login', to: 'sessions#create'
@@ -29,6 +32,9 @@ Rails.application.routes.draw do
   get 'survey', to: 'users#search'
   get '/users/:id/edit', to: 'users#edit'
   get' recommendation', to: 'recommendation#index'
+
+
+  #get '/addcourse', to: 'student_courses#new'
   #  match '/scrabe', to: 'courses#scrape', via :post, on: :collection
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
