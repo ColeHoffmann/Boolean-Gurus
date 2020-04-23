@@ -27,3 +27,5 @@ Colby Sherwood<br />
 Yufei Pan<br />
 Vlad Akavets<br />
 **
+
+Our slides for our final presenation can be found at this link: https://docs.google.com/presentation/d/1qmQaGTClndrkYV-zCVKiF1Fk8xXBKdXEhpgjZPN1qiA/edit?usp=sharing
