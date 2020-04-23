@@ -54,6 +54,6 @@ class RecommendationsController < ApplicationController
   end
 
   def recommendation_params
-    params.require(:recommendation).permit(:ins_fname,:ins_lname, :ins_username, :type, :recommendation, :ta_fname, :ta_lname, :ta_username)
+    params.require(:recommendation).permit(:ins_fname,:ins_lname,:student_fname, :ins_username, :student_lname, :course_number, :section_number, :type)
   end
 end

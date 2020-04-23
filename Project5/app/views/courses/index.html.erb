@@ -13,7 +13,7 @@
   Show Users
 </a>
 <% if (logged_in? and current_user.affiliation == "Admin")%>
-  <a class="btn btn-secondary" href="/applied" role="button">
+  <a class="btn btn-secondary" href="/applications" role="button">
     Show Applications
   </a>
   <a class="btn btn-secondary" href="/recommendations" role="button">
@@ -46,7 +46,7 @@
     <% @courses.each do |course| %>
       <tr>
         <td><%= course.course_number %></td>
-        <td><%= course.title[9...course.title.length] %></td>
+        <td><%= course.title %></td>
         <td><%= course.section_number %></td>
         <td><%= course.component %></td>
         <td><%= course.location %></td>

@@ -11,8 +11,13 @@
 </p>
 
 <p>
-  <strong>Instructor Username:</strong>
-  <%= curr_rec.ins_username %>
+  <strong>Student First Name:</strong>
+  <%= curr_rec.student_fname %>
+</p>
+
+<p>
+  <strong>Student Last Name:</strong>
+  <%= curr_rec.student_lname %>
 </p>
 
 <p>
@@ -21,19 +26,17 @@
 </p>
 
 <p>
-  <strong>Recommendation:</strong>
-  <%= curr_rec.recommendation %>
+  <strong>Course Number:</strong>
+  <%= curr_rec.course_number %>
 </p>
 
 <p>
-  <strong>Student First Name:</strong>
-  <%= curr_rec.ta_fname %>
+  <strong>Section Number:</strong>
+  <%= curr_rec.section_number %>
 </p>
 
-<p>
-  <strong>Student Last Name:</strong>
-  <%= curr_rec.ta_lname %>
-</p>
+
+
 
 <p>
   <strong>Student Username:</strong>
@@ -43,4 +46,3 @@
   <%= link_to 'Edit', edit_recommendation_path(curr_rec) %>
   <%end %>
 <%= link_to 'Back', users_path %>
-

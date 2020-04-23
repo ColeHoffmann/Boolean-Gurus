@@ -5,10 +5,10 @@
 <table>
   <thead>
   <tr>
-    <th>Recommendation</th>
     <th>Instructor</th>
     <th>Student</th>
-    <th>Type</th>
+    <th>Recommended Class</th>
+    <th>Recomendation Type</th>
   </tr>
   </thead>
   <a class="btn btn-secondary" href="/courses" role="button">
@@ -25,9 +25,9 @@
   <tbody>
   <% @recommendations.each do |rec| %>
     <tr>
-      <td><%= rec.recommendation %></td>
-      <td><%= rec.ins_username%></td>
-      <td><%= rec.ta_username%></td>
+      <td><%= rec.ins_fname %> <%= rec.ins_lname %></td>
+      <td><%= rec.student_fname %> <%= rec.student_lname %></td>
+      <td>CSE <%= rec.course_number %> Section <%= rec.section_number %></td>
       <td><%= rec.type %></td>
       <% if rec.ins_username == current_user.username or current_user.affiliation == "Admin"%>
         <td><%= link_to 'Edit',  edit_recommendation_path(rec) %></td>
@@ -39,3 +39,4 @@
 </table>
 
 <br>
+
