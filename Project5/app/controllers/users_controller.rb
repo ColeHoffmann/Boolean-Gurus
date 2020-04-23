@@ -34,9 +34,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-
+    session[:user_id] = @user.id 
     @user.affiliation = "Student" if !logged_in?
-
+    
 		if @user.save 
       redirect_to users_path
 		else 
