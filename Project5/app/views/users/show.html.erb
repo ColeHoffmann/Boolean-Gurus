@@ -26,7 +26,32 @@
 </p>
 
 
+
 <% if logged_in? and (current_user.id.to_i == curr_user.id.to_i or current_user.affiliation == "Admin" or current_user.affiliation == "Faculty")%>
+
+<h3> Studied Courses</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Course Number</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <% StudentCourse.all.each do |stuCrs| %>
+      <% if stuCrs.user_id.to_i == curr_user.id.to_i %>
+      <tr>
+        <td><%= stuCrs.course_number %></td>
+        <td><%= stuCrs.grade%></td>
+        <td><%=link_to "Edit", edit_student_course_path(stuCrs), :class=>"btn btn-secondary" %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </table>
+
+
+
+
+>>>>>>> d40690dd545274060f22f7a6183e70a10d9842eb
   <h3> Current Applications</h3>
   <table>
     <thead>
@@ -40,7 +65,7 @@
       <tr>
         <td><%= applicant.course_number %></td>
         <td><%= applicant.schedule%></td>
-        <td><%= link_to 'Edit',  edit_application_path(applicant) %></td>
+        <td><%= link_to 'Edit',  edit_application_path(applicant), :class=>"btn btn-secondary" %></td>
       </tr>
       <% end %>
     <% end %>

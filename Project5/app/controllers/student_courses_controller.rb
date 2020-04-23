@@ -17,7 +17,7 @@ class StudentCoursesController < ApplicationController
 	end
 
 	def edit
-
+		@student_course = StudentCourse.find(params[:id])
 	end
 
 	def create
@@ -32,11 +32,21 @@ class StudentCoursesController < ApplicationController
 		end
 	end
 
+	def update
+		@student_course = StudentCourse.find(params[:id])
+		@student_course.update(student_course_params)
+
+		redirect_to user_path(@student_course.user_id)
+
+		
+
+	end
+
 
 
 	private
 		def student_course_params
-			params.require(:student_course).permit(:title, :course_number, :grade)
+			params.require(:student_course).permit(:course_number, :grade)
 		end
 
 end
