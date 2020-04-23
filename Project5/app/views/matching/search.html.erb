@@ -29,9 +29,10 @@
 
   <tbody>
     <% pair[0].each do |applicant| %>
+	<% @applicant = User.where("id = '" + applicant.user_id.to_s + "'") %>
       <tr>
-        <td><%= applicant.fname %></td>
-        <td><%= applicant.lname %></td>
+        <td><%= @applicant[0][:fname] %></td>
+        <td><%= @applicant[0][:lname] %></td>
 </td>
         <%end %>
 
