@@ -1,5 +1,17 @@
-<p id="notice"><%= notice %></p>
 
+
+<a class="btn btn-secondary" href="/courses" role="button">
+  Courses
+</a>
+<% if (logged_in? and current_user.affiliation == "Admin")%>
+  <a class="btn btn-secondary" href="/applications" role="button">
+    Applications
+  </a>
+  <a class="btn btn-secondary" href="/recommendations" role="button">
+    Recommendations
+  </a>
+<%end %>
+<p id="notice"><%= notice %></p>
 <h1>Search</h1>
 
 <%= form_tag("/survey", :method => "get", class: 'navbar-form navbar-left') do %>
@@ -11,25 +23,15 @@
 
 <% end %>
 
-<a class="btn btn-secondary" href="/courses" role="button">
-  Show Courses
-</a>
-<% if (logged_in? and current_user.affiliation == "Admin")%>
-  <a class="btn btn-secondary" href="/applied" role="button">
-    All Applications
-  </a>
-  <a class="btn btn-secondary" href="/recommendations" role="button">
-    All Recommendations
-  </a>
-<%end %>
+
 <p />
 <h1>Users</h1>
 
 <table>
   <thead>
   <tr>
-    <th>Last</th>
     <th>First</th>
+    <th>Last</th>
     <th>Affiliation</th>
     <th>Username</th>
     <th colspan="3"></th>
@@ -39,8 +41,8 @@
   <tbody>
   <% @users.each do |user| %>
     <tr>
-      <td><%= user.lname %></td>
       <td><%= user.fname %></td>
+      <td><%= user.lname %></td>
       <td><%= user.affiliation %></td>
       <td><%= user.username %></td>
       <td><%= link_to 'Show', user %></td>

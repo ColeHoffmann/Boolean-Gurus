@@ -1,4 +1,20 @@
-<p id="notice"><%= notice %></p>
+
+
+<a class="btn btn-secondary" href="/courses" role="button">
+    Courses
+  </a>
+  <a class="btn btn-secondary" href="/users" role="button">
+    Users
+  </a>
+  <% if (logged_in? and current_user.affiliation == "Admin")%>
+    
+    <a class="btn btn-secondary" href="/applications" role="button">
+      Applications
+    </a>
+    
+  <% end %>
+
+  <p id="notice"><%= notice %></p>
 
 <h1>Recommendations</h1>
 
@@ -11,24 +27,15 @@
     <th>Recomendation Type</th>
   </tr>
   </thead>
-  <a class="btn btn-secondary" href="/courses" role="button">
-    Show Courses
-  </a>
-  <% if (logged_in? and current_user.affiliation == "Admin")%>
-    <a class="btn btn-secondary" href="/applied" role="button">
-      Show Applications
-    </a>
-    <a class="btn btn-secondary" href="/users" role="button">
-      Show Users
-    </a>
-  <% end %>
+  
   <tbody>
   <% @recommendations.each do |rec| %>
     <tr>
       <td><%= rec.ins_fname %> <%= rec.ins_lname %></td>
       <td><%= rec.student_fname %> <%= rec.student_lname %></td>
       <td>CSE <%= rec.course_number %> Section <%= rec.section_number %></td>
-      <td><%= rec.type %></td>
+      <td><%= rec.rec_type %></td>
+      <td><%= link_to 'Show ', rec %></td>
       <% if rec.ins_username == current_user.username or current_user.affiliation == "Admin"%>
         <td><%= link_to 'Edit',  edit_recommendation_path(rec) %></td>
         <td><%= link_to 'Destroy', rec, method: :delete, data: { confirm: 'Are you sure?' } %></td>

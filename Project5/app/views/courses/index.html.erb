@@ -1,3 +1,14 @@
+<a class="btn btn-secondary" href="/users" role="button">
+  Users
+</a>
+<% if (logged_in? and current_user.affiliation == "Admin")%>
+  <a class="btn btn-secondary" href="/applications" role="button">
+    Applications
+  </a>
+  <a class="btn btn-secondary" href="/recommendations" role="button">
+    Recommendations
+  </a>
+<%end %>
 <p id="notice"><%= notice %></p>
 <div>
 <h1>Search</h1>
@@ -9,17 +20,7 @@
 
     <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
 <% end %>
-<a class="btn btn-secondary" href="/users" role="button">
-  Show Users
-</a>
-<% if (logged_in? and current_user.affiliation == "Admin")%>
-  <a class="btn btn-secondary" href="/applications" role="button">
-    Show Applications
-  </a>
-  <a class="btn btn-secondary" href="/recommendations" role="button">
-    Show Recommendations
-  </a>
-<%end %>
+
 
 <h1>Courses</h1>
 <% if (logged_in? and current_user.affiliation == "Admin")%>
