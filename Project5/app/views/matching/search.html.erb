@@ -16,9 +16,11 @@
 <%end %>
 
 <% @courseCandidateArray.each do |pair| %>
-
 <a>Course number: <%= pair[1].course_number %> </a>
 <a>Section number: <%= pair[1].section_number %> </a>
+<% if (pair[0].length > 0) %>
+
+
 <table>
   <thead>
     <tr>
@@ -31,13 +33,18 @@
     <% pair[0].each do |applicant| %>
 	<% @applicant = User.where("id = '" + applicant.user_id.to_s + "'") %>
       <tr>
-        <td><%= @applicant[0][:fname] %></td>
+        <td><%= @applicant[0][:fname]  %> </td>
         <td><%= @applicant[0][:lname] %></td>
-</td>
+</tr>
         <%end %>
 
   </tbody>
 </table>
+
+<%else %>
+		  No candidates yet!
+		  </br>
+<% end %>
 
 <%end %>
 
