@@ -12,13 +12,14 @@
 <% end %>
 
 <a class="btn btn-secondary" href="/courses" role="button">
-  Search Courses
+  Show Courses
 </a>
 <% if (logged_in? and current_user.affiliation == "Admin")%>
   <a class="btn btn-secondary" href="/applied" role="button">
     All Applications
   </a>
 <%end %>
+<p />
 <h1>Users</h1>
 
 <table>
