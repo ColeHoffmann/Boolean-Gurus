@@ -20,11 +20,8 @@ class ApplicationsController < ApplicationController
 		@application = Application.find(params[:id])
 		@application.update(application_params)
 
-		if current_user.affiliation == "Student"
-			redirect_to my_applications_path
-		else
-			redirect_to applications_path
-		end
+		redirect_to applications_path
+
 		
 
 	end
@@ -32,11 +29,7 @@ class ApplicationsController < ApplicationController
 	def destroy
 		Application.find(params[:id]).destroy
 
-		if current_user.affiliation == "Student"
-			redirect_to my_applications_path
-		else
-			redirect_to applications_path
-		end
+		redirect_to applications_path
 
 	end
 
@@ -51,7 +44,7 @@ class ApplicationsController < ApplicationController
 		@application.user_id = current_user.id if current_user
 
 		if @application.save 
-			redirect_to my_applications_path
+			redirect_to applications_path
 		else 
 			render "new"
 		end
@@ -64,7 +57,7 @@ class ApplicationsController < ApplicationController
 
 	private
 	def application_params
-		params.require(:application).permit(:course_number, :lname, :fname, :phone_number, :email, :schedule)
+		params.require(:application).permit(:course_number, :phone_number, :email, :schedule)
 
 	end
 	

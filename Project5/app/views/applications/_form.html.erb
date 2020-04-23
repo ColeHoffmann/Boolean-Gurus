@@ -1,0 +1,41 @@
+<%= form_with(model: application, local: true) do |form| %>
+  <% if application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(application.errors.count, "error") %> prohibited this application from being saved:</h2>
+
+      <ul>
+        <% application.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label 'Course Number' %>
+    <%= form.text_field :course_number %>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label 'Class Schedule' %>
+    <%= form.text_field :schedule %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label 'Email' %>
+    <%= form.email_field :email %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label 'Phone Number' %>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

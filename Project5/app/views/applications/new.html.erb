@@ -1,17 +1,4 @@
 <h1> TA Application </h1>
-<%= bootstrap_form_for @application do |f| %>
 
-
-<%= f.text_field :fname %><br>
-<%= f.text_field :lname %><br>
-
-<%= f.text_field :course_number%><br>
-
-<%= f.text_field :schedule%><br>
-
-<%= f.email_field :email%><br>
-
-<%= f.text_field :phone_number%><br>
-<%= f.submit %>
-
-<%end%>
+<%= render 'applications/form', application:@application %>
+<%= link_to 'Back', applications_path %>

@@ -3,46 +3,50 @@
 Courses
 </a>
 <a class="btn btn-secondary" href="/users" role="button">
-      Users
-    </a>
-<% if (logged_in? and current_user.affiliation == "Admin")%>
-<a class="btn btn-secondary" href="/recommendations" role="button">
-  Recommendations
+Users
 </a>
-<%end %>
+<% if (logged_in? and current_user.affiliation == "Admin")%>
+
+<a class="btn btn-secondary" href="/applications" role="button">
+  Applications
+</a>
+
+<% end %>
 
 <p id="notice"><%= notice %></p>
+
 <h1>Applications</h1>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Course Number</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Courses Applied</th>
+<th>Email</th>
+<th>Phone number</th>
+<th>Class Schedule</th>
+</tr>
+</thead>
 
-  <tbody>
-    <% i = 1 %>
-    <% @applicaions.each do | application | %>
-    <tr>
+<tbody>
+<% @applicaions.each do | app | %>
+<% if app.user_id == current_user.id or current_user.affiliation == "Admin"%>
+<tr>
+  <td><%= User.find(app.user_id).fname %> <%= User.find(app.user_id).lname %></td>
+  <td><%= app.course_number %></td>
+  <td><%= app.email %></td>
+  <td><%= app.phone_number %></td>
+  <td><%= app.schedule %></td>
+  <td><%= link_to 'Show ', app %></td>
+  
+  <td><%= link_to 'Edit', edit_application_path(app) %></td>
+  <td><%= link_to 'Destroy', app, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-      <th scope="row"><%= i %> </th>
-      <td><%= application.course_number %></td>
-      <td><%=link_to "Edit", edit_application_path(id: application.id), :class=>"btn btn-info" %></td>
-      <td><%=link_to "Delete", application_path(id: application.id), method: :delete, :class=>"btn btn-danger" %></td>
-
-    </tr>
-    <%i = i + 1%>
-    <%end%>
-  </tbody>
-
+  
+</tr>
+<% end %>
+<% end %>
+</tbody>
 </table>
 
-<div class="d-flex flex-row">
-
-
-
-</div>
+<br>

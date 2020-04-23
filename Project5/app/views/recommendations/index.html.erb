@@ -30,17 +30,19 @@
   
   <tbody>
   <% @recommendations.each do |rec| %>
+    <% if rec.ins_username == current_user.username or current_user.affiliation == "Admin"%>
     <tr>
       <td><%= rec.ins_fname %> <%= rec.ins_lname %></td>
       <td><%= rec.student_fname %> <%= rec.student_lname %></td>
       <td>CSE <%= rec.course_number %> Section <%= rec.section_number %></td>
       <td><%= rec.rec_type %></td>
       <td><%= link_to 'Show ', rec %></td>
-      <% if rec.ins_username == current_user.username or current_user.affiliation == "Admin"%>
+      
         <td><%= link_to 'Edit',  edit_recommendation_path(rec) %></td>
         <td><%= link_to 'Destroy', rec, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
+      
     </tr>
+    <% end %>
   <% end %>
   </tbody>
 </table>

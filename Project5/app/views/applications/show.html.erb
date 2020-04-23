@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+<% curr_app = Application .find(params[:id]) %>
+<p>
+  <strong>First Name:</strong>
+  <%= User.find(curr_app.user_id).fname %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= User.find(curr_app.user_id).lname %>
+</p>
+
+
+<p>
+  <strong>Course Numbers Name:</strong>
+  <%= curr_app.course_number %>
+</p>
+
+<p>
+  <strong>Class Schedule:</strong>
+  <%= curr_app.schedule %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= curr_app.email %>
+</p>
+
+<p>
+  <strong>Phone Number:</strong>
+  <%= curr_app.phone_number %>
+</p>
+
+<%if curr_app.user_id == current_user.id || current_user.affiliation == 'Admin'%>
+  <%= link_to 'Edit', edit_application_path(curr_app) %>
+  <%end %>
+<%= link_to 'Back', applications_path %>
