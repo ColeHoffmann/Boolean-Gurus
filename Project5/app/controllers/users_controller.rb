@@ -34,10 +34,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    @user.affiliation = "Student"
 
-    #session[:user_id] = @user.id 
-
-    redirect_to users_path
+    session[:user_id] = @user.id 
+    if @user.save and current_user
+      redirect_to users_path
+    else 
+      render "new"
+    end 
   end
 
   def update
@@ -67,6 +71,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:fname,:lname,:affiliation,:username,:password,:phone_number, :email)
+      params.require(:user).permit(:fname,:lname,:username,:affiliation, :password,:phone_number, :email)
     end
 end
