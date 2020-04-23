@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
 
-def new 
+	def new 
 
 		@application = Application.new
 
@@ -25,9 +25,9 @@ def new
 		@application.user_id = current_user.id if current_user
 
 		if @application.save 
-
+			redirect_to applications_path
 		else 
-
+			render "new"
 		end
 	end
 
