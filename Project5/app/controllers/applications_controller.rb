@@ -34,7 +34,7 @@ def new
 
 	private
 	def application_params
-		params.require(:apply).permit(:course_number, :lname, :fname, :phone_number, :email, :schedule)
+		params.require(:application).permit(:course_number, :lname, :fname, :phone_number, :email, :schedule)
 
 	end
 	
