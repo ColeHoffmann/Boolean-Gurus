@@ -23,12 +23,12 @@
 
 <p>
   <strong>Email:</strong>
-  <%= curr_app.email %>
+  <%= User.find(curr_app.user_id).email %>
 </p>
 
 <p>
   <strong>Phone Number:</strong>
-  <%= curr_app.phone_number %>
+  <%= User.find(curr_app.user_id).phone_number %>
 </p>
 
 <%if curr_app.user_id == current_user.id || current_user.affiliation == 'Admin'%>

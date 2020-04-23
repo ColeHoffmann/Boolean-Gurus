@@ -24,16 +24,22 @@
 <% end %>
 
 
+
+
+
 <p />
 <h1>Users</h1>
+<a class="btn btn-secondary" href="/users/new" role="button"> New User </a>
+<p />
 
 <table>
   <thead>
   <tr>
-    <th>First</th>
-    <th>Last</th>
+    <th>Name</th>
     <th>Affiliation</th>
     <th>Username</th>
+    <th>Email</th>
+    <th>Phone Number</th>
     <th colspan="3"></th>
   </tr>
   </thead>
@@ -41,10 +47,11 @@
   <tbody>
   <% @users.each do |user| %>
     <tr>
-      <td><%= user.fname %></td>
-      <td><%= user.lname %></td>
+      <td><%= user.fname %> <%= user.lname %></td>
       <td><%= user.affiliation %></td>
       <td><%= user.username %></td>
+      <td><%= user.email %></td>
+      <td><%= user.phone_number %></td>
       <td><%= link_to 'Show', user %></td>
       <% if (logged_in? and current_user.affiliation == "Admin")%>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>

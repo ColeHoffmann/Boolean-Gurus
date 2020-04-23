@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+
   def index
     @users = User.all
   end
@@ -34,9 +35,9 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
 
-    session[:user_id] = @user.id 
+    #session[:user_id] = @user.id 
 
-    redirect_to '/'
+    redirect_to users_path
   end
 
   def update
@@ -52,6 +53,13 @@ class UsersController < ApplicationController
     end
   end 
 
+  def destroy
+    set_user
+    @user.destroy
+    redirect_to users_path
+	end
+
+
 
   private
     def set_user
@@ -59,6 +67,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:fname,:lname,:affiliation,:username,:password)
+      params.require(:user).permit(:fname,:lname,:affiliation,:username,:password,:phone_number, :email)
     end
 end

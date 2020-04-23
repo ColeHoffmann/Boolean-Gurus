@@ -10,12 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_112723) do
+ActiveRecord::Schema.define(version: 2020_04_23_114434) do
 
   create_table "applications", force: :cascade do |t|
     t.integer "course_number"
-    t.string "phone_number"
-    t.string "email"
     t.string "schedule"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -91,6 +89,8 @@ ActiveRecord::Schema.define(version: 2020_04_23_112723) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "phone_number"
+    t.string "email"
   end
 
   add_foreign_key "applies", "users"

@@ -38,8 +38,8 @@ Users
   <td><%= User.find(app.user_id).fname %> <%= User.find(app.user_id).lname %></td>
   <% end %>
   <td><%= app.course_number %></td>
-  <td><%= app.email %></td>
-  <td><%= app.phone_number %></td>
+  <td><%= User.find(app.user_id).email %></td>
+  <td><%= User.find(app.user_id).phone_number %></td>
   <td><%= app.schedule %></td>
   <td><%= link_to 'Show ', app %></td>
   

@@ -11,20 +11,6 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :fname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :lname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :affiliation %>
-    <%= form.select :affiliation, %w[Admin Faculty Student] %>
-  </div>
 
   <div class="field">
     <%= form.label :username %>
@@ -35,6 +21,37 @@
     <%= form.label :password %>
     <%= form.password_field :password %>
   </div>
+
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :fname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :lname %>
+  </div>
+
+  <% if (logged_in? and current_user.affiliation == "Admin")%>
+    <div class="field">
+      <%= form.label :affiliation %>
+      <%= form.select :affiliation, %w[Admin Faculty Student] %>
+    </div>
+  <%end %>
+
+ 
+
+  <div class="field">
+  <%= form.label 'Email' %>
+  <%= form.email_field :email %>
+</div>
+
+
+<div class="field">
+  <%= form.label 'Phone Number' %>
+  <%= form.text_field :phone_number %>
+</div>
 
   <div class="actions">
     <%= form.submit %>

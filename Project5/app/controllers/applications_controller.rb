@@ -57,7 +57,7 @@ class ApplicationsController < ApplicationController
 
 	private
 	def application_params
-		params.require(:application).permit(:course_number, :phone_number, :email, :schedule)
+		params.require(:application).permit(:course_number, :schedule)
 
 	end
 	
