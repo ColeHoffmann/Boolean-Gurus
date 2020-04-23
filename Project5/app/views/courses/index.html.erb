@@ -1,9 +1,7 @@
 <a class="btn btn-secondary" href="/users" role="button">
   Users
 </a>
-<a class="btn btn-secondary" href="/matching" role="button">
-    TA - course matching
-  </a>
+
 <% if (logged_in? and current_user.affiliation == "Admin")%>
   <a class="btn btn-secondary" href="/applications" role="button">
     Applications
@@ -11,9 +9,11 @@
   <a class="btn btn-secondary" href="/recommendations" role="button">
     Recommendations
   </a>
+
   <a class="btn btn-secondary" href="/matching" role="button">
-    Hire
+    TA - course matching
   </a>
+ 
 
 <%end %>
 <p id="notice"><%= notice %></p>
