@@ -35,7 +35,7 @@
   <%= @course.session %>
 </p>
 
-<!--%= link_to 'Edit', edit_course_path(@course) %--> |
+<%= link_to 'Edit', edit_course_path(@course) %> 
 
 <% if logged_in? and (current_user.affiliation == "Student")%>
   <%=

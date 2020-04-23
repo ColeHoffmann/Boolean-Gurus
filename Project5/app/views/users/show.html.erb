@@ -49,9 +49,10 @@
     end %>
   </table>
 <%
-  end
-   if curr_user.affiliation == "Student" &&  current_user.affiliation == "Faculty"
-    #link_to 'Recommend',
+  end%>
+  <%if curr_user.affiliation == "Student" &&  current_user.affiliation == "Faculty"%>
+  <%= link_to 'Recommend', new_recommendation_path %>s
+  <%
    end
 %>
 <%= link_to 'Back', users_path %>

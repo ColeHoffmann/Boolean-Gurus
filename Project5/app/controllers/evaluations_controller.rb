@@ -1,4 +1,4 @@
-class EvaluationController < ApplicationController
+class EvaluationsController < ApplicationController
   # def search
   #   if (params[:searchLname].blank?  && params[:searchUsername].blank? && params[:searchAffiliation].blank?)
   #     @list = Evaluation.all

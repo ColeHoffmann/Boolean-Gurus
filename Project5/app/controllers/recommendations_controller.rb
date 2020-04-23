@@ -1,4 +1,4 @@
-class RecommendationController < ApplicationController
+class RecommendationsController < ApplicationController
   # def search
   #   if (params[:searchLname].blank?  && params[:searchUsername].blank? && params[:searchAffiliation].blank?)
   #     @list = Recommendation.all
@@ -54,6 +54,6 @@ class RecommendationController < ApplicationController
   end
 
   def recommendation_params
-    params.require(:recommendation).permit(:ins_fname,:ins_lname, :ins_username, :type, :recommendation, :stud_fname, :stud_lname, :stud_username)
+    params.require(:recommendation).permit(:ins_fname,:ins_lname, :ins_username, :type, :recommendation, :ta_fname, :ta_lname, :ta_username)
   end
 end

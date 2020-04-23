@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_014938) do
+ActiveRecord::Schema.define(version: 2020_04_23_054344) do
+
+  create_table "applications", force: :cascade do |t|
+    t.integer "course_number"
+    t.string "lname"
+    t.string "fname"
+    t.string "phone_number"
+    t.string "email"
+    t.string "schedule"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_applications_on_user_id"
+  end
 
   create_table "applies", force: :cascade do |t|
     t.string "last_name", limit: 32, null: false
@@ -21,6 +34,8 @@ ActiveRecord::Schema.define(version: 2020_04_23_014938) do
     t.string "first_name"
     t.string "email"
     t.string "schedule"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_applies_on_user_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -52,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_04_23_014938) do
     t.string "ins_lname"
     t.string "ins_username"
     t.string "type"
-    t.string "recommendation"
+    t.string "recommendations"
     t.string "ta_fname"
     t.string "ta_lname"
     t.string "ta_username"
@@ -78,4 +93,5 @@ ActiveRecord::Schema.define(version: 2020_04_23_014938) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "applies", "users"
 end
