@@ -19,7 +19,24 @@ class ApplicationsController < ApplicationController
 	def update
 		@application = Application.find(params[:id])
 		@application.update(application_params)
-		redirect_to applications_path
+
+		if current_user.affiliation == "Student"
+			redirect_to my_applications_path
+		else
+			redirect_to applications_path
+		end
+		
+
+	end
+
+	def destroy
+		Application.find(params[:id]).destroy
+
+		if current_user.affiliation == "Student"
+			redirect_to my_applications_path
+		else
+			redirect_to applications_path
+		end
 
 	end
 
@@ -34,14 +51,14 @@ class ApplicationsController < ApplicationController
 		@application.user_id = current_user.id if current_user
 
 		if @application.save 
-			redirect_to applications_path
+			redirect_to my_applications_path
 		else 
 			render "new"
 		end
 	end
 
 	def my_application
-		@my_application = Application.all   	
+		@my_application = current_user.applications   	
 	end
 
 
