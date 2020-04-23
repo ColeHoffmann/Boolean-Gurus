@@ -3,6 +3,6 @@ class User < ApplicationRecord
 
     has_many :student_courses, dependent: :destroy
 
-    has_many :appications, dependent: :destroy
+    has_many :applications, dependent: :destroy
 
 end

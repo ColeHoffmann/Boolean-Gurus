@@ -13,12 +13,21 @@ class ApplicationsController < ApplicationController
 		
 
 	def edit
+		@application = Application.find(params[:id])
+	end
+
+	def update
+		@application = Application.find(params[:id])
+		@application.update(application_params)
+		redirect_to applications_path
 
 	end
 
 	def show
 
 	end
+
+
 
 	def create
 		@application = Application.create(application_params)
@@ -29,6 +38,10 @@ class ApplicationsController < ApplicationController
 		else 
 			render "new"
 		end
+	end
+
+	def my_application
+		@my_application = Application.all   	
 	end
 
 

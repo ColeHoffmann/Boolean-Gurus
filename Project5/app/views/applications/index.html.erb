@@ -17,7 +17,7 @@
 
       <th scope="row"><%= i %> </th>
       <td><%= application.course_number %></td>
-      <td>#</td>
+      <td><%=link_to "Edit", edit_application_path(id: application.id), :class=>"btn btn-info" %></td>
       <td>#</td>
 
     </tr>

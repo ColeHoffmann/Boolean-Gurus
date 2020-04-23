@@ -9,9 +9,10 @@ Rails.application.routes.draw do
 
   #routes for login and sign up
   resources :users
-  get 'dashboard', to: 'users#dashboard'
+  
 
   resources :applications
+  get 'my_applications', to: 'applications#my_application'
 
   resources :evaluations
 

@@ -52,9 +52,6 @@ class UsersController < ApplicationController
     end
   end 
 
-  def application
-   
-  end 
 
   private
     def set_user
