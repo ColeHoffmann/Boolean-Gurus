@@ -50,10 +50,6 @@ class ApplicationsController < ApplicationController
 		end
 	end
 
-	def my_application
-		@my_application = current_user.applications   	
-	end
-
 
 	private
 	def application_params
