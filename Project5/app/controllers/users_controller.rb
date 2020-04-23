@@ -34,10 +34,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    @user.affiliation = "Student" if !logged_in?
 
-    #session[:user_id] = @user.id 
+		if @user.save 
+      redirect_to users_path
+		else 
+			render "new"
+		end
 
-    redirect_to users_path
+
   end
 
   def update
