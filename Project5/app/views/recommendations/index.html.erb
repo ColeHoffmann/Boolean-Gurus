@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Recommendations</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Recommendation</th>
+    <th>Instructor</th>
+    <th>Student</th>
+    <th>Type</th>
+  </tr>
+  </thead>
+  <a class="btn btn-secondary" href="/courses" role="button">
+    Search Courses
+  </a>
+  <% if (logged_in? and current_user.affiliation == "Admin")%>
+    <a class="btn btn-secondary" href="/applied" role="button">
+      All Applications
+    </a>
+    <a class="btn btn-secondary" href="/users" role="button">
+      All Users
+    </a>
+  <% end %>
+  <tbody>
+  <% @recommendations.each do |rec| %>
+    <tr>
+      <td><%= rec.recommendation %></td>
+      <td><%= rec.ins_username%></td>
+      <td><%= rec.ta_username%></td>
+      <td><%= rec.type %></td>
+      <% if rec.ins_username == current_user.username or current_user.affiliation == "Admin"%>
+        <td><%= link_to 'Edit',  edit_recommendation_path(rec) %></td>
+        <td><%= link_to 'Destroy', rec, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>

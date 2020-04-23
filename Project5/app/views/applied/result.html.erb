@@ -13,8 +13,19 @@
       <th>Schedule</th>
     </tr>
   </thead>
-
+  <a class="btn btn-secondary" href="/courses" role="button">
+    Search Courses
+  </a>
+  <% if (logged_in? and current_user.affiliation == "Admin")%>
+    <a class="btn btn-secondary" href="/users" role="button">
+      All Users
+    </a>
+    <a class="btn btn-secondary" href="/recommendations" role="button">
+      All Recommendations
+    </a>
+  <% end %>
   <tbody>
+
     <% @applicantList.each do |applicant| %>
       <tr>
         <td><%= applicant.course_number %></td>

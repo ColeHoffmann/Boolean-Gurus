@@ -1,0 +1,6 @@
+<h1>Editing Recommendation</h1>
+<% curr_rec = Recommendation.find(params[:id]) %>
+<%= render 'form', recommendation: curr_rec %>
+
+<%= link_to 'Show', curr_rec %> |
+<%= link_to 'Back', users_path %>
