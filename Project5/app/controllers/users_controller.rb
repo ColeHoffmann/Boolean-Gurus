@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+
   def index
     @users = User.all
   end
@@ -33,10 +34,17 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-
     session[:user_id] = @user.id 
+    @user.affiliation = "Student" if !logged_in?
+    
+		if @user.save 
+      redirect_to users_path
+		else 
+			render "new"
+		end
 
-    redirect_to '/'
+
+# >>>>>>> 2b6cec7655b0b65cb1deca698296e02024fd0762
   end
 
   def update
@@ -52,6 +60,13 @@ class UsersController < ApplicationController
     end
   end 
 
+  def destroy
+    set_user
+    @user.destroy
+    redirect_to users_path
+	end
+
+
 
   private
     def set_user
@@ -59,6 +74,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:fname,:lname,:affiliation,:username,:password)
+      params.require(:user).permit(:fname,:lname,:username,:affiliation, :password,:phone_number, :email)
     end
 end

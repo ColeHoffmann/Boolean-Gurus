@@ -1,12 +1,19 @@
+
+<a class="btn btn-secondary" href="/courses" role="button">
+Courses
+</a>
+<a class="btn btn-secondary" href="/users" role="button">
+Users
+</a>
 <h1>Your Courses</h1>
 
 <table class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Course Title</th>
       <th scope="col">Course Number</th>
       <th scope="col">Grade</th>
+      <th />
     </tr>
   </thead>
 
@@ -16,9 +23,9 @@
     <tr>
 
       <th scope="row"><%= i %> </th>
-      <td><%= course.title %></td>
       <td><%= course.course_number %></td>
       <td><%= course.grade %></td>
+      <td><%=link_to "Edit", edit_student_course_path(course), :class=>"btn btn-secondary" %></td>
 
     </tr>
     <%i = i + 1%>

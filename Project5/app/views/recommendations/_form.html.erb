@@ -12,43 +12,29 @@
   <% end %>
 
   <div class="field">
-    <%= form.label 'Instructor First Name'%>
-    <%= form.text_field :ins_fname %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Instructor Last Name" %>
-    <%= form.text_field :ins_lname %>
-  </div>
-
-  <div class="field">
-    <%= form.label 'Instructor Username' %>
-    <%= form.text_field :ins_username %>
-  </div>
-
-  <div class="field">
     <%= form.label 'Recommendation Type' %>
-    <%= form.select :type, %w[Recommendation Request] %>
+    <%= form.select :rec_type, %w[Recommendation Request] %>
   </div>
 
   <div class="field">
-    <%= form.label 'Recommendation' %>
-    <%= form.text_area :recommendation %>
+    <%= form.label 'Student First Name' %>
+    <%= form.text_field :student_fname %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label 'Student Last Name' %>
+    <%= form.text_field :student_lname %>
   </div>
 
   <div class="field">
-    <%= form.label 'TA Last Name' %>
-    <%= form.text_field :ta_lname %>
+    <%= form.label 'Course Number' %>
+    <%= form.text_field :course_number %>
   </div>
 
   <div class="field">
-    <%= form.label 'TA First Name' %>
-    <%= form.text_field :ta_fname %>
-  </div>
-
-  <div class="field">
-    <%= form.label 'TA Username' %>
-    <%= form.text_field :ta_username %>
+    <%= form.label 'Section Number' %>
+    <%= form.text_field :section_number %>
   </div>
 
   <div class="actions">

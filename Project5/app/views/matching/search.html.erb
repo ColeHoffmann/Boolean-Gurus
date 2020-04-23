@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+
+<%= form_tag("matching", :method => "put", class: 'navbar-form navbar-left') do %>    
+    <%= search_field_tag :searchCourse, params[:searchCourse], placeholder: "Course Number", class: "form-control"%>
+ 
+  <%= button_tag "Submit", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+<% end %>
+
+<h1>Matches</h1>
+<% if (logged_in? and current_user.affiliation == "Admin")%>
+  <a class="btn btn-secondary" href="/courses/new" role="button">
+    New Section
+  </a>
+<%end %>
+
+<% @courseCandidateArray.each do |pair| %>
+
+<a>Course number: <%= pair[1].course_number %> </a>
+<a>Section number: <%= pair[1].section_number %> </a>
+<table>
+  <thead>
+    <tr>
+      <th>First name </th>
+      <th>Last name </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% pair[0].each do |applicant| %>
+      <tr>
+        <td><%= applicant.fname %></td>
+        <td><%= applicant.lname %></td>
+</td>
+        <%end %>
+
+  </tbody>
+</table>
+
+<%end %>
+
+<br>
+
+</div>
+
+<!--%= link_to 'New Course', new_course_path %-->

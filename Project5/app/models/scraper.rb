@@ -17,7 +17,9 @@ class WebScraper
     hash_list = [] 
     courses = noko_page.css('div.panel.panel-default')
     courses.each do |course|
-      title = course.css('a').text
+      temp = course.css('a').text
+      title = temp[9...temp.length]
+      course_num = temp[0,10].split(//).map {|x| x[/\d+/]}.compact.join("").to_i
       sections = course.css('tr.group0') + course.css('tr.group1')
       #loop through sections to get section info
       sections.each do |section|
@@ -40,7 +42,7 @@ class WebScraper
           :time => section_times,
           :instructor => section_instructor,
           :session => section_session,
-          :course_number => title[0,10].split(//).map {|x| x[/\d+/]}.compact.join("").to_i
+          :course_number => course_num
         }
       hash_list << course_info
       end

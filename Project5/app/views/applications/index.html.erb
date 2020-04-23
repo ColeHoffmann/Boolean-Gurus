@@ -1,34 +1,56 @@
-<h1>Your Applications</h1>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Course Number</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
+<a class="btn btn-secondary" href="/courses" role="button">
+Courses
+</a>
+<a class="btn btn-secondary" href="/users" role="button">
+Users
+</a>
+<% if (logged_in? and current_user.affiliation == "Admin")%>
 
-  <tbody>
-    <% i = 1 %>
-    <% @applicaions.each do | application | %>
-    <tr>
+<a class="btn btn-secondary" href="/applications" role="button">
+  Applications
+</a>
 
-      <th scope="row"><%= i %> </th>
-      <td><%= application.course_number %></td>
-      <td><%=link_to "Edit", edit_application_path(id: application.id), :class=>"btn btn-info" %></td>
-      <td><%=link_to "Delete", application_path(id: application.id), method: :delete, :class=>"btn btn-danger" %></td>
+<% end %>
 
-    </tr>
-    <%i = i + 1%>
-    <%end%>
-  </tbody>
+<p id="notice"><%= notice %></p>
 
+<h1>Applications</h1>
+
+<table>
+<thead>
+<tr>
+<% if current_user.affiliation == "Admin" %>
+<th>Name</th>
+<% end %>
+<th>Courses Applied</th>
+<th>Email</th>
+<th>Phone number</th>
+<th>Class Schedule</th>
+</tr>
+</thead>
+
+<tbody>
+<% @applicaions.each do | app | %>
+<% if app.user_id.to_i == current_user.id.to_i or current_user.affiliation == "Admin"%>
+<tr>
+  <% if current_user.affiliation == "Admin" %>
+  <td><%= User.find(app.user_id.to_i).fname %> <%= User.find(app.user_id.to_i).lname %></td>
+  <% end %>
+  <td><%= app.course_number %></td>
+  <td><%= User.find(app.user_id.to_i).email %></td>
+  <td><%= User.find(app.user_id.to_i).phone_number %></td>
+  <td><%= app.schedule %></td>
+  <td><%= link_to 'Show ', app %></td>
+  
+  <td><%= link_to 'Edit', edit_application_path(app) %></td>
+  <td><%= link_to 'Destroy', app, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+  
+</tr>
+<% end %>
+<% end %>
+</tbody>
 </table>
 
-<div class="d-flex flex-row">
-
-
-
-</div>
+<br>

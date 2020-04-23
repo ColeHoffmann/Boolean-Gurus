@@ -31,8 +31,13 @@ class RecommendationsController < ApplicationController
 
   def create
     @recommendation = Recommendation.create(recommendation_params)
+    @recommendation.ins_id = current_user.id if current_user
 
-    redirect_to '/'
+		if @recommendation.save 
+			redirect_to recommendations_path
+		else 
+			render "new"
+		end
   end
 
   def update
@@ -48,12 +53,18 @@ class RecommendationsController < ApplicationController
     end
   end
 
+  def destroy
+    set_recommendation
+    @recommendation.destroy
+    redirect_to recommendations_path
+	end
+
   private
   def set_recommendation
     @recommendation = Recommendation.find(params[:id])
   end
 
   def recommendation_params
-    params.require(:recommendation).permit(:ins_fname,:ins_lname, :ins_username, :type, :recommendation, :ta_fname, :ta_lname, :ta_username)
+    params.require(:recommendation).permit(:student_fname,  :student_lname, :course_number, :section_number, :rec_type)
   end
 end

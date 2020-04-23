@@ -2,5 +2,4 @@
 <% curr_user = User.find(params[:id]) %>
 <%= render 'form', user: curr_user %>
 
-<%= link_to 'Show', curr_user %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Back', users_path %>

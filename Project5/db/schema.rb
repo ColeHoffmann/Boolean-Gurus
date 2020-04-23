@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_054344) do
+ActiveRecord::Schema.define(version: 2020_04_23_142914) do
 
   create_table "applications", force: :cascade do |t|
     t.integer "course_number"
-    t.string "lname"
-    t.string "fname"
-    t.string "phone_number"
-    t.string "email"
     t.string "schedule"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -63,18 +59,17 @@ ActiveRecord::Schema.define(version: 2020_04_23_054344) do
   end
 
   create_table "recommendations", force: :cascade do |t|
-    t.string "ins_fname"
-    t.string "ins_lname"
-    t.string "ins_username"
-    t.string "type"
-    t.string "recommendations"
-    t.string "ta_fname"
-    t.string "ta_lname"
-    t.string "ta_username"
+    t.string "student_fname"
+    t.string "student_lname"
+    t.string "course_number"
+    t.string "section_number"
+    t.string "rec_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "ins_id"
   end
 
   create_table "student_courses", force: :cascade do |t|
-    t.string "title"
     t.integer "course_number"
     t.string "grade"
     t.integer "user_id"
@@ -91,6 +86,8 @@ ActiveRecord::Schema.define(version: 2020_04_23_054344) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "phone_number"
+    t.string "email"
   end
 
   add_foreign_key "applies", "users"

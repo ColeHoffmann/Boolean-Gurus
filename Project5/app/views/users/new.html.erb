@@ -1,7 +1,12 @@
 <div>
     <div>
-        <h1>Sign Up</h1>
+    <% if (logged_in? and current_user.affiliation == "Admin")%>
+      <h1>New User</h1>
+    <% else %>
+    <h1>New Student</h1>
+    <%end %>
+        
     </div>
   <%= render 'users/form', user:@user %>
-  <%= link_to 'Back', courses_path %>
+  <%= link_to 'Back', users_path %>
 </div>
