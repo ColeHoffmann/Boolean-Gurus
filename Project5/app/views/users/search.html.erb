@@ -1,3 +1,22 @@
+<a class="btn btn-secondary" href="/users" role="button">
+  Users
+</a>
+
+<% if (logged_in? and current_user.affiliation == "Admin")%>
+  <a class="btn btn-secondary" href="/applications" role="button">
+    Applications
+  </a>
+  <a class="btn btn-secondary" href="/recommendations" role="button">
+    Recommendations
+  </a>
+
+  <a class="btn btn-secondary" href="/matching" role="button">
+    TA - course matching
+  </a>
+ 
+<%end %>
+
+
 <p id="notice"><%= notice %></p>
 
 <h1>Search</h1>
@@ -9,42 +28,33 @@
 
   <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
 <% end %>
-<a class="btn btn-secondary" href="/courses" role="button">
-  Search Courses
-</a>
-<% if (logged_in? and current_user.affiliation == "Admin")%>
-  <a class="btn btn-secondary" href="/applied" role="button">
-    All Applications
-  </a>
-  <a class="btn btn-secondary" href="/recommendations" role="button">
-    All Recommendations
-  </a>
 
-<%end %>
 
 <h1>Users</h1>
 
 <table>
   <thead>
   <tr>
-    <th>Last</th>
-    <th>First</th>
-    <th>Affiliation</th>
-    <th>Username</th>
-    <th colspan="3"></th>
+  <th>Name</th>
+  <th>Affiliation</th>
+  <th>Username</th>
+  <th>Email</th>
+  <th>Phone Number</th>
+  <th colspan="3"></th>
   </tr>
   </thead>
 
   <tbody>
   <% if @list
     @list.each do |user| %>
-    <tr>
-      <td><%= user.lname %></td>
-      <td><%= user.fname %></td>
+      <tr>
+      <td><%= user.fname %> <%= user.lname %></td>
       <td><%= user.affiliation %></td>
       <td><%= user.username %></td>
-      <td><%= link_to 'Show', current_user %></td>
-      <% if (logged_in? and current_user.affiliation == "Admin") %>
+      <td><%= user.email %></td>
+      <td><%= user.phone_number %></td>
+      <td><%= link_to 'Show', user %></td>
+      <% if (logged_in? and current_user.affiliation == "Admin")%>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <%end %>
