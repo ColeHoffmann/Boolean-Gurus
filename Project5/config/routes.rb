@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get 'survey', to: 'users#search'
   get '/users/:id/edit', to: 'users#edit'
   get 'recommendations', to: 'recommendations#index'
+  get 'matching', to: 'matching#index'
+  put 'matching', to: 'matching#search'
 
 
   #get '/addcourse', to: 'student_courses#new'
