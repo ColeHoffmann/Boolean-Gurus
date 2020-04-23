@@ -38,11 +38,10 @@
   <%= @course.session %>
 </p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> 
 
-<% if logged_in? and (current_user.affiliation == "Student")%>
-  <%=
-      link_to 'Apply', apply_path %> |
+
+<% if logged_in? and (current_user.affiliation == "Admin")%>
+    <%= link_to 'Edit', edit_course_path(@course) %> 
 <% end %>
 <%=
   link_to 'Back', courses_path
