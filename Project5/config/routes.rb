@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users
   get 'dashboard', to: 'users#dashboard'
 
-  resources :applied
+  resources :applications
 
   resources :evaluation
 
@@ -19,13 +19,14 @@ Rails.application.routes.draw do
 
   resources :student_courses
 
+
   get 'login', to: 'sessions#new'
   get 'login', to: 'sessions#create'
   post 'login', to: 'sessions#create'
   get 'my_page', to: 'sessions#my_page_req_login'
   post 'logout', to: 'sessions#destroy'
-  get 'apply', to: 'apply#index'
-  post 'applied', to: 'applied#addApplicant'
+  #get 'apply', to: 'apply#index'
+  #post 'applied', to: 'applied#addApplicant'
   get 'applied', to: 'applied#result'
   get 'applied/:id/edit', to: 'applied#edit', as: :edit
   get 'users', to: 'users#index'
