@@ -12,14 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label 'Course Number' %>
+    <%= form.label 'Course Number (Seperate using "," Use four digit University course code)' %>
+    <br />
     <%= form.text_field :course_number %>
   </div>
 
 
 
   <div class="field">
-    <%= form.label 'Class Schedule' %>
+    <%= form.label 'Class Schedule (TO DO:formulate regular expressions for user to input schedules)' %>
+    <br />
     <%= form.text_field :schedule %>
   </div>
 

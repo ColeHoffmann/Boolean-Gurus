@@ -26,7 +26,7 @@
 </p>
 
 
-<% if (current_user.id == curr_user.id or current_user.affiliation == "Admin" or current_user.affiliation == "Faculty")%>
+<% if (current_user.id.to_i == curr_user.id.to_i or current_user.affiliation == "Admin" or current_user.affiliation == "Faculty")%>
   <h3> Current Applications</h3>
   <table>
     <thead>
@@ -36,7 +36,7 @@
       </tr>
     </thead>
     <% Application.all.each do |applicant| %>
-      <% if applicant.user_id == curr_user.id %>
+      <% if applicant.user_id.to_i == curr_user.id.to_i %>
       <tr>
         <td><%= applicant.course_number %></td>
         <td><%= applicant.schedule%></td>

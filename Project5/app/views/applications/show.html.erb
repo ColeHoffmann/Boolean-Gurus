@@ -2,12 +2,12 @@
 <% curr_app = Application .find(params[:id]) %>
 <p>
   <strong>First Name:</strong>
-  <%= User.find(curr_app.user_id).fname %>
+  <%= User.find(curr_app.user_id.to_i).fname %>
 </p>
 
 <p>
   <strong>Last Name:</strong>
-  <%= User.find(curr_app.user_id).lname %>
+  <%= User.find(curr_app.user_id.to_i).lname %>
 </p>
 
 
@@ -23,15 +23,15 @@
 
 <p>
   <strong>Email:</strong>
-  <%= User.find(curr_app.user_id).email %>
+  <%= User.find(curr_app.user_id.to_i).email %>
 </p>
 
 <p>
   <strong>Phone Number:</strong>
-  <%= User.find(curr_app.user_id).phone_number %>
+  <%= User.find(curr_app.user_id.to_i).phone_number %>
 </p>
 
-<%if curr_app.user_id == current_user.id || current_user.affiliation == 'Admin'%>
+<%if curr_app.user_id.to_i == current_user.id.to_i || current_user.affiliation == 'Admin'%>
   <%= link_to 'Edit', edit_application_path(curr_app) %>
   <%end %>
 <%= link_to 'Back', applications_path %>

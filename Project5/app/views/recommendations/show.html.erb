@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 <% curr_rec = Recommendation.find(params[:id]) %>
 <p>
-  <strong>Instructor First Name:</strong>
-  <%= curr_rec.ins_fname %>
-</p>
-
-<p>
-  <strong>Instructor Last Name:</strong>
-  <%= curr_rec.ins_lname %>
+  <strong>Instructor Name:</strong>
+  <%= User.find(curr_rec.ins_id.to_i).fname%> <%= User.find(curr_rec.ins_id.to_i).lname%>
 </p>
 
 
@@ -39,7 +34,7 @@
 
 
 
-<%if curr_rec.ins_username == current_user.username || current_user.affiliation == 'Admin'%>
+<%if curr_rec.ins_id.to_i == current_user.id.to_i || current_user.affiliation == 'Admin'%>
   <%= link_to 'Edit', edit_recommendation_path(curr_rec) %>
   <%end %>
 <%= link_to 'Back', recommendations_path %>

@@ -21,7 +21,9 @@
 <table>
   <thead>
   <tr>
+    <% if current_user.affiliation == "Admin" %>
     <th>Instructor</th>
+    <% end %>
     <th>Student</th>
     <th>Recommended Class</th>
     <th>Recomendation Type</th>
@@ -30,9 +32,11 @@
   
   <tbody>
   <% @recommendations.each do |rec| %>
-    <% if rec.ins_username == current_user.username or current_user.affiliation == "Admin"%>
+    <% if rec.ins_id.to_i == current_user.id.to_i or current_user.affiliation == "Admin"%>
     <tr>
-      <td><%= rec.ins_fname %> <%= rec.ins_lname %></td>
+      <% if current_user.affiliation == "Admin" %>
+      <td><%= User.find(rec.ins_id.to_i).fname %> <%= User.find(rec.ins_id.to_i).lname %></td>
+      <% end %>
       <td><%= rec.student_fname %> <%= rec.student_lname %></td>
       <td>CSE <%= rec.course_number %> Section <%= rec.section_number %></td>
       <td><%= rec.rec_type %></td>

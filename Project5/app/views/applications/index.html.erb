@@ -32,14 +32,14 @@ Users
 
 <tbody>
 <% @applicaions.each do | app | %>
-<% if app.user_id == current_user.id or current_user.affiliation == "Admin"%>
+<% if app.user_id.to_i == current_user.id.to_i or current_user.affiliation == "Admin"%>
 <tr>
   <% if current_user.affiliation == "Admin" %>
-  <td><%= User.find(app.user_id).fname %> <%= User.find(app.user_id).lname %></td>
+  <td><%= User.find(app.user_id.to_i).fname %> <%= User.find(app.user_id.to_i).lname %></td>
   <% end %>
   <td><%= app.course_number %></td>
-  <td><%= User.find(app.user_id).email %></td>
-  <td><%= User.find(app.user_id).phone_number %></td>
+  <td><%= User.find(app.user_id.to_i).email %></td>
+  <td><%= User.find(app.user_id.to_i).phone_number %></td>
   <td><%= app.schedule %></td>
   <td><%= link_to 'Show ', app %></td>
   

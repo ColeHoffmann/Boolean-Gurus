@@ -31,7 +31,7 @@ class RecommendationsController < ApplicationController
 
   def create
     @recommendation = Recommendation.create(recommendation_params)
-    @recommendation.ins_username = current_user.username if current_user
+    @recommendation.ins_id = current_user.id if current_user
 
 		if @recommendation.save 
 			redirect_to recommendations_path
@@ -65,6 +65,6 @@ class RecommendationsController < ApplicationController
   end
 
   def recommendation_params
-    params.require(:recommendation).permit(:ins_fname,:ins_lname,:student_fname,  :student_lname, :course_number, :section_number, :rec_type)
+    params.require(:recommendation).permit(:student_fname,  :student_lname, :course_number, :section_number, :rec_type)
   end
 end
