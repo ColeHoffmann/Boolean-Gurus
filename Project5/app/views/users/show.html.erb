@@ -21,7 +21,7 @@
 </p>
 
 <!--%= link_to 'Edit', edit_course_path(@course) %-->
-<% if (current_user.username == curr_user.username and curr_user.affiliation == "Student")%>
+<% if (curr_user.username == curr_user.username and curr_user.affiliation == "Student")%>
   <h3> Current Applications</h3>
   <table>
     <thead>
@@ -35,7 +35,7 @@
       </tr>
     </thead>
     <% Apply.all.each do |applicant|
-      if applicant.email == current_user.read_attribute('username') + "@osu.edu" %>
+      if applicant.email == curr_user.read_attribute('username') + "@osu.edu" %>
       <tr>
         <td><%= applicant.course_number %></td>
         <td><%= applicant.last_name%></td>
@@ -50,7 +50,7 @@
   </table>
 <%
   end%>
-  <%if curr_user.affiliation == "Student" &&  current_user.affiliation == "Faculty"%>
+  <%if curr_user.affiliation == "Student" &&  curr_user.affiliation == "Faculty"%>
   <%= link_to 'Recommend', new_recommendation_path %>s
   <%
    end

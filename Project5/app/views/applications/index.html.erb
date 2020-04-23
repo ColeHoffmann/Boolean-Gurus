@@ -20,7 +20,9 @@ Users
 <table>
 <thead>
 <tr>
+<% if current_user.affiliation == "Admin" %>
 <th>Name</th>
+<% end %>
 <th>Courses Applied</th>
 <th>Email</th>
 <th>Phone number</th>
@@ -32,7 +34,9 @@ Users
 <% @applicaions.each do | app | %>
 <% if app.user_id == current_user.id or current_user.affiliation == "Admin"%>
 <tr>
+  <% if current_user.affiliation == "Admin" %>
   <td><%= User.find(app.user_id).fname %> <%= User.find(app.user_id).lname %></td>
+  <% end %>
   <td><%= app.course_number %></td>
   <td><%= app.email %></td>
   <td><%= app.phone_number %></td>
