@@ -5,4 +5,6 @@ class User < ApplicationRecord
 
     has_many :applications, dependent: :destroy
 
+    has_many :teaching_assistants, dependent: :destroy
+
 end
