@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_04_23_054344) do
     t.string "ins_lname"
     t.string "ins_username"
     t.string "type"
-    t.string "recommendation"
+    t.string "recommendations"
     t.string "ta_fname"
     t.string "ta_lname"
     t.string "ta_username"

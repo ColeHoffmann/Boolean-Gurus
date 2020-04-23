@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<% curr_rec = Recommendation.find(params[:id]) %>
+<p>
+  <strong>Instructor First Name:</strong>
+  <%= curr_rec.ins_fname %>
+</p>
+
+<p>
+  <strong>Instructor Last Name:</strong>
+  <%= curr_rec.ins_lname %>
+</p>
+
+<p>
+  <strong>Instructor Username:</strong>
+  <%= curr_rec.ins_username %>
+</p>
+
+<p>
+  <strong>Recommendation Type:</strong>
+  <%= curr_rec.type %>
+</p>
+
+<p>
+  <strong>Recommendation:</strong>
+  <%= curr_rec.recommendation %>
+</p>
+
+<p>
+  <strong>Student First Name:</strong>
+  <%= curr_rec.ta_fname %>
+</p>
+
+<p>
+  <strong>Student Last Name:</strong>
+  <%= curr_rec.ta_lname %>
+</p>
+
+<p>
+  <strong>Student Username:</strong>
+  <%= curr_rec.ta_username %>
+</p>
+<%if curr_rec.ins_username == current_user.username || current_user.affiliation == 'Admin'%>
+  <%= link_to 'Edit', edit_recommendation_path(curr_rec) %>
+  <%end %>
+<%= link_to 'Back', users_path %>
+

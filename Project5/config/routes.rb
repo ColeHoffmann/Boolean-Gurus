@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
   resources :applications
 
-  resources :evaluation
+  resources :evaluations
 
-  resources :recommendation
+  resources :recommendations
 
   resources :student_courses
 
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
   get 'survey', to: 'users#search'
   get '/users/:id/edit', to: 'users#edit'
-  get' recommendation', to: 'recommendation#index'
+  get 'recommendations', to: 'recommendations#index'
 
 
   #get '/addcourse', to: 'student_courses#new'
