@@ -25,13 +25,7 @@
           <div><%= button_to "Log out", logout_path, :class=>"btn btn-info btn-lg" %></div>
           <div><%=link_to "Edit Profile", edit_user_path(current_user), :class=>"btn btn-info btn-lg" %></div>
 
-        <!--% if current_user.affiliation == "Student" or  current_user.affiliation == "Admin"%>
-
-           <div><%=link_to "Apply", apply_path, :class=>"btn btn-info btn-lg" %></div>
-
-        <%#end%>
-
-        <-->       
+       
       
 
         </div>
@@ -62,7 +56,7 @@
       <% if current_user.affiliation == "Student" %>
           <div class="d-flex flex-row">
               <div><%=link_to "My Courses", student_courses_path, :class=>"btn btn-info" %></div>
-              <div><%=link_to "Apply", apply_path, :class=>"btn btn-info" %></div>
+              <div><%=link_to "Apply", new_application_path, :class=>"btn btn-info" %></div>
 
           </div>
         <%end%>
