@@ -1,0 +1,8 @@
+<h1> Current TAs </h1>
+<% curr_ta = TeachingAssistant .find(params[:id]) %>
+<%= render 'teaching_assistants/form', teaching_assistant:curr_ta %>
+<%= link_to 'Back', teaching_assistants_path %>
+
+
+
+

@@ -1,18 +1,47 @@
-
 <a class="btn btn-secondary" href="/courses" role="button">
 Courses
 </a>
 <a class="btn btn-secondary" href="/users" role="button">
 Users
 </a>
-<h1>Current TA</h1>
+<% if (logged_in? and current_user.affiliation == "Admin")%>
+
+<a class="btn btn-secondary" href="/applications" role="button">
+Applications
+</a>
+
+<a class="btn btn-secondary" href="/recommendations" role="button">
+Recommendations
+</a>
+<a class="btn btn-secondary" href="/matching" role="button">
+TA - course matching
+</a>
+
+<% end %>
+<p id="notice"><%= notice %></p>
+
+
+
+<% if current_user.affiliation == "Admin" %>
+  <a class="btn btn-secondary" href="/teaching_assistants/new" role="button"> Assign TA </a>
+  <h1>Current TAs</h1>
+<% else %>
+  <h1>Current TAing</h1>
+<% end %>
+
 
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Course Number</th>
-      <th scope="col">Section Number</th>
+      <% if current_user.affiliation == "Admin" %>
+        <th>Name</th>
+      <% end %>
+      <th>Courses TAing</th>
+      <th>Section Number</th>
+      <% if current_user.affiliation == "Admin" %>
+      <th>Email</th>
+      <th>Phone number</th>
+      <% end %>
       <th />
     </tr>
   </thead>
@@ -20,16 +49,25 @@ Users
   <tbody>
     <% i = 1 %>
     <% @tas.each do | ta | %>
-    <tr>
-      <% user = all_users.find(ta.user_id) %>
-      <th scope="row"><%= user.lname%>, <%=user.fname%> </th>
-      <td><%= ta.course_number %></td>
-      <td><%= ta.section_number %></td>
-      <!-- <td><%=link_to "Edit", edit_student_course_path(course), :class=>"btn btn-secondary" %></td> -->
+      <% if ta.user_id.to_i == current_user.id.to_i or current_user.affiliation == "Admin"%>
+      <tr>
+        <% if current_user.affiliation == "Admin" %>
+          <td><%= User.find(ta.user_id.to_i).fname %> <%= User.find(ta.user_id.to_i).lname %></td>
+        <% end %>
 
-    </tr>
+        <td><%= ta.course_number %></td>
+        <td><%= ta.section_number %></td>
+
+        <% if current_user.affiliation == "Admin" %>
+        <td><%= User.find(ta.user_id.to_i).email %></td>
+        <td><%= User.find(ta.user_id.to_i).phone_number %></td>
+        <td><%= link_to 'Edit', edit_teaching_assistant_path(ta) %></td>
+        <td><%= link_to 'Destroy', ta, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+      <% end %>
     <%i = i + 1%>
-    <%end%>
+    <% end %>
   </tbody>
 
 </table>
@@ -39,6 +77,3 @@ Users
  <!-- <div><%=link_to "Add TA", '/student_courses/new', :class=>"btn btn-secondary" %></div> -->
 
 </div>
-
-
-
