@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   resources :student_courses
 
+  resources :teaching_assistants
+
 
   get 'login', to: 'sessions#new'
   get 'login', to: 'sessions#create'

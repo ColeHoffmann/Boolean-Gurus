@@ -1,0 +1,13 @@
+
+<h1> Add TA </h1>
+<%= form_for @ta do |f| %>
+
+    <%= f.label :course_number %><br>
+    <%= f.collection_select :course_number, all_courses, :id, :course_number, prompt: "Select a Course"%><br>
+    <%= f.label :section_number %><br>
+    <%= f.text_field :section_number%><br>
+    <%= f.label :user_id%>
+    <%= f.collection_select :user_id, all_users, :id, :username, prompt: "Select a student"%><br>
+    <%= f.submit %>
+    
+<%end%>

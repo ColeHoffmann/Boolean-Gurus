@@ -1,0 +1,44 @@
+
+<a class="btn btn-secondary" href="/courses" role="button">
+Courses
+</a>
+<a class="btn btn-secondary" href="/users" role="button">
+Users
+</a>
+<h1>Current TA</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Course Number</th>
+      <th scope="col">Section Number</th>
+      <th />
+    </tr>
+  </thead>
+
+  <tbody>
+    <% i = 1 %>
+    <% @tas.each do | ta | %>
+    <tr>
+      <% user = all_users.find(ta.user_id) %>
+      <th scope="row"><%= user.lname%>, <%=user.fname%> </th>
+      <td><%= ta.course_number %></td>
+      <td><%= ta.section_number %></td>
+      <!-- <td><%=link_to "Edit", edit_student_course_path(course), :class=>"btn btn-secondary" %></td> -->
+
+    </tr>
+    <%i = i + 1%>
+    <%end%>
+  </tbody>
+
+</table>
+
+<div class="d-flex flex-row">
+
+ <!-- <div><%=link_to "Add TA", '/student_courses/new', :class=>"btn btn-secondary" %></div> -->
+
+</div>
+
+
+
