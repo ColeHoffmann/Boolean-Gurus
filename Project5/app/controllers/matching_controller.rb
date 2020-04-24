@@ -1,5 +1,7 @@
 class MatchingController < ApplicationController
 
+skip_before_action :verify_authenticity_token
+
 def index
 	
 end
@@ -120,12 +122,10 @@ end
 def search 
 	@courseCandidateArray = []
 	@arrayOfCourses = Course.where("course_number = '" + params[:searchCourse] + "'")
-	 @arrayOfCourses.each{|currentCourse|
-	@applicantsFit = Application.where("course_number LIKE '%" + currentCourse[:course_number].to_s + "%'")
-	@applicantsFit = @applicantsFit.reject{|applicant| scheduleConflict(currentCourse, applicant)}
-	 @courseCandidateArray.append([@applicantsFit, currentCourse])}
-	
-
-end
+	@arrayOfCourses.each{|currentCourse|
+		@applicantsFit = Application.where("course_number LIKE '%" + currentCourse[:course_number].to_s + "%'")
+		@applicantsFit = @applicantsFit.reject{|applicant| scheduleConflict(currentCourse, applicant)}
+		@courseCandidateArray.append([@applicantsFit, currentCourse])}
+	end
 
 end

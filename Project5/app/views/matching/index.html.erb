@@ -1,10 +1,30 @@
+<a class="btn btn-secondary" href="/courses" role="button">
+Courses
+</a>
+<a class="btn btn-secondary" href="/users" role="button">
+  Users
+</a>
+
+<% if (logged_in? and current_user.affiliation == "Admin")%>
+  <a class="btn btn-secondary" href="/applications" role="button">
+    Applications
+  </a>
+  <a class="btn btn-secondary" href="/recommendations" role="button">
+    Recommendations
+  </a>
+
+  <a class="btn btn-secondary" href="/matching" role="button">
+    TA - course matching
+  </a>
+ 
+<%end %>
 <p id="notice"><%= notice %></p>
 
 
 <%= form_tag("matching", :method => "put", class: 'navbar-form navbar-left') do %>    
     <%= search_field_tag :searchCourse, params[:searchCourse], placeholder: "Course Number", class: "form-control"%>
  
-  <%= button_tag "Submit", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+  <%= button_tag "Submit", :class => 'btn btn-info glyphicon glyphicon-search'%>
 <% end %>
 
 
