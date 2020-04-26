@@ -77,6 +77,9 @@ end
 }
 @classCourseSchedule = []
 @courseTime = course[:time]
+if (@courseTime == "ARR")
+	@courseTime = "00 : 00 - 00 : 01"
+end
 while(!(@courseTime[0] =~ /\d/)) 
 	@courseTime = @courseTime[1..-1]
 end
@@ -125,7 +128,28 @@ def search
 	@arrayOfCourses.each{|currentCourse|
 		@applicantsFit = Application.where("course_number LIKE '%" + currentCourse[:course_number].to_s + "%'")
 		@applicantsFit = @applicantsFit.reject{|applicant| scheduleConflict(currentCourse, applicant)}
-		@courseCandidateArray.append([@applicantsFit, currentCourse])}
+	@courseToUpd = TeachingAssistant.where("course_number LIKE "  + currentCourse[:course_number].to_s + " AND section_number LIKE " + currentCourse[:section_number].to_s)
+	if (@courseToUpd.length > 0)
+		@applicantsFit = @applicantsFit.reject{|applicant| applicant[:user_id] == @courseToUpd[0][:user_id] }
+
 	end
+		@courseCandidateArray.append([@applicantsFit, currentCourse])}
+end
+
+
+
+def changeTA
+@courseToUpd = TeachingAssistant.where("course_number LIKE "  + params[:course] + " AND section_number LIKE " + params[:section])
+
+if (@courseToUpd.length > 0) 
+	
+	@courseToUpd[0].update(:user_id => params[:userID])
+else 
+	@newRelation = TeachingAssistant.create(:user_id => params[:userID], :course_number => params[:course], :section_number => params[:section])
+	@newRelation.save
+		
+end
+redirect_to "/teaching_assistants"
+end
 
 end

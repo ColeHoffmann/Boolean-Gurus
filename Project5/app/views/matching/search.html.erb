@@ -37,7 +37,13 @@ Courses
 <% @courseCandidateArray.each do |pair| %>
 <a>Course number: <%= pair[1].course_number %> </a>
 <a>Section number: <%= pair[1].section_number %> </a>
-<% if (pair[0].length > 0) %>
+<%      @courseToUpd = TeachingAssistant.where("course_number = '"  + pair[1].course_number.to_s + "' AND section_number = '" + pair[1].section_number.to_s + "'")
+@hasGrader = false
+if (@courseToUpd.length > 0) 
+	@grader = User.where("id = '" + @courseToUpd[0][:user_id].to_s + "'")
+	@hasGrader = true
+end %>
+<% if ((pair[0].length > 0)||@hasGrader) %>
 
 
 <table>
@@ -45,15 +51,24 @@ Courses
     <tr>
       <th>First name </th>
       <th>Last name </th>
+      <th> Action </th>
     </tr>
   </thead>
 
   <tbody>
+<% if (@hasGrader) %> 
+<tr>
+        <td><%= @grader[0][:fname]  %> </td>
+        <td><%= @grader[0][:lname] %></td>
+	<td> Is current grader </td>
+</tr>
+<% end %>
     <% pair[0].each do |applicant| %>
 	<% @applicant = User.where("id = '" + applicant.user_id.to_s + "'") %>
       <tr>
         <td><%= @applicant[0][:fname]  %> </td>
         <td><%= @applicant[0][:lname] %></td>
+	<td><%= link_to "Pick a grader", ta_path(:course => pair[1].course_number.to_s, :section => pair[1].section_number.to_s, :userID => @applicant[0][:id].to_s) %></td>
 </tr>
         <%end %>
 

@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get 'recommendations', to: 'recommendations#index'
   get 'matching', to: 'matching#index'
   put 'matching', to: 'matching#search'
+  get 'matching/changeTA', to: 'matching#changeTA', as: :ta
 
 
   #get '/addcourse', to: 'student_courses#new'
