@@ -17,6 +17,9 @@ Install the required software by running "bundle install" and "yarn install" fir
 Before running the rails server, be sure to run "rails db:migrate", followed by "rails db:seed" to first scrape, and store the course data into the database. rails db:seed runs app/model/scraper.rb which contains the code to scrape the data from the url given above.
 After running db:seed, run "rails server" to start the sample view and open browser to 127.0.0.1:3000 for the view
 
+
+DEFAULT ADMIN PASSWORD IS ADMIN, USERNAME ADMIN!!!
+
 ** 
 
 This project was completed by:<br />
