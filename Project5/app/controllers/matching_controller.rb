@@ -130,10 +130,18 @@ end
 
 def search 
 	@courseCandidateArray = []
-	@arrayOfCourses = Course.where("course_number = '" + params[:searchCourse] + "'")
+	@arrayOfCourses = Course.where("course_number = '" + params[:searchCourse] + "'").group(:section_number)
 	@arrayOfCourses.each{|currentCourse|
+		@multiSection = Course.where("course_number = '" + currentCourse[:course_number].to_s + "' AND section_number = '" + currentCourse[:section_number].to_s + "'")
 		@applicantsFit = Application.where("course_number LIKE '%" + currentCourse[:course_number].to_s + "%'")
-		@applicantsFit = @applicantsFit.reject{|applicant| scheduleConflict(currentCourse, applicant)}
+		@applicantsFit = @applicantsFit.reject{|applicant|
+			
+			@ans = false
+			@multiSection.each { |current|
+				@ans = @ans || scheduleConflict(current, applicant)
+ 			}
+ 			@ans
+		}
 	@courseToUpd = TeachingAssistant.where("course_number LIKE "  + currentCourse[:course_number].to_s + " AND section_number LIKE " + currentCourse[:section_number].to_s)
 	if (@courseToUpd.length > 0)
 		@applicantsFit = @applicantsFit.reject{|applicant| applicant[:user_id] == @courseToUpd[0][:user_id] }
