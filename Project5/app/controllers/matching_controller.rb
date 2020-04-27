@@ -157,4 +157,14 @@ def deleteTA
 	redirect_to "/teaching_assistants"	
 end
 
+def recommendation
+	@recomendations = Recomendation.where("course_number LIKE " + course.to_s + " AND user_id LIKE " + userID.to_s)
+	if (@recommendations.length > 0)
+		@answer = "/recommendations/" + @recommendations[0].id
+	else 
+	@answer = false
+	end
+	@answer
+end
+
 end

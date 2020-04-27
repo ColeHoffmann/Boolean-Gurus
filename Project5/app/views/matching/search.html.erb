@@ -52,6 +52,7 @@ end %>
       <th>First name </th>
       <th>Last name </th>
       <th> Action </th>
+      <th> Recomendation </th>
     </tr>
   </thead>
 
@@ -61,6 +62,17 @@ end %>
         <td><%= @grader[0][:fname]  %> </td>
         <td><%= @grader[0][:lname] %></td>
 	<td><%= link_to "Delete current grader?", taDel_path(:course => pair[1].course_number.to_s, :section => pair[1].section_number.to_s, :userID => @grader[0][:id].to_s) %></td>
+<td>
+	<% @recommendations = Recommendation.where("course_number LIKE " + pair[1].course_number.to_s + " AND student_fname LIKE '" + @grader[0][:fname] + "' AND student_lname LIKE '" + @grader[0][:lname] + "'")%>
+	<%if (@recommendations.length > 0) %>
+	<a href = <%= "recommendations/" + @recommendations[0].id.to_s %> >
+		View recommendation
+	</a>
+	<% else %>
+		No recommendations for this course
+	<% end %>
+
+</td>
 </tr>
 <% end %>
     <% pair[0].each do |applicant| %>
@@ -69,6 +81,17 @@ end %>
         <td><%= @applicant[0][:fname]  %> </td>
         <td><%= @applicant[0][:lname] %></td>
 	<td><%= link_to "Pick a grader", ta_path(:course => pair[1].course_number.to_s, :section => pair[1].section_number.to_s, :userID => @applicant[0][:id].to_s) %></td>
+<td>
+	<% @recommendations = Recommendation.where("course_number LIKE " + pair[1].course_number.to_s + " AND student_fname LIKE '" + @applicant[0][:fname] + "' AND student_lname LIKE '" + @applicant[0][:lname] + "'")%>
+	<%if (@recommendations.length > 0) %>
+	<a href = <%= "recommendations/" + @recommendations[0].id.to_s %> >
+		View recommendation
+	</a>
+	<% else %>
+		No recommendations for this course
+	<% end %>
+
+</td>
 </tr>
         <%end %>
 
