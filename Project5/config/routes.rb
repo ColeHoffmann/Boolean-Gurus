@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get 'matching', to: 'matching#index'
   put 'matching', to: 'matching#search'
   get 'matching/changeTA', to: 'matching#changeTA', as: :ta
+  get 'matching/deleteTA', to: 'matching#deleteTA', as: :taDel
 
 
   #get '/addcourse', to: 'student_courses#new'

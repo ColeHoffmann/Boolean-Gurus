@@ -139,17 +139,22 @@ end
 
 
 def changeTA
-@courseToUpd = TeachingAssistant.where("course_number LIKE "  + params[:course] + " AND section_number LIKE " + params[:section])
+	@courseToUpd = TeachingAssistant.where("course_number LIKE "  + 	params[:course] + " AND section_number LIKE " + params[:section])
 
-if (@courseToUpd.length > 0) 
+	if (@courseToUpd.length > 0) 
 	
-	@courseToUpd[0].update(:user_id => params[:userID])
-else 
-	@newRelation = TeachingAssistant.create(:user_id => params[:userID], :course_number => params[:course], :section_number => params[:section])
-	@newRelation.save
+		@courseToUpd[0].update(:user_id => params[:userID])
+	else 
+		@newRelation = TeachingAssistant.create(:user_id => 		params[:userID], :course_number => 			  	params[:course], :section_number => params[:section])
+		@newRelation.save
 		
+	end
+	redirect_to "/teaching_assistants"
 end
-redirect_to "/teaching_assistants"
+
+def deleteTA
+	TeachingAssistant.where("course_number LIKE " + 	params[:course].to_s + " AND section_number LIKE " + params[:section].to_s + " AND user_id LIKE " + params[:userID].to_s).destroy_all
+	redirect_to "/teaching_assistants"	
 end
 
 end

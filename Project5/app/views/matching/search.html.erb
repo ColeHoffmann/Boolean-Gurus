@@ -60,7 +60,7 @@ end %>
 <tr>
         <td><%= @grader[0][:fname]  %> </td>
         <td><%= @grader[0][:lname] %></td>
-	<td> Is current grader </td>
+	<td><%= link_to "Delete current grader?", taDel_path(:course => pair[1].course_number.to_s, :section => pair[1].section_number.to_s, :userID => @grader[0][:id].to_s) %></td>
 </tr>
 <% end %>
     <% pair[0].each do |applicant| %>
