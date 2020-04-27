@@ -122,6 +122,12 @@ overlapWeek(@classAppSchedule, @classCourseSchedule)
 
 end
 
+def hasRecommendation(course, fname, lname)
+	@recommendations = Recommendation.where("course_number LIKE " + course.to_s + " AND student_fname LIKE '" + fname + "' AND student_lname LIKE '" + lname + "'")
+	@answer = @recommendations.length > 0
+end
+
+
 def search 
 	@courseCandidateArray = []
 	@arrayOfCourses = Course.where("course_number = '" + params[:searchCourse] + "'")
@@ -133,6 +139,10 @@ def search
 		@applicantsFit = @applicantsFit.reject{|applicant| applicant[:user_id] == @courseToUpd[0][:user_id] }
 
 	end
+	@applicantsFit = @applicantsFit.sort_by{|a| 
+@b = User.where("id = '" + a[:user_id].to_s + "'")
+
+hasRecommendation(currentCourse[:course_number], @b[0][:fname], @b[0][:lname]) ? 0:1}
 		@courseCandidateArray.append([@applicantsFit, currentCourse])}
 end
 
@@ -157,14 +167,6 @@ def deleteTA
 	redirect_to "/teaching_assistants"	
 end
 
-def recommendation
-	@recomendations = Recomendation.where("course_number LIKE " + course.to_s + " AND user_id LIKE " + userID.to_s)
-	if (@recommendations.length > 0)
-		@answer = "/recommendations/" + @recommendations[0].id
-	else 
-	@answer = false
-	end
-	@answer
-end
+
 
 end
