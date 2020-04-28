@@ -28,11 +28,11 @@ Courses
 <h2>Search</h2>
 
 <%= form_tag("/search", :method => "get", class: 'navbar-form navbar-left') do %>    
+    <%= search_field_tag :searchCourse, params[:searchCourse], placeholder: "Course Number", class: "form-control"%>
     <%= search_field_tag :searchSection, params[:searchSection], placeholder: "Section Number", class: "form-control" %>  
     <%= search_field_tag :searchInstructor, params[:searchInstructor], placeholder: "Instructor", class: "form-control"%>
-    <%= search_field_tag :searchCourse, params[:searchCourse], placeholder: "Course Number", class: "form-control"%>
- 
-  <%= button_tag "Submit", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+
+  <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
 <% end %>
 
 
@@ -46,6 +46,7 @@ Courses
 <table>
   <thead>
     <tr>
+    <th>Course Number </th>
       <th>Title</th>
       <th>Section number</th>
       <th>Component</th>
@@ -61,18 +62,19 @@ Courses
     <% if @results
 	 @results.each do |course| %>
       <tr>
-        <td><%= course.title %></td>
-        <td><%= course.section_number %></td>
-        <td><%= course.component %></td>
-        <td><%= course.location %></td>
-        <td><%= course.time %></td>
-        <td><%= course.instructor %></td>
-        <td><%= course.session %></td>
-        <td><%= link_to 'Show', course %></td>
-        <% if (logged_in? and current_user.affiliation == "Admin") %>
-          <td><%= link_to 'Edit', edit_course_path(course) %></td>
-          <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end %>
+      <td><%= course.course_number %></td>
+      <td><%= course.title %></td>
+      <td><%= course.section_number %></td>
+      <td><%= course.component %></td>
+      <td><%= course.location %></td>
+      <td><%= course.time %></td>
+      <td><%= course.instructor %></td>
+      <td><%= course.session %></td>
+      <td><%= link_to 'Show', course %></td>
+      <% if (logged_in? and current_user.affiliation == "Admin") %>
+        <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%end %>
       </tr>
     <% end %>
 	<% end %>
