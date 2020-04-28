@@ -12,6 +12,9 @@ Users
 <a class="btn btn-secondary" href="/recommendations" role="button">
 Recommendations
 </a>
+<a class="btn btn-secondary" href="/teaching_assistants" role="button">
+Current TAs
+</a>
 <a class="btn btn-secondary" href="/matching" role="button">
 TA - course matching
 </a>
@@ -29,8 +32,10 @@ TA - course matching
 <th>Name</th>
 <% end %>
 <th>Courses Applied</th>
+<% if current_user.affiliation == "Admin" %>
 <th>Email</th>
 <th>Phone Number</th>
+<% end %>
 <th>Class Schedule</th>
 </tr>
 </thead>
@@ -43,8 +48,10 @@ TA - course matching
   <td><%= User.find(app.user_id.to_i).fname %> <%= User.find(app.user_id.to_i).lname %></td>
   <% end %>
   <td><%= app.course_number %></td>
+  <% if current_user.affiliation == "Admin" %>
   <td><%= User.find(app.user_id.to_i).email %></td>
   <td><%= User.find(app.user_id.to_i).phone_number %></td>
+  <% end %>
   <td><%= app.schedule %></td>
   <td><%= link_to 'Show ', app %></td>
   

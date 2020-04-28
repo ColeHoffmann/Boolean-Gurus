@@ -27,7 +27,7 @@
 
 
 
-<% if logged_in? and (current_user.id.to_i == curr_user.id.to_i or current_user.affiliation == "Admin" or current_user.affiliation == "Faculty")%>
+<% if curr_user.affiliation == "Student" and logged_in? and (current_user.id.to_i == curr_user.id.to_i or current_user.affiliation == "Admin" or current_user.affiliation == "Faculty")%>
 
 <h3> Studied Courses</h3>
   <table>
