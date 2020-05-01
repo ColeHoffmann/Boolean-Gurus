@@ -20,6 +20,14 @@ After running db:seed, run "rails server" to start the sample view and open brow
 
 DEFAULT ADMIN PASSWORD IS ADMIN, USERNAME ADMIN!!!
 
+For our app, signup on the website can only be done by students. Instructor signups can only be done by the admin. This is to prevent anyone from signing up as 
+an admin and having access to privileged information. 
+Once signed in, students can view courses offered and apply for TA positions. Students are required to provide grades for courses they wish to apply for.
+Once signed in, instructors can request for specific TAs if they're available. Instructors can also recommend TAs for other TA positions. After the semester, 
+instructs can write an evaluation based on the performance of a TA.
+Once signed in, admin can create/delete a new user, student and Instructor. Admins can assign TA postions. Admins can view recommendations, applications for TA
+postions, evaluations. Admins can utilize the TA matching algorithm to find suitable TAs for courses.
+
 ** 
 
 This project was completed by:<br />
