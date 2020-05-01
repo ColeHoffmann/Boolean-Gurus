@@ -1,0 +1,41 @@
+
+<div>
+<%= form_with(model: login_request, local: true) do |form| %>
+  <% if login_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(login_request.errors.count, "error") %> prohibited this login_request from being saved:</h2>
+
+      <ul>
+        <% login_request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% #form.label :fname %>
+    <%= form.text_field :fname, placeholder: "First name"%>
+  </div>
+
+  <div class="field">
+    <% # form.label :lname %>
+    <%= form.text_field :lname, placeholder: "Last name" %>
+  </div>
+
+  <div class="field">
+    <% #form.label :username %>
+    <%= form.text_field :username,placeholder: " Username" %>
+  </div>
+
+  <div class="field">
+    <% #form.label :department %>
+    <%= form.text_field :department, placeholder: "Department" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+</div>

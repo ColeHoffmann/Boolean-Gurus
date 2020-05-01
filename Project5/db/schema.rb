@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_01_103443) do
+ActiveRecord::Schema.define(version: 2020_05_01_181454) do
 
   create_table "applications", force: :cascade do |t|
     t.string "course_number"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 2020_05_01_103443) do
     t.string "student_username"
     t.string "course_number"
     t.string "ins_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "login_requests", force: :cascade do |t|
+    t.string "fname"
+    t.string "lname"
+    t.string "username"
+    t.string "department"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

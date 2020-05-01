@@ -22,7 +22,7 @@
         <h4 class="text-light">Howdy, <%= current_user.fname %>!</h4>
         <div class="d-flex flex-row-reverse" class="dropdown", class="glyphicon glyphicon-off">
 
-          <div><%= button_to "Log out", logout_path, :class=>"btn btn-info btn-lg" %></div>
+          <div style="padding-left: 10px;"><%= button_to "Log out", logout_path, :class=>"btn btn-info btn-lg" %></div>
           <div><%=link_to "Edit Profile", edit_user_path(current_user), :class=>"btn btn-info btn-lg" %></div>
 
        
@@ -43,6 +43,11 @@
           Student Sign Up
           </a>
         </div>
+        <div style="padding-left: 10px;">
+        <a class="btn btn-outline-success" href="/login_requests/new" role="button">
+          Instructor Login Request
+          </a>
+          </div>
       </form>
 
       <%end%>

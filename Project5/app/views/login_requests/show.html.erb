@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @login_request.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @login_request.lname %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @login_request.username %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @login_request.department %>
+</p>
+
+<%= link_to 'Edit', edit_login_request_path(@login_request) %> |
+<%= link_to 'Back', login_requests_path %>

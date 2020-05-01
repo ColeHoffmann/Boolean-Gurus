@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Login Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fname</th>
+      <th>Lname</th>
+      <th>Username</th>
+      <th>Department</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @login_requests.each do |login_request| %>
+      <tr>
+        <td><%= login_request.fname %></td>
+        <td><%= login_request.lname %></td>
+        <td><%= login_request.username %></td>
+        <td><%= login_request.department %></td>
+        <td><%= link_to 'Show', login_request %></td>
+        <% if logged_in? and (current_user.affiliation == "Admin")%>
+        <td><%= link_to 'Edit', edit_login_request_path(login_request) %></td>
+        <td><%= link_to 'Destroy', login_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
