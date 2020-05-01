@@ -1,0 +1,12 @@
+Correctness: There probably shouldn't be a button to allow users to see all other users and their information. Most forms don't validate format of information entered in (ex: my courses form). TA application form is very difficult to fill out correctly. It doesn't seem possible to create an instructor account to recommend students. For admin view, "current TAs/assign TAs" tabs only show up in certain views, making it hard to navigate to. Course numbers don't always show up correctly.
+
+Functionality/Features: Nice job implementing search functionality! UI is a little condensed and awkwardly formatted in many areas. Nice job with course matching functionality! Nice job implementing a lot of the basic required features. It would definitely be possible to build off of this, but it would require cleaning up some existing features and making the application more user-friendly.
+
+Design: There doesn't seem to be any javascript used to make the front-end more interactive. Nice job adding some validations and relations to your models! Nice overall use of embedded ruby. Database schema seems pretty logical overall.
+
+Documentation: README is adequate, but a little hard to follow. With the exception of scraper, missing just about all in-code documentation. Commit messages are sufficient for the most part.
+
+Style: Some inconsistent spacing in controller files. Otherwise, good use of standard rails features and good styling.
+
+
+Have a great summer!
