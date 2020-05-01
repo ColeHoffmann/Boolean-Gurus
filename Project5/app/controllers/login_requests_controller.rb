@@ -69,6 +69,6 @@ class LoginRequestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def login_request_params
-      params.require(:login_request).permit(:fname, :lname, :username, :department)
+      params.require(:login_request).permit(:fname, :lname, :username, :department, :email)
     end
 end

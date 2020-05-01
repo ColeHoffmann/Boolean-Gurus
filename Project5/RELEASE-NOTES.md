@@ -6,3 +6,4 @@ Added Functionalities:
 4. Added sorting students in matching based recommendations
 5. TA functionality.
 6. Fixed bug with matching algorithm
+7. Added Instructor login credentials request from admin

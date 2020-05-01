@@ -20,5 +20,10 @@
   <%= @login_request.department %>
 </p>
 
+<p>
+  <strong>Email:</strong>
+  <%= @login_request.email %>
+</p>
+
 <%= link_to 'Edit', edit_login_request_path(@login_request) %> |
 <%= link_to 'Back', login_requests_path %>
