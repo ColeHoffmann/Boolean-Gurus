@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :login_requests
+  resources :scraper_requests
   # get 'sessions/new'
   # get 'sessions/create'
   # get 'sessions/login'

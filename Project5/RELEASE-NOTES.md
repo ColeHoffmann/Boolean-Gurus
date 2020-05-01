@@ -1,7 +1,8 @@
 Added Functionalities:
 
-1. Evaluation functionality
-2. Fixed bugs with multiple instructor.
-3. Added sorting students in matching based recommendations
-4. TA functionality.
-5. Fixed bug with matching algorithm
+1. Added a run scraper functionality for admin accounts
+2. Evaluation functionality
+3. Fixed bugs with multiple instructor.
+4. Added sorting students in matching based recommendations
+5. TA functionality.
+6. Fixed bug with matching algorithm

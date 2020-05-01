@@ -27,7 +27,7 @@ Once signed in, instructors can request for specific TAs if they're available. I
 instructs can write an evaluation based on the performance of a TA.
 Once signed in, admin can create/delete a new user, student and Instructor. Admins can assign TA postions. Admins can view recommendations, applications for TA
 postions, evaluations. Admins can utilize the TA matching algorithm to find suitable TAs for courses.
-
+Admin can also run a new scraper to get new courses for the semester
 ** 
 
 This project was completed by:<br />
