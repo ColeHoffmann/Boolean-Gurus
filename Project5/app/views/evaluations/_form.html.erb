@@ -1,0 +1,51 @@
+<%= form_with(model: evaluation, local: true) do |form| %>
+  <% if evaluation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
+
+      <ul>
+        <% evaluation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+  <div class="field">
+    <%= form.label 'Student First Name' %>
+    <%= form.text_field :student_fname %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label 'Student Last Name' %>
+    <%= form.text_field :student_lname %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Student Username (prefered)' %>
+    <%= form.text_field :student_username %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Course Number' %>
+    <%= form.text_field :course_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Rating' %>
+    <%= form.select :rating, %w[0 1 2 3 4 5] %>
+  </div>
+
+
+    <%= form.label 'Evaluation:' %>
+    <%= form.text_area :evaluation %>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,77 @@
+
+<%= stylesheet_link_tag "coursesIndexStyles.css" %>
+
+
+<a class="btn btn-secondary" href="/courses" role="button">
+    Courses
+  </a>
+  <a class="btn btn-secondary" href="/users" role="button">
+    Users
+  </a>
+  <% if (logged_in? and current_user.affiliation == "Admin")%>
+    
+    <a class="btn btn-secondary" href="/applications" role="button">
+      Applications
+    </a>
+    <a class="btn btn-secondary" href="/recommendations" role="button">
+    Recommendations
+  </a>
+    <a class="btn btn-secondary" href="/teaching_assistants" role="button">
+    Current TAs
+  </a>
+
+    <a class="btn btn-secondary" href="/matching" role="button">
+      TA - course matching
+    </a>
+    
+  <% end %>
+
+  <p id="notice"><%= notice %></p>
+
+<h1>Evaluations</h1>
+
+<table>
+  <thead>
+  <tr>
+    <% if current_user.affiliation == "Admin" %>
+    <th>Instructor</th>
+    <% end %>
+    <th>Student</th>
+    <th>Student Username</th>
+    <th>Course Number</th>
+    <th>Rating</th>
+    <th>Evaluation</th>
+    <th />
+    <th />
+    <th />
+  </tr>
+  </thead>
+
+
+  
+  <tbody>
+  <% @evaluations.each do |eva| %>
+    <% if eva.ins_id.to_i == current_user.id.to_i or current_user.affiliation == "Admin"%>
+    <tr>
+      <% if current_user.affiliation == "Admin" %>
+      <td><%= User.find(eva.ins_id.to_i).fname %> <%= User.find(eva.ins_id.to_i).lname %></td>
+      <% end %>
+      <td><%= eva.student_fname %> <%= eva.student_lname %></td>
+      <td><%= eva.student_username %></td>
+      <td>CSE <%= eva.course_number %></td>
+      <td><%= eva.rating %></td>
+      <! –– take the first fifty characters, split it into a array, remove the last element (can be incomplete), reconstruct the string ––>
+      <td><%= eva.evaluation[0...50].split.reverse.drop(1).reverse.join(' ') %> ...</td>
+      <td><%= link_to 'Show ', eva %></td>
+      
+        <td><%= link_to 'Edit',  edit_evaluation_path(eva) %></td>
+        <td><%= link_to 'Destroy', eva, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
+    </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+

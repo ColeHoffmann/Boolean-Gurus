@@ -66,7 +66,9 @@
         <% if current_user.affiliation == "Faculty" %>
           <div class="d-flex flex-row">
               <div><%=link_to "My Recommendations", recommendations_path, :class=>"btn btn-info" %></div>
+              <div><%=link_to "My Evaluations", evaluations_path, :class=>"btn btn-info" %></div>
               <div><%=link_to "New Recommendation", new_recommendation_path, :class=>"btn btn-info" %></div>
+              <div><%=link_to "New Evaluation", new_evaluation_path, :class=>"btn btn-info" %></div>
             </div>
     <%end%>
   </nav>

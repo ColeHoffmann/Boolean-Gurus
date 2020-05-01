@@ -31,8 +31,13 @@ class EvaluationsController < ApplicationController
 
   def create
     @evaluation = Evaluation.create(evaluation_params)
+    @evaluation.ins_id = current_user.id if current_user
 
-    redirect_to '/'
+		if @evaluation.save 
+			redirect_to evaluations_path
+		else 
+			render "new"
+		end
   end
 
   def update
@@ -48,12 +53,21 @@ class EvaluationsController < ApplicationController
     end
   end
 
+
+  def destroy
+    set_evaluation
+    @evaluation.destroy
+    redirect_to evaluations_path
+	end
+
+
   private
   def set_evaluation
     @evaluation = Evaluation.find(params[:id])
   end
 
   def evaluation_params
-    params.require(:evaluation).permit(:ins_fname,:ins_lname, :ins_username, :rating, :evaluation, :stud_fname, :stud_lname, :stud_username)
+    params.require(:evaluation).permit(:rating, :evaluation, :student_fname, :student_lname, :student_username, :course_number)
   end
 end
+

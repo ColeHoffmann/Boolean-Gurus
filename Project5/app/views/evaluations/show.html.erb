@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<% curr_eva = Evaluation.find(params[:id]) %>
+<p>
+  <strong>Instructor Name:</strong>
+  <%= User.find(curr_eva.ins_id.to_i).fname%> <%= User.find(curr_eva.ins_id.to_i).lname%>
+</p>
+
+
+<p>
+  <strong>Student First Name:</strong>
+  <%= curr_eva.student_fname %>
+</p>
+
+<p>
+  <strong>Student Last Name:</strong>
+  <%= curr_eva.student_lname %>
+</p>
+
+<p>
+  <strong>Student Username:</strong>
+  <%= curr_eva.student_username %>
+</p>
+
+<p>
+  <strong>Course Number:</strong>
+  <%= curr_eva.course_number %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= curr_eva.rating %>
+</p>
+
+<p>
+  <strong>Evaluation:</strong>
+  <%= curr_eva.evaluation %>
+</p>
+
+
+
+
+<%if curr_eva.ins_id.to_i == current_user.id.to_i || current_user.affiliation == 'Admin'%>
+  <%= link_to 'Edit', edit_evaluation_path(curr_eva) %>
+  <%end %>
+<%= link_to 'Back', evaluations_path %>
+
