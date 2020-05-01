@@ -1,10 +1,11 @@
 <a class="btn btn-secondary" href="/courses" role="button">
 Courses
 </a>
+
+<% if (logged_in? and current_user.affiliation == "Admin")%>
 <a class="btn btn-secondary" href="/users" role="button">
 Users
 </a>
-<% if (logged_in? and current_user.affiliation == "Admin")%>
 
 <a class="btn btn-secondary" href="/applications" role="button">
 Applications
