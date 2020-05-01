@@ -1,22 +1,22 @@
 <%= stylesheet_link_tag "coursesIndexStyles.css" %>
 <a class="btn btn-secondary" href="/courses" role="button">
-Courses
+	Courses
 </a>
 <a class="btn btn-secondary" href="/users" role="button">
-  Users
+  	Users
 </a>
 
 <% if (logged_in? and current_user.affiliation == "Admin")%>
-  <a class="btn btn-secondary" href="/applications" role="button">
-    Applications
-  </a>
-  <a class="btn btn-secondary" href="/recommendations" role="button">
-    Recommendations
-  </a>
+  	<a class="btn btn-secondary" href="/applications" role="button">
+   		 Applications
+  	</a>
+  	<a class="btn btn-secondary" href="/recommendations" role="button">
+    		Recommendations
+ 	 </a>
 
-  <a class="btn btn-secondary" href="/matching" role="button">
-    TA - course matching
-  </a>
+  	<a class="btn btn-secondary" href="/matching" role="button">
+   		 TA - course matching
+  	</a>
  
 <%end %>
 
@@ -26,87 +26,87 @@ Courses
 
 <div>
 
-<%= form_tag("matching", :method => "put", class: 'navbar-form navbar-left') do %>    
-    <%= search_field_tag :searchCourse, params[:searchCourse], placeholder: "Course Number", class: "form-control"%>
+	<%= form_tag("matching", :method => "put", class: 'navbar-form navbar-left') do %>    
+    	<%= search_field_tag :searchCourse, params[:searchCourse], placeholder: "Course Number", class: "form-control"%>
  
-  <%= button_tag "Submit", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
-<% end %>
-
-<h1>Matches</h1>
-
-
-<% @courseCandidateArray.each do |pair| %>
-<a>Course number: <%= pair[1].course_number %> </a>
-<a>Section number: <%= pair[1].section_number %> </a>
-<%      @courseToUpd = TeachingAssistant.where("course_number = '"  + pair[1].course_number.to_s + "' AND section_number = '" + pair[1].section_number.to_s + "'")
-@hasGrader = false
-if (@courseToUpd.length > 0) 
-	@grader = User.where("id = '" + @courseToUpd[0][:user_id].to_s + "'")
-	@hasGrader = true
-end %>
-<% if ((pair[0].length > 0)||@hasGrader) %>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>First name </th>
-      <th>Last name </th>
-      <th> Action </th>
-      <th> Recomendation </th>
-    </tr>
-  </thead>
-
-  <tbody>
-<% if (@hasGrader) %> 
-<tr>
-        <td><%= @grader[0][:fname]  %> </td>
-        <td><%= @grader[0][:lname] %></td>
-	<td><%= link_to "Delete current grader?", taDel_path(:course => pair[1].course_number.to_s, :section => pair[1].section_number.to_s, :userID => @grader[0][:id].to_s) %></td>
-<td>
-	<% @recommendations = Recommendation.where("course_number LIKE " + pair[1].course_number.to_s + " AND student_fname LIKE '" + @grader[0][:fname] + "' AND student_lname LIKE '" + @grader[0][:lname] + "'")%>
-	<%if (@recommendations.length > 0) %>
-	<a href = <%= "recommendations/" + @recommendations[0].id.to_s %> >
-		View recommendation
-	</a>
-	<% else %>
-		No recommendations for this course
+ 	 <%= button_tag "Submit", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
 	<% end %>
 
-</td>
-</tr>
-<% end %>
-    <% pair[0].each do |applicant| %>
-	<% @applicant = User.where("id = '" + applicant.user_id.to_s + "'") %>
-      <tr>
-        <td><%= @applicant[0][:fname]  %> </td>
-        <td><%= @applicant[0][:lname] %></td>
-	<td><%= link_to "Pick a grader", ta_path(:course => pair[1].course_number.to_s, :section => pair[1].section_number.to_s, :userID => @applicant[0][:id].to_s) %></td>
-<td>
-	<% @recommendations = Recommendation.where("course_number LIKE " + pair[1].course_number.to_s + " AND student_fname LIKE '" + @applicant[0][:fname] + "' AND student_lname LIKE '" + @applicant[0][:lname] + "'")%>
-	<%if (@recommendations.length > 0) %>
-	<a href = <%= "recommendations/" + @recommendations[0].id.to_s %> >
-		View recommendation
-	</a>
-	<% else %>
-		No recommendations for this course
-	<% end %>
+	<h1>Matches</h1>
 
-</td>
-</tr>
-        <%end %>
 
-  </tbody>
-</table>
+	<% @courseCandidateArray.each do |pair| %>
+		<a>Course number: <%= pair[1].course_number %> </a>
+		<a>Section number: <%= pair[1].section_number %> </a>
+		<% @courseToUpd = TeachingAssistant.where("course_number = '"  + pair[1].course_number.to_s + "' AND section_number = '" + pair[1].section_number.to_s + "'")
+		@hasGrader = false
+		if (@courseToUpd.length > 0) 
+			@grader = User.where("id = '" + @courseToUpd[0][:user_id].to_s + "'")
+			@hasGrader = true
+		end %>
+		<% if ((pair[0].length > 0)||@hasGrader) %>
 
-<%else %>
-		  No candidates yet!
-		  </br>
-<% end %>
 
-<%end %>
+			<table>
+  				<thead>
+    					<tr>
+      						<th>First name </th>
+      						<th>Last name </th>
+      						<th> Action </th>
+      						<th> Recomendation </th>
+    					</tr>
+  				</thead>
 
-<br>
+  				<tbody>
+					<% if (@hasGrader) %> 
+						<tr>
+       							 <td><%= @grader[0][:fname]  %> </td>
+       							 <td><%= @grader[0][:lname] %></td>
+							 <td><%= link_to "Delete current grader?", taDel_path(:course => pair[1].course_number.to_s, :section => pair[1].section_number.to_s, :userID => @grader[0][:id].to_s) %></td>
+							 <td>
+								<% @recommendations = Recommendation.where("course_number LIKE " + pair[1].course_number.to_s + " AND student_fname LIKE '" + @grader[0][:fname] + "' AND student_lname LIKE '" + @grader[0][:lname] + "'")%>
+								<%if (@recommendations.length > 0) %>
+									<a href = <%= "recommendations/" + @recommendations[0].id.to_s %> >
+										View recommendation
+									</a>
+								<% else %>
+									No recommendations for this course
+								<% end %>
+
+							 </td>
+						</tr>
+					<% end %>
+    					<% pair[0].each do |applicant| %>
+						<% @applicant = User.where("id = '" + applicant.user_id.to_s + "'") %>
+      						<tr>
+        						<td><%= @applicant[0][:fname]  %> </td>
+        						<td><%= @applicant[0][:lname] %></td>
+							<td><%= link_to "Pick a grader", ta_path(:course => pair[1].course_number.to_s, :section => pair[1].section_number.to_s, :userID => @applicant[0][:id].to_s) %></td>
+							<td>
+								<% @recommendations = Recommendation.where("course_number LIKE " + pair[1].course_number.to_s + " AND student_fname LIKE '" + @applicant[0][:fname] + "' AND student_lname LIKE '" + @applicant[0][:lname] + "'")%>
+								<%if (@recommendations.length > 0) %>
+									<a href = <%= "recommendations/" + @recommendations[0].id.to_s %> >
+										View recommendation
+									</a>
+								<% else %>
+									No recommendations for this course
+								<% end %>
+
+							</td>
+						</tr>
+       					 <%end %>
+
+ 				 </tbody>
+			</table>
+
+			<%else %>
+		 		 No candidates yet!
+		  		</br>
+			<% end %>
+
+		<%end %>
+
+		<br>
 
 </div>
 

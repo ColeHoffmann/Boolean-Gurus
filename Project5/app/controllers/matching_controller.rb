@@ -67,57 +67,57 @@ end
 
 def scheduleConflict(course, applicant)
 
-@daySchedule = applicant[:schedule].split(';')
-@classAppSchedule = []
-@daySchedule.each{ |day| 
-unless day =~ /\A(\d{2}:\d{2}-\d{2}:\d{2},)*\d{2}:\d{2}-\d{2}:\d{2}\z/
-	 day = "00 : 03 - 00 : 04"
-end
-@classAppSchedule.append(day.split(',').map{|time| timeIntervalToNumberInterval(time)})
-}
-@classCourseSchedule = []
-@courseTime = course[:time]
-if (@courseTime == "ARR")
-	@courseTime = "00 : 00 - 00 : 01"
-end
-while(!(@courseTime[0] =~ /\d/)) 
-	@courseTime = @courseTime[1..-1]
-end
-@courseTime = timeIntervalToNumberInterval(@courseTime)
-@nil = timeIntervalToNumberInterval("00 : 00 - 00 : 01")
-if (course[:time].include?("M"))
- @classCourseSchedule.append(@courseTime)
+	@daySchedule = applicant[:schedule].split(';')
+	@classAppSchedule = []
+	@daySchedule.each{ |day| 
+	unless day =~ /\A(\d{2}:\d{2}-\d{2}:\d{2},)*\d{2}:\d{2}-\d{2}:\d{2}\z/
+		day = "00 : 03 - 00 : 04"
+	end
+	@classAppSchedule.append(day.split(',').map{|time| 			timeIntervalToNumberInterval(time)})
+	}
+	@classCourseSchedule = []
+	@courseTime = course[:time]
+	if (@courseTime == "ARR")
+		@courseTime = "00 : 00 - 00 : 01"
+	end
+	while(!(@courseTime[0] =~ /\d/)) 
+		@courseTime = @courseTime[1..-1]
+	end
+	@courseTime = timeIntervalToNumberInterval(@courseTime)
+	@nil = timeIntervalToNumberInterval("00 : 00 - 00 : 01")
+	if (course[:time].include?("M"))
+ 		@classCourseSchedule.append(@courseTime)
 
-else 
-	@classCourseSchedule.append(@nil)
-end
-if (course[:time].include?("T") )
-	@classCourseSchedule.append(@courseTime)
+	else 
+		@classCourseSchedule.append(@nil)
+	end
+	if (course[:time].include?("T") )
+		@classCourseSchedule.append(@courseTime)
 
-else 
-	@classCourseSchedule.append(@nil)
-end
-if (course[:time].include?("W")) 
-	@classCourseSchedule.append(@courseTime)
+	else 
+		@classCourseSchedule.append(@nil)
+	end
+	if (course[:time].include?("W")) 
+		@classCourseSchedule.append(@courseTime)
 
-else 
-	@classCourseSchedule.append(@nil)
-end
-if (course[:time].include?("R")) 
-	@classCourseSchedule.append(@courseTime)
+	else 
+		@classCourseSchedule.append(@nil)
+	end
+	if (course[:time].include?("R")) 
+		@classCourseSchedule.append(@courseTime)
 
-else 
-	@classCourseSchedule.append(@nil)
-end
-if (course[:time].include?("F")) 
-	@classCourseSchedule.append(@courseTime)
+	else 
+		@classCourseSchedule.append(@nil)
+	end
+	if (course[:time].include?("F")) 
+		@classCourseSchedule.append(@courseTime)
 
-else 
-	@classCourseSchedule.append(@nil)
-end
+	else 
+		@classCourseSchedule.append(@nil)
+	end
 
 
-overlapWeek(@classAppSchedule, @classCourseSchedule)
+	overlapWeek(@classAppSchedule, @classCourseSchedule)
 
 
 end
@@ -135,7 +135,6 @@ def search
 		@multiSection = Course.where("course_number = '" + currentCourse[:course_number].to_s + "' AND section_number = '" + currentCourse[:section_number].to_s + "'")
 		@applicantsFit = Application.where("course_number LIKE '%" + currentCourse[:course_number].to_s + "%'")
 		@applicantsFit = @applicantsFit.reject{|applicant|
-			
 			@ans = false
 			@multiSection.each { |current|
 				@ans = @ans || scheduleConflict(current, applicant)
@@ -148,9 +147,8 @@ def search
 
 	end
 	@applicantsFit = @applicantsFit.sort_by{|a| 
-@b = User.where("id = '" + a[:user_id].to_s + "'")
-
-hasRecommendation(currentCourse[:course_number], @b[0][:fname], @b[0][:lname]) ? 0:1}
+		@b = User.where("id = '" + a[:user_id].to_s + "'")
+		hasRecommendation(currentCourse[:course_number], @b[0][:fname], @b[0][:lname]) ? 0:1}
 		@courseCandidateArray.append([@applicantsFit, currentCourse])}
 end
 
@@ -171,7 +169,7 @@ def changeTA
 end
 
 def deleteTA
-	TeachingAssistant.where("course_number LIKE " + 	params[:course].to_s + " AND section_number LIKE " + params[:section].to_s + " AND user_id LIKE " + params[:userID].to_s).destroy_all
+	TeachingAssistant.where("course_number LIKE " + 		params[:course].to_s + " AND section_number LIKE " + params[:section].to_s + " AND user_id LIKE " + params[:userID].to_s).destroy_all
 	redirect_to "/teaching_assistants"	
 end
 

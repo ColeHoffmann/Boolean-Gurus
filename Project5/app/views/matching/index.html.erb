@@ -1,25 +1,26 @@
 <a class="btn btn-secondary" href="/courses" role="button">
-Courses
-</a>
-<a class="btn btn-secondary" href="/users" role="button">
-  Users
+	Courses
 </a>
 
 <% if (logged_in? and current_user.affiliation == "Admin")%>
-  <a class="btn btn-secondary" href="/applications" role="button">
-    Applications
-  </a>
-  <a class="btn btn-secondary" href="/recommendations" role="button">
-    Recommendations
-  </a>
-  <a class="btn btn-secondary" href="/evaluations" role="button">
-  Evaluations
-</a>
-  <a class="btn btn-secondary" href="/teaching_assistants" role="button">
-  Current TAs
-</a>
+	<a class="btn btn-secondary" href="/users" role="button">
+ 	 	Users
+	</a>
+  	<a class="btn btn-secondary" href="/applications" role="button">
+   		 Applications
+  	</a>
+ 	<a class="btn btn-secondary" href="/recommendations" role="button">
+    		Recommendations
+  	</a>
+  	<a class="btn btn-secondary" href="/evaluations" role="button">
+  		Evaluations
+	</a>
+  	<a class="btn btn-secondary" href="/teaching_assistants" role="button">
+  		Current TAs
+	</a>
  
 <%end %>
+
 <p id="notice"><%= notice %></p>
 
 
