@@ -1,37 +1,38 @@
 <%= stylesheet_link_tag "coursesIndexStyles.css" %>
 
-<a class="btn btn-secondary" href="/users" role="button">
-  Users
-</a>
-
 <% if (logged_in? and current_user.affiliation == "Admin")%>
-  <a class="btn btn-secondary" href="/applications" role="button">
-    Applications
-  </a>
-  <a class="btn btn-secondary" href="/login_requests" role="button">
-    Login Requests
-  </a>
 
-  <a class="btn btn-secondary" href="/recommendations" role="button">
-    Recommendations
-  </a>
-  <a class="btn btn-secondary" href="/evaluations" role="button">
-    Evaluations
-  </a>
+        <a class="btn btn-secondary" href="/users" role="button">
+          Users
+        </a>
 
-   <a class="btn btn-secondary" href="/teaching_assistants" role="button">
-    Current TAs
-  </a>
+        <a class="btn btn-secondary" href="/applications" role="button">
+          Applications
+        </a>
+        <a class="btn btn-secondary" href="/login_requests" role="button">
+          Login Requests
+        </a>
 
-  <a class="btn btn-secondary" href="/matching" role="button">
-    TA - course matching
-  </a>
+        <a class="btn btn-secondary" href="/recommendations" role="button">
+          Recommendations
+        </a>
+        <a class="btn btn-secondary" href="/evaluations" role="button">
+          Evaluations
+        </a>
 
-  <a class="btn btn-secondary btn-danger" href="/scraper_requests" role="button">
-    Run Scraper
-  </a>
- 
-<%end %>
+         <a class="btn btn-secondary" href="/teaching_assistants" role="button">
+          Current TAs
+        </a>
+
+        <a class="btn btn-secondary" href="/matching" role="button">
+          TA - course matching
+        </a>
+
+        <a class="btn btn-secondary btn-danger" href="/scraper_requests" role="button">
+          Run Scraper
+        </a>
+       
+      <%end %>
 
 
 <p id="notice"><%= notice %></p>
