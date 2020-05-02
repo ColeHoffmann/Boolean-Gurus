@@ -7,3 +7,6 @@ Added Functionalities:
 5. TA functionality.
 6. Fixed bug with matching algorithm
 7. Added Instructor login credentials request from admin
+8. Fixed problem with course numbers in Current TA page
+9. Assign TA now has only unique course numbers in the list and offers students only (no teachers or admins)
+10. Added partial for admin navigation

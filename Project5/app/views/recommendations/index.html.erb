@@ -5,32 +5,7 @@
 <a class="btn btn-secondary" href="/courses" role="button">
     Courses
   </a>
-  <a class="btn btn-secondary" href="/users" role="button">
-    Users
-  </a>
-  <% if (logged_in? and current_user.affiliation == "Admin")%>
-    
-    <a class="btn btn-secondary" href="/applications" role="button">
-      Applications
-    </a>
-    <a class="btn btn-secondary" href="/evaluations" role="button">
-    Evaluations
-  </a>
-    <a class="btn btn-secondary" href="/teaching_assistants" role="button">
-    Current TAs
-  </a>
-
-    <a class="btn btn-secondary" href="/matching" role="button">
-      TA - course matching
-    </a>
-	<a class="btn btn-secondary btn-danger" href="/scraper_requests" role="button">
-          Run Scraper
-        </a>
-<a class="btn btn-secondary" href="/login_requests" role="button">
-          Login Requests
-        </a>
-    
-  <% end %>
+  <%= render 'admin_navigation' %>
 
   <p id="notice"><%= notice %></p>
 
