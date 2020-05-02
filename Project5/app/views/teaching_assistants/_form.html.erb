@@ -12,9 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= form.label 'Course Number (Seperate using "," Use four digit University course code)' %>
+    <%= form.label 'Course Number (Separate using "," Use four digit University course code)' %>
     <br />
-    <%= form.collection_select :course_number, all_courses, :id, :course_number, prompt: "Select a Course" %>
+    <%= form.collection_select :course_number, Course.group(:course_number), :course_number, :course_number, prompt: "Select a Course" %>
   </div>
 
 
@@ -28,7 +28,7 @@
   <div class="field">
     <%= form.label 'Student:' %>
     <br />
-    <%= form.collection_select :user_id, all_users, :id, :username, prompt: "Select a student"%>
+    <%= form.collection_select :user_id, User.where("affiliation LIKE 'Student'"), :id, :username, prompt: "Select a student"%>
   </div>
 
   <div class="actions">

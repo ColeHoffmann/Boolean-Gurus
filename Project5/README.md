@@ -19,14 +19,12 @@ After running db:seed, run "rails server" to start the sample view and open brow
 
 
 DEFAULT ADMIN PASSWORD IS ADMIN, USERNAME ADMIN!!!
+You can also use default student account (stu, stu) (login, password) which already has application and courses taken provided.
 
-For our app, signup on the website can only be done by students. Instructor signups can only be done by the admin. This is to prevent anyone from signing up as 
-an admin and having access to privileged information. 
-Once signed in, students can view courses offered and apply for TA positions. Students are required to provide grades for courses they wish to apply for.
-Once signed in, instructors can request for specific TAs if they're available. Instructors can also recommend TAs for other TA positions. After the semester, 
-instructs can write an evaluation based on the performance of a TA.
-Once signed in, admin can create/delete a new user, student and Instructor. Admins can assign TA postions. Admins can view recommendations, applications for TA
-postions, evaluations. Admins can utilize the TA matching algorithm to find suitable TAs for courses.
+For our app, signup on the website can only be done by students. Instructor signups can only be done by the admin, after they make a request. This is to prevent anyone from signing up as an admin or instructor and having access to privileged information. 
+Once signed in, students can view courses offered and apply for TA positions. They can edit their application afterwards. Students are required to provide grades for courses they wish to apply for.
+Once signed in, instructors can request for specific TAs if they're available. Instructors can also recommend TAs for other TA positions. After the semester, instructors can write an evaluation based on the performance of a TA.
+Once signed in, admin can create/delete a new user, student and Instructor. Admins can assign TA postions. Admins can view recommendations, applications for TA positions, evaluations. Admins can utilize the TA matching algorithm to find suitable TAs for courses.
 Admin can also run a new scraper to get new courses for the semester
 ** 
 
